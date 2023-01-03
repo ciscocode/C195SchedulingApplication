@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.AddCustomerViewController">
+   <children>
+      <TextField editable="false" layoutX="178.0" layoutY="75.0" promptText="Auto-Gen" />
+      <TextField layoutX="178.0" layoutY="122.0" />
+      <TextField layoutX="178.0" layoutY="170.0" />
+      <TextField layoutX="178.0" layoutY="210.0" />
+      <TextField layoutX="178.0" layoutY="256.0" />
+      <ComboBox layoutX="176.0" layoutY="301.0" prefHeight="24.0" prefWidth="171.0" />
+      <ComboBox layoutX="176.0" layoutY="342.0" prefHeight="24.0" prefWidth="171.0" />
+      <Button layoutX="188.0" layoutY="422.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="264.0" layoutY="422.0" mnemonicParsing="false" text="Cancel" />
+      <Label layoutX="139.0" layoutY="79.0" text="ID" />
+      <Label layoutX="126.0" layoutY="126.0" text="Name" />
+      <Label layoutX="113.0" layoutY="174.0" text="Address" />
+      <Label layoutX="96.0" layoutY="214.0" text="Postal Code" />
+      <Label layoutX="125.0" layoutY="260.0" text="Phone" />
+      <Label layoutX="114.0" layoutY="305.0" text="Country" />
+      <Label layoutX="67.0" layoutY="346.0" text="State/Province" />
+   </children>
+</AnchorPane>

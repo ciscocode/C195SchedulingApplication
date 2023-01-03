@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.CustomerDatabaseViewController">
+   <children>
+      <TableView layoutX="58.0" layoutY="54.0" prefHeight="545.0" prefWidth="884.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Name" />
+            <TableColumn prefWidth="243.0" text="Address" />
+            <TableColumn prefWidth="131.0" text="State/Province" />
+            <TableColumn prefWidth="107.0" text="Postal Code" />
+            <TableColumn prefWidth="102.0" text="Country" />
+            <TableColumn prefWidth="155.0" text="Phone" />
+        </columns>
+      </TableView>
+      <Button layoutX="144.0" layoutY="633.0" mnemonicParsing="false" text="Add Customer" />
+      <Button layoutX="434.0" layoutY="633.0" mnemonicParsing="false" text="Update Customer" />
+      <Button layoutX="748.0" layoutY="633.0" mnemonicParsing="false" text="Delete Customer" />
+   </children>
+</AnchorPane>
