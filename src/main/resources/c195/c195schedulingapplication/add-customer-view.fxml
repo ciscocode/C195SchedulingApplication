@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.AddCustomerViewController">
    <children>
@@ -21,5 +22,10 @@
       <Label layoutX="125.0" layoutY="260.0" text="Phone" />
       <Label layoutX="114.0" layoutY="305.0" text="Country" />
       <Label layoutX="67.0" layoutY="346.0" text="State/Province" />
+      <Label layoutX="178.0" layoutY="24.0" text="Add Customer">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

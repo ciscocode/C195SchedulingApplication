@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.AppointmentViewController">
     <children>
@@ -26,5 +27,10 @@
       <RadioButton layoutX="219.0" layoutY="69.0" mnemonicParsing="false" text="Sort by Month" />
       <RadioButton layoutX="358.0" layoutY="69.0" mnemonicParsing="false" text="Sort by Week" />
       <Button layoutX="1084.0" layoutY="710.0" mnemonicParsing="false" text="Return to Main Menu" />
+      <Label layoutX="622.0" layoutY="37.0" text="Appointments">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

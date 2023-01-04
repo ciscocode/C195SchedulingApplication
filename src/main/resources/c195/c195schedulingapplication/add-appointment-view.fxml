@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="700.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.AddAppointmentViewController">
     <children>
@@ -31,5 +32,10 @@
       <ComboBox layoutX="187.0" layoutY="561.0" prefHeight="24.0" prefWidth="171.0" />
       <Label layoutX="93.0" layoutY="525.0" text="Customer ID" />
       <Label layoutX="117.0" layoutY="565.0" text="User ID" />
+      <Label layoutX="171.0" layoutY="23.0" text="Add Appointment">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
