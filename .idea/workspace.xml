@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I have added fxml views of the following: Login screen, Main Menu Screen, Customer Database Screen, and Add Customer screen">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created the appointment database view, and updated the customer database view with a return to menu button">
+      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,12 +86,20 @@
       <option name="project" value="LOCAL" />
       <updated>1672734118333</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Created the appointment database view, and updated the customer database view with a return to menu button">
+      <created>1672814307405</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672814307405</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialized my new C195 Application project. In this initial commit I have established a connection to a client-side database." />
     <MESSAGE value="I have added fxml views of the following: Login screen, Main Menu Screen, Customer Database Screen, and Add Customer screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="I have added fxml views of the following: Login screen, Main Menu Screen, Customer Database Screen, and Add Customer screen" />
+    <MESSAGE value="Created the appointment database view, and updated the customer database view with a return to menu button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created the appointment database view, and updated the customer database view with a return to menu button" />
   </component>
 </project>
