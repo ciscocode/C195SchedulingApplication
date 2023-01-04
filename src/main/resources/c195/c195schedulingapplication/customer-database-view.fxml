@@ -16,8 +16,9 @@
             <TableColumn prefWidth="155.0" text="Phone" />
         </columns>
       </TableView>
-      <Button layoutX="144.0" layoutY="633.0" mnemonicParsing="false" text="Add Customer" />
-      <Button layoutX="434.0" layoutY="633.0" mnemonicParsing="false" text="Update Customer" />
-      <Button layoutX="748.0" layoutY="633.0" mnemonicParsing="false" text="Delete Customer" />
+      <Button layoutX="96.0" layoutY="633.0" mnemonicParsing="false" text="Add Customer" />
+      <Button layoutX="241.0" layoutY="633.0" mnemonicParsing="false" text="Update Customer" />
+      <Button layoutX="412.0" layoutY="633.0" mnemonicParsing="false" text="Delete Customer" />
+      <Button layoutX="736.0" layoutY="633.0" mnemonicParsing="false" text="Return to Main Screen" />
    </children>
 </AnchorPane>
