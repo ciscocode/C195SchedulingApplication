@@ -4,14 +4,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.MainViewController">
+<AnchorPane prefHeight="210.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.MainViewController">
    <children>
-      <Button layoutX="61.0" layoutY="203.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="208.0" text="Enter Customer Database" />
-      <Button layoutX="329.0" layoutY="203.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="208.0" text="Enter Appointment Database" />
-      <Button layoutX="248.0" layoutY="299.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="104.0" text="View Reports" />
-      <Label layoutX="164.0" layoutY="96.0" text="Select a choice">
+      <Button layoutX="56.0" layoutY="90.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="Customers" />
+      <Button layoutX="212.0" layoutY="90.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="Appointments" />
+      <Button layoutX="362.0" layoutY="90.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="Reports" />
+      <Label layoutX="215.0" layoutY="38.0" text="Main Menu">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="18.0" />
          </font></Label>
    </children>
 </AnchorPane>

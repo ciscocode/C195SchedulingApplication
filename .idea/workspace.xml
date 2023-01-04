@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created the appointment database view, and updated the customer database view with a return to menu button">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created the add apointment view">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,19 +42,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication",
-    "last_opened_file_path": "/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pathVariables"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="C195SchedulingApp" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="c195.c195schedulingapplication.HelloApplication" />
@@ -93,13 +94,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672814307405</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Created the add apointment view">
+      <created>1672819232391</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1672819232391</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initialized my new C195 Application project. In this initial commit I have established a connection to a client-side database." />
     <MESSAGE value="I have added fxml views of the following: Login screen, Main Menu Screen, Customer Database Screen, and Add Customer screen" />
     <MESSAGE value="Created the appointment database view, and updated the customer database view with a return to menu button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the appointment database view, and updated the customer database view with a return to menu button" />
+    <MESSAGE value="Created the add apointment view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created the add apointment view" />
   </component>
 </project>
