@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Refactored names of fxml &amp; controller files for the login screen and main menu">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/login-view.fxml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later">
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/menu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/menu-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672820225980</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later">
+      <created>1672981111178</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1672981111178</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -131,6 +137,7 @@
     <MESSAGE value="Added labels to each view" />
     <MESSAGE value="Updated look of the main menu" />
     <MESSAGE value="Refactored names of fxml &amp; controller files for the login screen and main menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored names of fxml &amp; controller files for the login screen and main menu" />
+    <MESSAGE value="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later" />
   </component>
 </project>

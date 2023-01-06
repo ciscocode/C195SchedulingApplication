@@ -6,9 +6,9 @@
 
 <AnchorPane prefHeight="210.0" prefWidth="542.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.MainViewController">
    <children>
-      <Button layoutX="56.0" layoutY="90.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="Customers" />
-      <Button layoutX="212.0" layoutY="90.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="Appointments" />
-      <Button layoutX="362.0" layoutY="90.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="118.0" text="Reports" />
+      <Button layoutX="56.0" layoutY="90.0" mnemonicParsing="false" onAction="#onCustomers" prefHeight="63.0" prefWidth="118.0" text="Customers" />
+      <Button layoutX="212.0" layoutY="90.0" mnemonicParsing="false" onAction="#onAppointments" prefHeight="63.0" prefWidth="118.0" text="Appointments" />
+      <Button layoutX="362.0" layoutY="90.0" mnemonicParsing="false" onAction="#onReports" prefHeight="63.0" prefWidth="118.0" text="Reports" />
       <Label layoutX="215.0" layoutY="38.0" text="Main Menu">
          <font>
             <Font name="System Bold" size="18.0" />
