@@ -26,7 +26,7 @@
       <RadioButton layoutX="106.0" layoutY="69.0" mnemonicParsing="false" text="View All" />
       <RadioButton layoutX="219.0" layoutY="69.0" mnemonicParsing="false" text="Sort by Month" />
       <RadioButton layoutX="358.0" layoutY="69.0" mnemonicParsing="false" text="Sort by Week" />
-      <Button layoutX="1084.0" layoutY="710.0" mnemonicParsing="false" text="Return to Main Menu" />
+      <Button layoutX="1084.0" layoutY="710.0" mnemonicParsing="false" onAction="#onReturnToMainMenu" text="Return to Main Menu" />
       <Label layoutX="622.0" layoutY="37.0" text="Appointments">
          <font>
             <Font name="System Bold" size="18.0" />

@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Fixed a dependency issue with the JDBC driver">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,18 +43,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_directory_selection": "/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication",
+    "last_opened_file_path": "/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pathVariables"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="C195SchedulingApp" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="c195.c195schedulingapplication.Application" />
@@ -126,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672981111178</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Fixed a dependency issue with the JDBC driver">
+      <created>1673072802883</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673072802883</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -138,6 +148,7 @@
     <MESSAGE value="Updated look of the main menu" />
     <MESSAGE value="Refactored names of fxml &amp; controller files for the login screen and main menu" />
     <MESSAGE value="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later" />
+    <MESSAGE value="Fixed a dependency issue with the JDBC driver" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a dependency issue with the JDBC driver" />
   </component>
 </project>
