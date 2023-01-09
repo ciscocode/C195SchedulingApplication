@@ -144,4 +144,24 @@ public class Customer {
         return country;
     }
 
+    public String getDivision() throws SQLException {
+        //establish connection to database
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+
+        String sql = "SELECT Division FROM first_level_divisions WHERE Division_ID = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        //set the value of the parameter
+        preparedStatement.setInt(1,Division_ID);
+
+        //execute prepared statement
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        //then save the division
+        String division = null;
+        if (resultSet.next()) {
+            division = resultSet.getString("Division");
+        }
+        return division;
+    }
 }

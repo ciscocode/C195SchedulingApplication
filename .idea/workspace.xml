@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country">
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
     </list>
@@ -148,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673236021043</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country">
+      <created>1673240898245</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1673240898245</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -163,6 +169,7 @@
     <MESSAGE value="Fixed a dependency issue with the JDBC driver" />
     <MESSAGE value="Created action event to return to the main menu from both the Customer &amp; Appointment view" />
     <MESSAGE value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
-    <option name="LAST_COMMIT_MESSAGE" value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
+    <MESSAGE value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
   </component>
 </project>
