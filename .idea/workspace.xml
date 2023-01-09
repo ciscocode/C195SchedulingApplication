@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/update-customer-view.fxml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673241302507</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views.">
+      <created>1673243401478</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1673243401478</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -181,6 +186,7 @@
     <MESSAGE value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
     <MESSAGE value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
     <MESSAGE value="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database" />
+    <MESSAGE value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
   </component>
 </project>
