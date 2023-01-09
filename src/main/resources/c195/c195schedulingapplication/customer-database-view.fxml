@@ -6,15 +6,15 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.CustomerDatabaseViewController">
    <children>
-      <TableView layoutX="58.0" layoutY="54.0" prefHeight="545.0" prefWidth="884.0">
+      <TableView fx:id="customerTable" layoutX="58.0" layoutY="54.0" prefHeight="545.0" prefWidth="884.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="75.0" text="Name" />
-            <TableColumn prefWidth="243.0" text="Address" />
-            <TableColumn prefWidth="131.0" text="State/Province" />
-            <TableColumn prefWidth="107.0" text="Postal Code" />
-            <TableColumn prefWidth="102.0" text="Country" />
-            <TableColumn prefWidth="155.0" text="Phone" />
+          <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="addressCol" prefWidth="243.0" text="Address" />
+            <TableColumn fx:id="stateCol" prefWidth="131.0" text="State/Province" />
+            <TableColumn fx:id="postalCol" prefWidth="107.0" text="Postal Code" />
+            <TableColumn fx:id="countryCol" prefWidth="102.0" text="Country" />
+            <TableColumn fx:id="phoneCol" prefWidth="155.0" text="Phone" />
         </columns>
       </TableView>
       <Button layoutX="96.0" layoutY="633.0" mnemonicParsing="false" text="Add Customer" />
