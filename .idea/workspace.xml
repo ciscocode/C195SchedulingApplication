@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created action event to return to the main menu from both the Customer &amp; Appointment view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +41,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_directory_selection": "/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication",
-    "last_opened_file_path": "/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pathVariables"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="C195SchedulingApp" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="c195.c195schedulingapplication.Application" />
@@ -142,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673073477780</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table">
+      <created>1673236021043</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673236021043</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -156,6 +162,7 @@
     <MESSAGE value="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later" />
     <MESSAGE value="Fixed a dependency issue with the JDBC driver" />
     <MESSAGE value="Created action event to return to the main menu from both the Customer &amp; Appointment view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created action event to return to the main menu from both the Customer &amp; Appointment view" />
+    <MESSAGE value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
+    <option name="LAST_COMMIT_MESSAGE" value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
   </component>
 </project>

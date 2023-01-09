@@ -74,7 +74,7 @@ public class CustomerDatabaseViewController implements Initializable {
             addressCol.setCellValueFactory(new PropertyValueFactory<>("Address"));
             stateCol.setCellValueFactory(new PropertyValueFactory<>("Division_ID"));
             postalCol.setCellValueFactory(new PropertyValueFactory<>("Postal_Code"));
-            countryCol.setCellValueFactory(new PropertyValueFactory<>("Division_ID"));
+            countryCol.setCellValueFactory(new PropertyValueFactory<>("Country"));
             phoneCol.setCellValueFactory(new PropertyValueFactory<>("Phone"));
 
         } catch (SQLException e) {

@@ -1,5 +1,9 @@
 package c195.c195schedulingapplication;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.sql.*;
 import java.time.LocalDateTime;
 
 public class Customer {
@@ -13,6 +17,19 @@ public class Customer {
     private LocalDateTime Last_Update;
     private String Last_Updated_By;
     private int Division_ID;
+
+    public Customer(int customer_ID, String customer_Name, String address, String postal_Code, String phone, LocalDateTime create_Date, String created_By, LocalDateTime last_Update, String last_Updated_By, int division_ID) {
+        this.Customer_ID = customer_ID;
+        this.Customer_Name = customer_Name;
+        this.Address = address;
+        this.Postal_Code = postal_Code;
+        this.Phone = phone;
+        this.Create_Date = create_Date;
+        this.Created_By = created_By;
+        this.Last_Update = last_Update;
+        this.Last_Updated_By = last_Updated_By;
+        this.Division_ID = division_ID;
+    }
 
     public int getCustomer_ID() {
         return Customer_ID;
@@ -90,20 +107,41 @@ public class Customer {
         return Division_ID;
     }
 
-    public Customer(int customer_ID, String customer_Name, String address, String postal_Code, String phone, LocalDateTime create_Date, String created_By, LocalDateTime last_Update, String last_Updated_By, int division_ID) {
-        this.Customer_ID = customer_ID;
-        this.Customer_Name = customer_Name;
-        this.Address = address;
-        this.Postal_Code = postal_Code;
-        this.Phone = phone;
-        this.Create_Date = create_Date;
-        this.Created_By = created_By;
-        this.Last_Update = last_Update;
-        this.Last_Updated_By = last_Updated_By;
-        this.Division_ID = division_ID;
-    }
-
     public void setDivision_ID(int division_ID) {
         this.Division_ID = division_ID;
     }
+
+    public String getCountry() throws SQLException {
+        //establish connection to database
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+
+        //First, get the Country ID
+        String sql1 = "SELECT Country_ID FROM first_level_divisions WHERE Division_ID = ?";
+        PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+
+        //set the value of the parameter
+        preparedStatement1.setInt(1,Division_ID);
+
+        //execute prepared statement
+        ResultSet resultSet1 = preparedStatement1.executeQuery();
+
+        //then save the Country_ID in a variable
+        int Country_ID = 0;
+        if (resultSet1.next()) {
+            Country_ID = resultSet1.getInt("Country_ID");
+        }
+
+        //Then we will repeat the same steps as above. This time using the Country ID to find the name of the country
+        String sql2 = "SELECT Country FROM countries WHERE Country_ID = ?";
+        PreparedStatement preparedStatement2 = connection.prepareStatement(sql2);
+        preparedStatement2.setInt(1,Country_ID);
+        ResultSet resultSet2 = preparedStatement2.executeQuery();
+        String country = null;
+        if (resultSet2.next()) {
+            country = resultSet2.getString("Country");
+        }
+
+        return country;
+    }
+
 }
