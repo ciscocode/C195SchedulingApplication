@@ -13,8 +13,8 @@
       <TextField layoutX="178.0" layoutY="256.0" />
       <ComboBox layoutX="176.0" layoutY="301.0" prefHeight="24.0" prefWidth="171.0" />
       <ComboBox layoutX="176.0" layoutY="342.0" prefHeight="24.0" prefWidth="171.0" />
-      <Button layoutX="188.0" layoutY="422.0" mnemonicParsing="false" text="Save" />
-      <Button layoutX="264.0" layoutY="422.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="188.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
+      <Button layoutX="264.0" layoutY="422.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
       <Label layoutX="139.0" layoutY="79.0" text="ID" />
       <Label layoutX="126.0" layoutY="126.0" text="Name" />
       <Label layoutX="113.0" layoutY="174.0" text="Address" />

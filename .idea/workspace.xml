@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country">
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database">
+      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/update-customer-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673240898245</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database">
+      <created>1673241302507</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1673241302507</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -170,6 +180,7 @@
     <MESSAGE value="Created action event to return to the main menu from both the Customer &amp; Appointment view" />
     <MESSAGE value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
     <MESSAGE value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
+    <MESSAGE value="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database" />
   </component>
 </project>

@@ -92,4 +92,22 @@ public class CustomerDatabaseViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void onAddCustomer(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("add-customer-view.fxml"));
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene((Parent) root, 500, 500);
+        stage.setTitle("Add Customer");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void onUpdateCustomer(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("update-customer-view.fxml"));
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene((Parent) root, 500, 500);
+        stage.setTitle("Update Customer");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

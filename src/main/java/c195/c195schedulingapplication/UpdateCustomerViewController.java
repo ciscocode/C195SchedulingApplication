@@ -9,8 +9,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddCustomerViewController {
-    public void onSave(ActionEvent actionEvent) throws IOException {
+public class UpdateCustomerViewController {
+    public void onCancel(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene((Parent) root, 1000, 700);
@@ -19,7 +19,7 @@ public class AddCustomerViewController {
         stage.show();
     }
 
-    public void onCancel(ActionEvent actionEvent) throws IOException {
+    public void onSave(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene((Parent) root, 1000, 700);
