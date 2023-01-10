@@ -18,17 +18,26 @@ public class Customer {
     private String Last_Updated_By;
     private int Division_ID;
 
-    public Customer(int customer_ID, String customer_Name, String address, String postal_Code, String phone, LocalDateTime create_Date, String created_By, LocalDateTime last_Update, String last_Updated_By, int division_ID) {
-        this.Customer_ID = customer_ID;
-        this.Customer_Name = customer_Name;
-        this.Address = address;
-        this.Postal_Code = postal_Code;
-        this.Phone = phone;
-        this.Create_Date = create_Date;
-        this.Created_By = created_By;
-        this.Last_Update = last_Update;
-        this.Last_Updated_By = last_Updated_By;
-        this.Division_ID = division_ID;
+    public Customer(int customer_ID,
+                    String customer_Name,
+                    String address,
+                    String postal_Code,
+                    String phone,
+                    LocalDateTime create_Date,
+                    String created_By,
+                    LocalDateTime last_Update,
+                    String last_Updated_By,
+                    int division_ID) {
+                        this.Customer_ID = customer_ID;
+                        this.Customer_Name = customer_Name;
+                        this.Address = address;
+                        this.Postal_Code = postal_Code;
+                        this.Phone = phone;
+                        this.Create_Date = create_Date;
+                        this.Created_By = created_By;
+                        this.Last_Update = last_Update;
+                        this.Last_Updated_By = last_Updated_By;
+                        this.Division_ID = division_ID;
     }
 
     public int getCustomer_ID() {

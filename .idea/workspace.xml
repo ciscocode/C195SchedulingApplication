@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views.">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673243401478</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox">
+      <created>1673249017719</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1673249017719</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -187,6 +194,7 @@
     <MESSAGE value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
     <MESSAGE value="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database" />
     <MESSAGE value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
+    <MESSAGE value="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox" />
+    <option name="LAST_COMMIT_MESSAGE" value="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox" />
   </component>
 </project>
