@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created the Insert Customer method to add a customer to the database. However, there is a bug in which my division id is not properly updating. Must fix that next.">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-customer-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/customer-database-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673338610398</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly.">
+      <created>1673416637740</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1673416637740</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -203,6 +210,7 @@
     <MESSAGE value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
     <MESSAGE value="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox" />
     <MESSAGE value="Created the Insert Customer method to add a customer to the database. However, there is a bug in which my division id is not properly updating. Must fix that next." />
-    <option name="LAST_COMMIT_MESSAGE" value="Created the Insert Customer method to add a customer to the database. However, there is a bug in which my division id is not properly updating. Must fix that next." />
+    <MESSAGE value="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly." />
   </component>
 </project>

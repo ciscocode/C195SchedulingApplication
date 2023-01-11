@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 public class CustomerDatabaseViewController implements Initializable {
 
 
-    public TableView customerTable;
+    public TableView<Customer> customerTable;
     public TableColumn IDCol;
     public TableColumn nameCol;
     public TableColumn addressCol;
@@ -31,6 +32,8 @@ public class CustomerDatabaseViewController implements Initializable {
     public TableColumn postalCol;
     public TableColumn countryCol;
     public TableColumn phoneCol;
+    int customer_ID;
+    ObservableList<Customer> data = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -43,7 +46,6 @@ public class CustomerDatabaseViewController implements Initializable {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");
 
             //create observableList to store data
-            ObservableList<Customer> data = FXCollections.observableArrayList();
 
             //Iterate through the result set and add each row to the ObservableList
             while (resultSet.next()) {
@@ -81,7 +83,25 @@ public class CustomerDatabaseViewController implements Initializable {
             throw new RuntimeException(e);
 
         }
+    }
 
+    public void onDeleteCustomer(ActionEvent actionEvent) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+
+        //get the Customer ID from the customer the user selects on the table
+        Customer selectedRow = customerTable.getSelectionModel().getSelectedItem();
+        customer_ID = selectedRow.getCustomer_ID();
+        System.out.print(customer_ID);
+
+        //use this customer ID to run a query to delete the customer from the table
+        String sql = "DELETE FROM customers WHERE Customer_ID = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,customer_ID);
+        preparedStatement.executeUpdate();
+
+        //then update the table view
+        data.remove(selectedRow);
+        customerTable.setItems(data);
     }
 
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {
@@ -110,4 +130,5 @@ public class CustomerDatabaseViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
 }
