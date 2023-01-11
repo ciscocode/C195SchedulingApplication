@@ -12,7 +12,7 @@
       <TextField fx:id="postalCodeTextField" layoutX="178.0" layoutY="210.0" />
       <TextField fx:id="phoneTextField" layoutX="178.0" layoutY="256.0" />
       <ComboBox fx:id="countryBox" layoutX="176.0" layoutY="301.0" onAction="#onCountrySelection" prefHeight="24.0" prefWidth="171.0" />
-      <ComboBox fx:id="divisionBox" layoutX="176.0" layoutY="342.0" prefHeight="24.0" prefWidth="171.0" />
+      <ComboBox fx:id="divisionBox" layoutX="176.0" layoutY="342.0" onAction="#onDivisionSelection" prefHeight="24.0" prefWidth="171.0" />
       <Button layoutX="188.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
       <Button layoutX="264.0" layoutY="422.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
       <Label layoutX="139.0" layoutY="79.0" text="ID" />

@@ -38,8 +38,8 @@ public class AddCustomerViewController implements Initializable {
     LocalDateTime lastUpdate;
     String createdBy;
     String lastUpdatedBy;
-
     int division_id;
+    int country_id;
 
     //Since the list of countries is small at Only 3, I created an ObservableArrayList for it to simplify things
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
@@ -92,11 +92,6 @@ public class AddCustomerViewController implements Initializable {
                 lastUpdatedBy,
                 division_id);
 
-//        String sql = "SELECT Division FROM first_level_divisions WHERE Country_ID = ?";
-//        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-//        preparedStatement.setInt(1,division_id);
-//        ResultSet resultSet = preparedStatement.executeQuery();
-
         //Once a new customer is created push it to the MySQL Database
         String sql = "INSERT INTO customers (Customer_ID, Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID)" +
                 "VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -125,15 +120,15 @@ public class AddCustomerViewController implements Initializable {
     public void onCountrySelection(ActionEvent actionEvent) throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
 
-        //get the value of the country & use this to get the division id.
+        //get the value of the country & use this to get the country id.
         country = (String) countryBox.getValue();
-        division_id = countryList.indexOf(country) + 1;
-        System.out.println(division_id);
+        country_id = countryList.indexOf(country) + 1;
+        System.out.println(country_id);
 
         //run the query to find the divisions by country id
         String sql = "SELECT Division FROM first_level_divisions WHERE Country_ID = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,division_id);
+        preparedStatement.setInt(1,country_id);
         ResultSet resultSet = preparedStatement.executeQuery();
 
         //create observableList to store division list
@@ -147,6 +142,23 @@ public class AddCustomerViewController implements Initializable {
 
         //then add the list to the combo box
         divisionBox.setItems(divisionList);
+    }
+
+    public void onDivisionSelection(ActionEvent actionEvent) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+
+        //gather the division from the selected box
+        division = (String) divisionBox.getValue();
+
+        String sql = "SELECT Division_ID FROM first_level_divisions WHERE Division = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, division);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        //set the returned result as the division id
+        while (resultSet.next()) {
+            division_id = resultSet.getInt(1);
+        }
     }
 
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
