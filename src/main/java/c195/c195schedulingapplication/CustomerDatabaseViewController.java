@@ -122,13 +122,20 @@ public class CustomerDatabaseViewController implements Initializable {
         stage.show();
     }
 
-    public void onUpdateCustomer(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("update-customer-view.fxml"));
+    public void onUpdateCustomer(ActionEvent actionEvent) throws IOException, SQLException {
+        FXMLLoader updateCustomerLoader = new FXMLLoader();
+        updateCustomerLoader.setLocation(getClass().getResource("update-customer-view.fxml"));
+        updateCustomerLoader.load();
+        UpdateCustomerViewController updateController = updateCustomerLoader.getController();
+        /*if (customerTable.getSelectionModel().getSelectedItem() == null) {
+            INESERT ERROT
+            return;
+        }*/
+        updateController.sendCustomerData(customerTable.getSelectionModel().getSelectedItem());
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene((Parent) root, 500, 500);
+        Parent scene = updateCustomerLoader.getRoot();
         stage.setTitle("Update Customer");
-        stage.setScene(scene);
+        stage.setScene(new Scene(scene));
         stage.show();
     }
-
 }

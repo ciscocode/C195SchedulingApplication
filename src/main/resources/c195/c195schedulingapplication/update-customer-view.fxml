@@ -6,13 +6,13 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.UpdateCustomerViewController">
     <children>
-        <TextField editable="false" layoutX="178.0" layoutY="75.0" promptText="Auto-Gen" />
-        <TextField layoutX="178.0" layoutY="122.0" />
-        <TextField layoutX="178.0" layoutY="170.0" />
-        <TextField layoutX="178.0" layoutY="210.0" />
-        <TextField layoutX="178.0" layoutY="256.0" />
-        <ComboBox layoutX="176.0" layoutY="301.0" prefHeight="24.0" prefWidth="171.0" />
-        <ComboBox layoutX="176.0" layoutY="342.0" prefHeight="24.0" prefWidth="171.0" />
+        <TextField fx:id="customerIDTextField" editable="false" layoutX="178.0" layoutY="75.0" promptText="Auto-Gen" />
+        <TextField fx:id="nameTextField" layoutX="178.0" layoutY="122.0" />
+        <TextField fx:id="addressTextField" layoutX="178.0" layoutY="170.0" />
+        <TextField fx:id="postalCodeTextField" layoutX="178.0" layoutY="210.0" />
+        <TextField fx:id="phoneTextField" layoutX="178.0" layoutY="256.0" />
+        <ComboBox fx:id="countryBox" layoutX="176.0" layoutY="301.0" onAction="#onCountrySelection" prefHeight="24.0" prefWidth="171.0" />
+        <ComboBox fx:id="divisionBox" layoutX="176.0" layoutY="342.0" onAction="#onDivisionSelection" prefHeight="24.0" prefWidth="171.0" />
         <Button layoutX="188.0" layoutY="422.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
         <Button layoutX="264.0" layoutY="422.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
         <Label layoutX="139.0" layoutY="79.0" text="ID" />
