@@ -38,36 +38,62 @@ public class UpdateCustomerViewController {
     int country_id;
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
 
+    public void updateCustomer() throws SQLException {
+        //connect to database
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
 
-    /*public void sendData(int partIndex, Part part) {
-        index = partIndex;
+        //save the inputs from the text fields
+        customerID = Integer.valueOf(customerIDTextField.getText());
+        name = nameTextField.getText();
+        address = addressTextField.getText();
+        postalCode = postalCodeTextField.getText();
+        phoneNumber = phoneTextField.getText();
+        division = (String) divisionBox.getValue();
 
-        idTextField.setText(String.valueOf(part.getId()));
-        nameTextField.setText(part.getName());
-        invTextField.setText(String.valueOf(part.getStock()));
-        priceTextField.setText(String.valueOf(part.getPrice()));
-        maxTextField.setText(String.valueOf(part.getMax()));
-        minTextField.setText(String.valueOf(part.getMin()));
+        //run a query to update each customer attribute
+        String nameQuery = "UPDATE customers SET Customer_Name = ? WHERE Customer_ID = ?";
+        PreparedStatement nameStatement = connection.prepareStatement(nameQuery);
+        nameStatement.setString(1,name);
+        nameStatement.setInt(2,customerID);
+        nameStatement.executeUpdate();
 
-        if (part instanceof InHouse) {
-            modifyInhouseRadioButton.setSelected(true);
-            machineIdTextField.setText(String.valueOf(((InHouse) part).getMachineId()));
-        } else {
-            modifyOutsourcedRadioButton.setSelected(true);
-            machineIdTextField.setText(String.valueOf(((Outsourced) part).getCompanyName()));
-            modifyPartToggleLabel.setText("Company Name");
+        String addressQuery = "UPDATE customers SET Address = ? WHERE Customer_ID = ?";
+        PreparedStatement addressStatement = connection.prepareStatement(addressQuery);
+        addressStatement.setString(1,address);
+        addressStatement.setInt(2,customerID);
+        addressStatement.executeUpdate();
+
+        String postalCodeQuery = "UPDATE customers SET Postal_Code = ? WHERE Customer_ID = ?";
+        PreparedStatement postalCodeStatement = connection.prepareStatement(postalCodeQuery);
+        postalCodeStatement.setString(1,postalCode);
+        postalCodeStatement.setInt(2,customerID);
+        postalCodeStatement.executeUpdate();
+
+        String phoneQuery = "UPDATE customers SET Phone = ? WHERE Customer_ID = ?";
+        PreparedStatement phoneStatement = connection.prepareStatement(phoneQuery);
+        phoneStatement.setString(1,phoneNumber);
+        phoneStatement.setInt(2,customerID);
+        phoneStatement.executeUpdate();
+
+        //find new division id
+        String divisionQuery = "SELECT Division_ID FROM first_level_divisions WHERE Division = ?";
+        PreparedStatement divisionStatement = connection.prepareStatement(divisionQuery);
+        divisionStatement.setString(1,division);
+        ResultSet resultSet = divisionStatement.executeQuery();
+
+        while (resultSet.next()) {
+            division_id = resultSet.getInt(1);
         }
-    }*/
 
-    /*
-    ID
-    Name
-    Address
-    Postal Code
-    Phone
-    Country
-    State/Province
-     */
+        //Once you find the new division ID, then update it
+        String updateDivisionIDQuery = "UPDATE customers SET Division_ID = ? WHERE Customer_ID = ?";
+        PreparedStatement updateDivisionIDStatement = connection.prepareStatement(updateDivisionIDQuery);
+        updateDivisionIDStatement.setInt(1,division_id);
+        updateDivisionIDStatement.setInt(2,customerID);
+        updateDivisionIDStatement.executeUpdate();
+
+        connection.close();
+    }
     public void sendCustomerData(Customer customer) throws SQLException {
         customerIDTextField.setText(String.valueOf(customer.getCustomer_ID()));
         nameTextField.setText(String.valueOf(customer.getCustomer_Name()));
@@ -159,7 +185,9 @@ public class UpdateCustomerViewController {
         stage.show();
     }
 
-    public void onSave(ActionEvent actionEvent) throws IOException {
+    public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
+        updateCustomer();
+
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene((Parent) root, 1000, 700);

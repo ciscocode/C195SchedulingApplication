@@ -90,7 +90,8 @@ public class AddCustomerViewController implements Initializable {
                 createdBy,
                 lastUpdate,
                 lastUpdatedBy,
-                division_id);
+                division_id
+        );
 
         //Once a new customer is created push it to the MySQL Database
         String sql = "INSERT INTO customers (Customer_ID, Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID)" +
