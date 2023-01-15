@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Implemented the Update Customer Method. It currently only takes selected customer data from the the customer table and sends it to the update customer form.">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673751170799</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes">
+      <created>1673757558763</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1673757558763</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -227,6 +233,7 @@
     <MESSAGE value="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly." />
     <MESSAGE value="Implemented the onDeleteCustomer method. A user can now select a customer from the table and delete them from the SQL database. The tableview will then update." />
     <MESSAGE value="Implemented the Update Customer Method. It currently only takes selected customer data from the the customer table and sends it to the update customer form." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented the Update Customer Method. It currently only takes selected customer data from the the customer table and sends it to the update customer form." />
+    <MESSAGE value="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes" />
   </component>
 </project>

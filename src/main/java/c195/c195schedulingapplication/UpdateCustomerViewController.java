@@ -114,9 +114,8 @@ public class UpdateCustomerViewController {
         ResultSet resultSet1 = preparedStatement1.executeQuery();
 
         while (resultSet1.next()) {
-            int country_ID = resultSet1.getInt(1);
-            country_ID--;
-            country = countryList.get(country_ID);
+            country_id = resultSet1.getInt(1);
+            country = countryList.get(country_id-1);
         }
         countryBox.setValue(String.valueOf(country));
 
@@ -130,6 +129,25 @@ public class UpdateCustomerViewController {
             division = resultSet2.getString(1);
         }
         divisionBox.setValue(String.valueOf(division));
+
+        //Run a query to update the Division Drop down box
+        //run the query to find the divisions by country id
+        String sql3 = "SELECT Division FROM first_level_divisions WHERE Country_ID = ?";
+        PreparedStatement preparedStatement3 = connection.prepareStatement(sql3);
+        preparedStatement3.setInt(1,country_id);
+        ResultSet resultSet3 = preparedStatement3.executeQuery();
+
+        //create observableList to store division list
+        ObservableList<String> divisionList = FXCollections.observableArrayList();
+
+        //add divisions into the list
+        while (resultSet3.next()) {
+            String division = resultSet3.getString(1);
+            divisionList.add(division);
+        }
+
+        //then add the list to the combo box
+        divisionBox.setItems(divisionList);
     }
 
     public void onCountrySelection(ActionEvent actionEvent) throws SQLException {
