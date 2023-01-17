@@ -29,6 +29,7 @@ public class AppointmentViewController implements Initializable {
     public TableColumn endTimeCol;
     public TableColumn customerIDCol;
     public TableColumn userIDCol;
+    public TableColumn titleCol;
     ObservableList<Appointment> data = FXCollections.observableArrayList();
 
 
@@ -75,6 +76,8 @@ public class AppointmentViewController implements Initializable {
             endTimeCol.setCellValueFactory(new PropertyValueFactory<>("EndTime"));
             customerIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
             userIDCol.setCellValueFactory(new PropertyValueFactory<>("User_ID"));
+            titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));
+
 
             connection.close();
 

@@ -9,15 +9,16 @@
         <TableView fx:id="appointmentTable" layoutX="58.0" layoutY="122.0" prefHeight="531.0" prefWidth="1284.0">
             <columns>
                 <TableColumn fx:id="apptIDCol" prefWidth="149.0" text="Appointment_ID" />
-                <TableColumn minWidth="1.0" prefWidth="1.0" text="Title" />
-                <TableColumn fx:id="descriptionCol" prefWidth="187.0" text="Description" />
-                <TableColumn fx:id="locationCol" prefWidth="128.0" text="Location" />
-                <TableColumn fx:id="contactCol" prefWidth="107.0" text="Contact" />
-                <TableColumn fx:id="typeCol" prefWidth="125.0" text="Type" />
-                <TableColumn fx:id="startTimeCol" prefWidth="161.0" text="Start Date and Time" />
-            <TableColumn fx:id="endTimeCol" prefWidth="211.0" text="End Date and Time" />
-            <TableColumn fx:id="customerIDCol" prefWidth="98.0" text="Customer_ID" />
-            <TableColumn fx:id="userIDCol" prefWidth="116.0" text="User_ID" />
+                <TableColumn minWidth="0.0" prefWidth="0.0" text="Title" />
+                <TableColumn fx:id="descriptionCol" prefWidth="109.0" text="Description" />
+                <TableColumn fx:id="locationCol" prefWidth="119.0" text="Location" />
+                <TableColumn fx:id="contactCol" prefWidth="89.0" text="Contact" />
+                <TableColumn fx:id="typeCol" prefWidth="129.0" text="Type" />
+                <TableColumn fx:id="startTimeCol" prefWidth="175.0" text="Start Date and Time" />
+            <TableColumn fx:id="endTimeCol" prefWidth="169.0" text="End Date and Time" />
+            <TableColumn fx:id="customerIDCol" prefWidth="129.0" text="Customer_ID" />
+            <TableColumn fx:id="userIDCol" prefWidth="88.0" text="User_ID" />
+            <TableColumn fx:id="titleCol" prefWidth="127.0" text="Title" />
             </columns>
         </TableView>
         <Button layoutX="145.0" layoutY="710.0" mnemonicParsing="false" onAction="#onAddAppt" text="Add Appointment" />

@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="The appointment view now loads data from the MySQL database into the table view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -222,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673758639797</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="The appointment view now loads data from the MySQL database into the table view">
+      <created>1673929438619</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1673929438619</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -247,6 +250,7 @@
     <MESSAGE value="Implemented the Update Customer Method. It currently only takes selected customer data from the the customer table and sends it to the update customer form." />
     <MESSAGE value="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes" />
     <MESSAGE value="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update." />
+    <MESSAGE value="The appointment view now loads data from the MySQL database into the table view" />
+    <option name="LAST_COMMIT_MESSAGE" value="The appointment view now loads data from the MySQL database into the table view" />
   </component>
 </project>
