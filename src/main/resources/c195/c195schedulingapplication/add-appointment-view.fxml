@@ -12,8 +12,8 @@
         <TextField layoutX="178.0" layoutY="210.0" />
         <TextField layoutX="178.0" layoutY="256.0" />
         <ComboBox layoutX="178.0" layoutY="301.0" prefHeight="24.0" prefWidth="171.0" />
-        <Button layoutX="187.0" layoutY="638.0" mnemonicParsing="false" text="Save" />
-        <Button layoutX="273.0" layoutY="638.0" mnemonicParsing="false" text="Cancel" />
+        <Button layoutX="187.0" layoutY="638.0" mnemonicParsing="false" onAction="#onSave" text="Save" />
+        <Button layoutX="273.0" layoutY="638.0" mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
         <Label layoutX="64.0" layoutY="79.0" text="Appointment ID" />
         <Label layoutX="126.0" layoutY="126.0" text="Title" />
         <Label layoutX="87.0" layoutY="174.0" text="Description" />

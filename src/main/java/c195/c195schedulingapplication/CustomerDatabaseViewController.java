@@ -81,7 +81,6 @@ public class CustomerDatabaseViewController implements Initializable {
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
-
         }
     }
 
