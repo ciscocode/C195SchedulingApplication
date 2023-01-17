@@ -70,7 +70,7 @@ public class AppointmentViewController implements Initializable {
             apptIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
             descriptionCol.setCellValueFactory(new PropertyValueFactory<>("Description"));
             locationCol.setCellValueFactory(new PropertyValueFactory<>("Location"));
-            contactCol.setCellValueFactory(new PropertyValueFactory<>("Contact_ID"));
+            contactCol.setCellValueFactory(new PropertyValueFactory<>("ContactName"));
             typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
             startTimeCol.setCellValueFactory(new PropertyValueFactory<>("StartTime"));
             endTimeCol.setCellValueFactory(new PropertyValueFactory<>("EndTime"));

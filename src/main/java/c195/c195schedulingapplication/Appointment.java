@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import java.sql.*;
 import java.time.LocalDateTime;
 
 public class Appointment {
@@ -158,6 +159,26 @@ public class Appointment {
 
     public void setContact_ID(int contact_ID) {
         this.Contact_ID = contact_ID;
+    }
+
+    public String getContactName() throws SQLException {
+        //establish connection to database
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+
+        String sql = "SELECT Contact_Name FROM contacts WHERE Contact_ID = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        //set the value of the parameter
+        preparedStatement.setInt(1,Contact_ID);
+
+        //execute prepared statement
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        String contactName = null;
+        if (resultSet.next()) {
+            contactName = resultSet.getString("Contact_Name");
+        }
+        return contactName;
     }
 
 }
