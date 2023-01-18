@@ -78,7 +78,6 @@ public class AppointmentViewController implements Initializable {
             userIDCol.setCellValueFactory(new PropertyValueFactory<>("User_ID"));
             titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));
 
-
             connection.close();
 
         } catch (SQLException e) {

@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the appointment table to include a Title Column which was previously missing">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the Contact Column to show the Contact name instead of Contact ID by running a query in the Appointment class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673931061675</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Updated the Contact Column to show the Contact name instead of Contact ID by running a query in the Appointment class">
+      <created>1673932997367</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1673932997367</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -258,6 +268,7 @@
     <MESSAGE value="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update." />
     <MESSAGE value="The appointment view now loads data from the MySQL database into the table view" />
     <MESSAGE value="Updated the appointment table to include a Title Column which was previously missing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the appointment table to include a Title Column which was previously missing" />
+    <MESSAGE value="Updated the Contact Column to show the Contact name instead of Contact ID by running a query in the Appointment class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the Contact Column to show the Contact name instead of Contact ID by running a query in the Appointment class" />
   </component>
 </project>

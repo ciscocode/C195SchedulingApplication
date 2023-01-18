@@ -178,6 +178,8 @@ public class Appointment {
         if (resultSet.next()) {
             contactName = resultSet.getString("Contact_Name");
         }
+        connection.close();
+
         return contactName;
     }
 
