@@ -67,7 +67,7 @@ public class AppointmentViewController implements Initializable {
             appointmentTable.setItems(data);
 
             //set cell values
-            apptIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
+            apptIDCol.setCellValueFactory(new PropertyValueFactory<>("Appointment_ID"));
             descriptionCol.setCellValueFactory(new PropertyValueFactory<>("Description"));
             locationCol.setCellValueFactory(new PropertyValueFactory<>("Location"));
             contactCol.setCellValueFactory(new PropertyValueFactory<>("ContactName"));

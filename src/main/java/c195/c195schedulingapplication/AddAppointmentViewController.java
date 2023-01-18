@@ -14,7 +14,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
 
@@ -63,13 +65,90 @@ public class AddAppointmentViewController implements Initializable {
         //then increment the id by one
         Appointment_ID++;
 
+        //set the create date, last update time
+        Create_Date = LocalDateTime.now();
+        Timestamp createDateTimestamp = Timestamp.valueOf(Create_Date);
+        Last_Update = LocalDateTime.now();
+        Timestamp lastUpdateTimestamp = Timestamp.valueOf(Last_Update);
+
+        //set the user names. CHANGE THESE LATER
+        Created_By = "cisco";
+        Last_Updated_By = "cisco";
+
         //gather the title, description, location, and type from the text fields
         Title = titleTextField.getText();
         Description = descriptionTextField.getText();
         Location = locationTextField.getText();
         Type = typeTextField.getText();
 
-        //combo boxes - contact, customer id, user id, start time, end time,
+        //combo boxes - customer id, user id,
+        Customer_ID = Integer.valueOf((String) customerIDBox.getValue());
+        User_ID = Integer.valueOf((String) userIDBox.getValue());
+
+        //run a query to get the contact ID using the contact name selected from the combo box
+        String Contact = (String) contactBox.getValue();
+        String contactQuery = "SELECT Contact_ID FROM contacts WHERE Contact_Name = ?";
+        PreparedStatement contactStatement = connection.prepareStatement(contactQuery);
+        contactStatement.setString(1,Contact);
+        ResultSet contactResultSet = contactStatement.executeQuery();
+        while (contactResultSet.next()) {
+            Contact_ID = contactResultSet.getInt("Contact_ID");
+        }
+
+        //get the start time
+        LocalDate startDate = startDatePicker.getValue();
+        Integer startHour = (Integer) startHourSpinner.getValue();
+        Integer startMinute = (Integer) startMinuteSpinner.getValue();
+        StartTime = LocalDateTime.of(startDate, LocalTime.of(startHour,startMinute));
+        Timestamp startTimestamp = Timestamp.valueOf(StartTime);
+
+        //get the end time
+        LocalDate endDate = endDatePicker.getValue();
+        Integer endHour = (Integer) endHourSpinner.getValue();
+        Integer endMinute = (Integer) endMinuteSpinner.getValue();
+        EndTime = LocalDateTime.of(endDate, LocalTime.of(endHour,endMinute));
+        Timestamp endTimestamp = Timestamp.valueOf(EndTime);
+
+        //use all the inputs to create a new appointment
+        Appointment newAppt = new Appointment(
+                Appointment_ID,
+                Title,
+                Description,
+                Location,
+                Type,
+                StartTime,
+                EndTime,
+                Create_Date,
+                Created_By,
+                Last_Update,
+                Last_Updated_By,
+                Customer_ID,
+                User_ID,
+                Contact_ID
+        );
+
+        //once a new appointment is created push it into the MySQL database
+        String insertQuery = "INSERT INTO appointments (Appointment_ID, Title, Description, Location, Type, Start, End, Create_Date, Created_By, Last_Update, Last_Updated_By, Customer_ID, User_ID, Contact_ID)" +
+                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
+        insertStatement.setInt(1,Appointment_ID);
+        insertStatement.setString(2,Title);
+        insertStatement.setString(3,Description);
+        insertStatement.setString(4,Location);
+        insertStatement.setString(5,Type);
+        insertStatement.setTimestamp(6,startTimestamp);
+        insertStatement.setTimestamp(7,endTimestamp);
+        insertStatement.setTimestamp(8,createDateTimestamp);
+        insertStatement.setString(9,Created_By);
+        insertStatement.setTimestamp(10,lastUpdateTimestamp);
+        insertStatement.setString(11,Last_Updated_By);
+        insertStatement.setInt(12,Customer_ID);
+        insertStatement.setInt(13,User_ID);
+        insertStatement.setInt(14,Contact_ID);
+
+        insertStatement.executeUpdate();
+
+        connection.close();
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //load the spinners with possible hour/minute options
@@ -131,7 +210,9 @@ public class AddAppointmentViewController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    public void onSave(ActionEvent actionEvent) throws IOException {
+    public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
+        insertAppt();
+
         Parent root = FXMLLoader.load(getClass().getResource("appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene((Parent) root, 1400, 800);
