@@ -31,7 +31,7 @@ public class AddAppointmentViewController implements Initializable {
     public DatePicker endDatePicker;
     public ComboBox customerIDBox;
     public ComboBox userIDBox;
-    public Spinner<Integer> startHourSpinner;
+    public Spinner startHourSpinner;
     public Spinner startMinuteSpinner;
     public Spinner endMinuteSpinner;
     public Spinner endHourSpinner;
@@ -174,7 +174,7 @@ public class AddAppointmentViewController implements Initializable {
 
             //run a query for the Customer IDs
             Statement customerStatement = connection.createStatement();
-            ResultSet customerResultSet = customerStatement.executeQuery("SELECT Customer_ID FROM appointments");
+            ResultSet customerResultSet = customerStatement.executeQuery("SELECT DISTINCT Customer_ID FROM appointments");
 
             //add the customer ids into the observable array list
             while(customerResultSet.next()) {
@@ -185,7 +185,7 @@ public class AddAppointmentViewController implements Initializable {
 
             //run a query for the User IDs
             Statement userStatement = connection.createStatement();
-            ResultSet userResultSet = userStatement.executeQuery("SELECT User_ID FROM appointments");
+            ResultSet userResultSet = userStatement.executeQuery("SELECT DISTINCT User_ID FROM appointments");
 
             //add the user ids into the observable array list
             while(userResultSet.next()) {
