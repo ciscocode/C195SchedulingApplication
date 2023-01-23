@@ -24,9 +24,12 @@
         <Button layoutX="145.0" layoutY="710.0" mnemonicParsing="false" onAction="#onAddAppt" text="Add Appointment" />
         <Button layoutX="329.0" layoutY="710.0" mnemonicParsing="false" onAction="#onUpdateAppt" text="Update Appointment" />
         <Button layoutX="531.0" layoutY="710.0" mnemonicParsing="false" onAction="#onDeleteAppt" text="Delete Appointment" />
-      <RadioButton layoutX="106.0" layoutY="69.0" mnemonicParsing="false" text="View All" />
-      <RadioButton layoutX="219.0" layoutY="69.0" mnemonicParsing="false" text="Sort by Month" />
-      <RadioButton layoutX="358.0" layoutY="69.0" mnemonicParsing="false" text="Sort by Week" />
+      <RadioButton fx:id="allRadioButton" layoutX="106.0" layoutY="69.0" mnemonicParsing="false" onAction="#onViewAll" text="View All">
+         <toggleGroup>
+            <ToggleGroup fx:id="viewToggle" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="monthRadioButton" layoutX="219.0" layoutY="69.0" mnemonicParsing="false" onAction="#onSortByMonth" text="Filter by Current Month" toggleGroup="$viewToggle" />
+      <RadioButton fx:id="weekRadioButton" layoutX="422.0" layoutY="69.0" mnemonicParsing="false" onAction="#onSorthByWeek" text="Filter by Current Week" toggleGroup="$viewToggle" />
       <Button layoutX="1084.0" layoutY="710.0" mnemonicParsing="false" onAction="#onReturnToMainMenu" text="Return to Main Menu" />
       <Label layoutX="622.0" layoutY="37.0" text="Appointments">
          <font>

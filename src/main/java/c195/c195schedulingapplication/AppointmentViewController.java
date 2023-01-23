@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -16,6 +17,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AppointmentViewController implements Initializable {
@@ -30,7 +38,12 @@ public class AppointmentViewController implements Initializable {
     public TableColumn customerIDCol;
     public TableColumn userIDCol;
     public TableColumn titleCol;
+    public RadioButton allRadioButton;
+    public RadioButton monthRadioButton;
+    public RadioButton weekRadioButton;
     ObservableList<Appointment> data = FXCollections.observableArrayList();
+    ObservableList<Appointment> dataByMonth = FXCollections.observableArrayList();
+    ObservableList<Appointment> dataByWeek = FXCollections.observableArrayList();
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -77,6 +90,58 @@ public class AppointmentViewController implements Initializable {
             customerIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
             userIDCol.setCellValueFactory(new PropertyValueFactory<>("User_ID"));
             titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));
+
+            //Run a query to filter by month
+            String monthQuery = "SELECT * FROM appointments WHERE MONTH(Start) = MONTH(CURRENT_TIMESTAMP)";
+            Statement monthStatement = connection.createStatement();
+            ResultSet monthResultSet = monthStatement.executeQuery(monthQuery);
+
+            //Iterate through the result set and add each row to the ObservableList
+            while (monthResultSet.next()) {
+                Appointment appointment = new Appointment(
+                        monthResultSet.getInt("Appointment_ID"),
+                        monthResultSet.getString("Title"),
+                        monthResultSet.getString("Description"),
+                        monthResultSet.getString("Location"),
+                        monthResultSet.getString("Type"),
+                        monthResultSet.getTimestamp("Start").toLocalDateTime(),
+                        monthResultSet.getTimestamp("End").toLocalDateTime(),
+                        monthResultSet.getTimestamp("Create_Date").toLocalDateTime(),
+                        monthResultSet.getString("Created_By"),
+                        monthResultSet.getTimestamp("Last_Update").toLocalDateTime(),
+                        monthResultSet.getString("Last_Updated_By"),
+                        monthResultSet.getInt("Customer_ID"),
+                        monthResultSet.getInt("User_ID"),
+                        monthResultSet.getInt("Contact_ID")
+                );
+                dataByMonth.add(appointment);
+            }
+
+            //Run a query to filter by week
+            String weekQuery = "SELECT * FROM appointments WHERE WEEK(Start,3) = WEEK(CURRENT_TIMESTAMP,3)";
+            Statement weekStatement = connection.createStatement();
+            ResultSet weekResultSet = weekStatement.executeQuery(weekQuery);
+
+            //Iterate through the result set and add each row to the ObservableList
+            while (weekResultSet.next()) {
+                Appointment appointment = new Appointment(
+                        weekResultSet.getInt("Appointment_ID"),
+                        weekResultSet.getString("Title"),
+                        weekResultSet.getString("Description"),
+                        weekResultSet.getString("Location"),
+                        weekResultSet.getString("Type"),
+                        weekResultSet.getTimestamp("Start").toLocalDateTime(),
+                        weekResultSet.getTimestamp("End").toLocalDateTime(),
+                        weekResultSet.getTimestamp("Create_Date").toLocalDateTime(),
+                        weekResultSet.getString("Created_By"),
+                        weekResultSet.getTimestamp("Last_Update").toLocalDateTime(),
+                        weekResultSet.getString("Last_Updated_By"),
+                        weekResultSet.getInt("Customer_ID"),
+                        weekResultSet.getInt("User_ID"),
+                        weekResultSet.getInt("Contact_ID")
+                );
+                dataByWeek.add(appointment);
+            }
 
             connection.close();
 
@@ -135,5 +200,17 @@ public class AppointmentViewController implements Initializable {
         stage.setTitle("Main Menu");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onViewAll(ActionEvent actionEvent) {
+        appointmentTable.setItems(data);
+    }
+
+    public void onSortByMonth(ActionEvent actionEvent) {
+        appointmentTable.setItems(dataByMonth);
+    }
+
+    public void onSorthByWeek(ActionEvent actionEvent) {
+        appointmentTable.setItems(dataByWeek);
     }
 }
