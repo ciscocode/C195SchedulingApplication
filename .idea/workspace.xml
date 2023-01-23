@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Successfuly created Delete Appointment method">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I added a feature to filter the table view by months or weeks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointment-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ApplicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,11 +288,17 @@
       <option name="project" value="LOCAL" />
       <updated>1674438602975</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="I added a feature to filter the table view by months or weeks">
+      <created>1674459569514</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1674459569514</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactored names of fxml &amp; controller files for the login screen and main menu" />
     <MESSAGE value="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later" />
     <MESSAGE value="Fixed a dependency issue with the JDBC driver" />
     <MESSAGE value="Created action event to return to the main menu from both the Customer &amp; Appointment view" />
@@ -317,6 +323,7 @@
     <MESSAGE value="Successfully implemented the update appointment method." />
     <MESSAGE value="Fixed a bug which was causing issues when updating the Customer ID or User ID in an appointment" />
     <MESSAGE value="Successfuly created Delete Appointment method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfuly created Delete Appointment method" />
+    <MESSAGE value="I added a feature to filter the table view by months or weeks" />
+    <option name="LAST_COMMIT_MESSAGE" value="I added a feature to filter the table view by months or weeks" />
   </component>
 </project>

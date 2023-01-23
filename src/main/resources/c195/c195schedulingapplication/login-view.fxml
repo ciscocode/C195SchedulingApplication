@@ -14,7 +14,7 @@
       <TextField layoutX="215.0" layoutY="170.0" />
       <ComboBox fx:id="languageBox" layoutX="404.0" layoutY="313.0" prefWidth="150.0" />
       <Button layoutX="134.0" layoutY="245.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="24.0" prefWidth="150.0" text="Login" />
-      <Label layoutX="452.0" layoutY="354.0" text="Location" wrapText="true">
+      <Label fx:id="locationText" layoutX="427.0" layoutY="354.0" text="location" wrapText="true">
          <font>
             <Font name="System Italic" size="13.0" />
          </font></Label>
