@@ -111,8 +111,22 @@ public class AppointmentViewController implements Initializable {
         stage.show();
     }
 
-    public void onDeleteAppt(ActionEvent actionEvent) throws IOException {
+    public void onDeleteAppt(ActionEvent actionEvent) throws IOException, SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
 
+        //get the Appointment ID from the appointment the user selects on the table
+        Appointment selectedRow = (Appointment) appointmentTable.getSelectionModel().getSelectedItem();
+        int Appointment_ID = selectedRow.getAppointment_ID();
+
+        //use this appointment ID to run a query to delete the appointment from the table
+        String sql = "DELETE FROM appointments WHERE Appointment_ID = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1,Appointment_ID);
+        preparedStatement.executeUpdate();
+
+        //then update the table view
+        data.remove(selectedRow);
+        appointmentTable.setItems(data);
     }
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("menu-view.fxml"));
