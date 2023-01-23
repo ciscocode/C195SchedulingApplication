@@ -186,8 +186,8 @@ public class UpdateAppointmentViewController {
         //load the customer ID, user ID, and Contact combo boxes
         try {
             //create the observable array lists you'll use for the Combo Boxes
-            ObservableList<String> customerIDList = FXCollections.observableArrayList();
-            ObservableList<String> userIDList = FXCollections.observableArrayList();
+            ObservableList<Integer> customerIDList = FXCollections.observableArrayList();
+            ObservableList<Integer> userIDList = FXCollections.observableArrayList();
             ObservableList<String> contactList = FXCollections.observableArrayList();
 
             //connect to the database
@@ -199,7 +199,7 @@ public class UpdateAppointmentViewController {
 
             //add the customer ids into the observable array list
             while(customerResultSet.next()) {
-                customerIDList.add(customerResultSet.getString("Customer_ID"));
+                customerIDList.add(customerResultSet.getInt("Customer_ID"));
             }
             //set the items into the combo box
             customerIDBox.setItems(customerIDList);
@@ -211,7 +211,7 @@ public class UpdateAppointmentViewController {
 
             //add the user ids into the observable array list
             while(userResultSet.next()) {
-                userIDList.add(userResultSet.getString("User_ID"));
+                userIDList.add(userResultSet.getInt("User_ID"));
             }
 
             //set the items into the combo box

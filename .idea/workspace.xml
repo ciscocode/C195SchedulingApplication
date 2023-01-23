@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
-    </list>
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Successfully implemented the update appointment method." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -266,11 +263,17 @@
       <option name="project" value="LOCAL" />
       <updated>1674436552389</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Successfully implemented the update appointment method.">
+      <created>1674437460268</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1674437460268</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created the add apointment view" />
     <MESSAGE value="Added labels to each view" />
     <MESSAGE value="Updated look of the main menu" />
     <MESSAGE value="Refactored names of fxml &amp; controller files for the login screen and main menu" />
@@ -295,6 +298,7 @@
     <MESSAGE value="Fully implemented the Add Appointment feature" />
     <MESSAGE value="Began Implementing the Update Appointment method. I can now send data from an appointment selected on the table view over to the update appt form." />
     <MESSAGE value="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed." />
+    <MESSAGE value="Successfully implemented the update appointment method." />
+    <option name="LAST_COMMIT_MESSAGE" value="Successfully implemented the update appointment method." />
   </component>
 </project>
