@@ -94,9 +94,23 @@ public class AppointmentViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    public void onUpdateAppt(ActionEvent actionEvent) throws IOException {
-
+    public void onUpdateAppt(ActionEvent actionEvent) throws IOException, SQLException {
+        FXMLLoader updateApptLoader = new FXMLLoader();
+        updateApptLoader.setLocation(getClass().getResource("update-appointment-view.fxml"));
+        updateApptLoader.load();
+        UpdateAppointmentViewController updateApptController = updateApptLoader.getController();
+        if (appointmentTable.getSelectionModel().getSelectedItem() == null) {
+            //insert error message
+            return;
+        }
+        updateApptController.sendApptData((Appointment) appointmentTable.getSelectionModel().getSelectedItem());
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Parent scene = updateApptLoader.getRoot();
+        stage.setTitle("Update Appointment");
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
+
     public void onDeleteAppt(ActionEvent actionEvent) throws IOException {
 
     }
