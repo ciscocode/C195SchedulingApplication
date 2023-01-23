@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Began Implementing the Update Appointment method. I can now send data from an appointment selected on the table view over to the update appt form.">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -260,11 +259,17 @@
       <option name="project" value="LOCAL" />
       <updated>1674432797843</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed.">
+      <created>1674436552389</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1674436552389</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created the appointment database view, and updated the customer database view with a return to menu button" />
     <MESSAGE value="Created the add apointment view" />
     <MESSAGE value="Added labels to each view" />
     <MESSAGE value="Updated look of the main menu" />
@@ -289,6 +294,7 @@
     <MESSAGE value="Created the initialize method in the add apointment class. This will intialize the combo boxes and spinners in the Add Appointment form" />
     <MESSAGE value="Fully implemented the Add Appointment feature" />
     <MESSAGE value="Began Implementing the Update Appointment method. I can now send data from an appointment selected on the table view over to the update appt form." />
-    <option name="LAST_COMMIT_MESSAGE" value="Began Implementing the Update Appointment method. I can now send data from an appointment selected on the table view over to the update appt form." />
+    <MESSAGE value="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed." />
   </component>
 </project>

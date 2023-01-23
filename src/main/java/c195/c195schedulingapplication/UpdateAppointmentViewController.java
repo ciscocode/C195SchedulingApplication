@@ -53,14 +53,17 @@ public class UpdateAppointmentViewController {
         Connection connection = getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
 
         //gather all the inputs from text fields - title, description, location, type
+        Appointment_ID = Integer.parseInt(apptIDTextField.getText());
         Title = titleTextField.getText();
         Description = descriptionTextField.getText();
         Location = locationTextField.getText();
         Type = typeTextField.getText();
 
         //combo boxes - customer id, user id,
-        Customer_ID = Integer.valueOf((String) customerIDBox.getValue());
-        User_ID = Integer.valueOf((String) userIDBox.getValue());
+        //Customer_ID = Integer.valueOf((String) customerIDBox.getValue());
+        Customer_ID = (int) customerIDBox.getValue();
+        //User_ID = Integer.valueOf((String) userIDBox.getValue());
+        User_ID = (int) userIDBox.getValue();
 
         //run a query to get the contact ID using the contact name selected from the combo box
         String Contact = (String) contactBox.getValue();
@@ -148,7 +151,6 @@ public class UpdateAppointmentViewController {
         endTimeStatement.setTimestamp(1,endTimestamp);
         endTimeStatement.setInt(2,Appointment_ID);
         endTimeStatement.executeUpdate();
-
 
     }
 
