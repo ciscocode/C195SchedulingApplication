@@ -22,7 +22,13 @@ public class ReportsMenuViewController {
     public void onCustomersByType(ActionEvent actionEvent) {
     }
 
-    public void onContactSchedule(ActionEvent actionEvent) {
+    public void onContactSchedule(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("contact-appointment-report-view.fxml"));
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene((Parent) root, 1400, 800);
+        stage.setTitle("Appointment Reports");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void onCustomerByCountry(ActionEvent actionEvent) {
