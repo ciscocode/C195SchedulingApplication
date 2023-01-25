@@ -29,9 +29,9 @@ public class MainViewController {
     }
 
     public void onReports(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("reports-view.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        Scene scene = new Scene((Parent) root, 542, 210);
+        Scene scene = new Scene((Parent) root, 360, 469);
         stage.setTitle("Reports");
         stage.setScene(scene);
         stage.show();
