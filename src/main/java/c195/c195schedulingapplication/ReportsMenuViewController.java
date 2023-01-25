@@ -10,7 +10,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ReportsMenuViewController {
-    public void onCustomersByMonth(ActionEvent actionEvent) {
+    public void onAppointmentReports(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("appointments-report-view.fxml"));
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene((Parent) root, 1400, 800);
+        stage.setTitle("Appointment Reports");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void onCustomersByType(ActionEvent actionEvent) {

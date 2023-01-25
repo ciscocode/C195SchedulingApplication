@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="The Login Menu now displays the users location">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ReportsMenuViewController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/reports-menu-view.fxml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="created reports menu with 4 different options">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentsReportViewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/appointments-report-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/MainViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ReportsMenuViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ReportsMenuViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/reports-menu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/reports-menu-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +48,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "last_directory_selection": "/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication",
     "last_opened_file_path": "/home/cisco/Downloads/usr/share/java/mysql-connector-j-8.0.31.jar",
     "project.structure.last.edited": "Problems",
@@ -303,11 +306,17 @@
       <option name="project" value="LOCAL" />
       <updated>1674460891910</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="created reports menu with 4 different options">
+      <created>1674618506482</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1674618506482</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a dependency issue with the JDBC driver" />
     <MESSAGE value="Created action event to return to the main menu from both the Customer &amp; Appointment view" />
     <MESSAGE value="I Created the Customer class &amp; created a method to pull data from the MySQL Customer Database and display it on the Customer table" />
     <MESSAGE value="Created a getCountry method within the Customer class that uses the Division ID within the SQL database to find the country" />
@@ -332,6 +341,7 @@
     <MESSAGE value="Successfuly created Delete Appointment method" />
     <MESSAGE value="I added a feature to filter the table view by months or weeks" />
     <MESSAGE value="The Login Menu now displays the users location" />
-    <option name="LAST_COMMIT_MESSAGE" value="The Login Menu now displays the users location" />
+    <MESSAGE value="created reports menu with 4 different options" />
+    <option name="LAST_COMMIT_MESSAGE" value="created reports menu with 4 different options" />
   </component>
 </project>
