@@ -22,8 +22,6 @@ import java.util.ResourceBundle;
 
 
 public class CustomerDatabaseViewController implements Initializable {
-
-
     public TableView<Customer> customerTable;
     public TableColumn IDCol;
     public TableColumn nameCol;

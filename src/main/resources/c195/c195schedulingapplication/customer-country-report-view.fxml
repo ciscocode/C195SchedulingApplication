@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.CustomerCountryReportViewController">
+    <children>
+        <TableView fx:id="customerTable" layoutX="58.0" layoutY="157.0" prefHeight="437.0" prefWidth="884.0">
+            <columns>
+                <TableColumn fx:id="IDCol" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="nameCol" prefWidth="75.0" text="Name" />
+                <TableColumn fx:id="addressCol" prefWidth="243.0" text="Address" />
+                <TableColumn fx:id="stateCol" prefWidth="131.0" text="State/Province" />
+                <TableColumn fx:id="postalCol" prefWidth="107.0" text="Postal Code" />
+                <TableColumn fx:id="countryCol" prefWidth="102.0" text="Country" />
+                <TableColumn fx:id="phoneCol" prefWidth="155.0" text="Phone" />
+            </columns>
+        </TableView>
+        <Button layoutX="736.0" layoutY="633.0" mnemonicParsing="false" onAction="#onReturnToMainMenu" text="Return to Reports Menu" />
+        <Label layoutX="350.0" layoutY="43.0" text="Customers by Country Report">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+      <Label layoutX="108.0" layoutY="100.0" text="Select Country" />
+      <ComboBox fx:id="countryBox" layoutX="238.0" layoutY="96.0" onAction="#onSelection" prefWidth="150.0" />
+      <Button layoutX="817.0" layoutY="96.0" mnemonicParsing="false" onAction="#onViewAll" text="View All" />
+    </children>
+</AnchorPane>

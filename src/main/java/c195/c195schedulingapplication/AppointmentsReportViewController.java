@@ -45,7 +45,7 @@ public class AppointmentsReportViewController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Scene scene = new Scene((Parent) root, 360, 469);
-        stage.setTitle("Main Menu");
+        stage.setTitle("Reports Menu");
         stage.setScene(scene);
         stage.show();
     }
