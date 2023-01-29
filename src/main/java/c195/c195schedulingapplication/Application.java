@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 import helper.JDBC;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class Application extends javafx.application.Application {
     @Override
@@ -19,7 +21,7 @@ public class Application extends javafx.application.Application {
 
     public static void main(String[] args) {
         JDBC.openConnection();
-        JDBC.closeConnection();
         launch();
+        JDBC.closeConnection();
     }
 }
