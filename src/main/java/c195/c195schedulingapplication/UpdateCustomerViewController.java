@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -37,6 +38,7 @@ public class UpdateCustomerViewController {
     int division_id;
     int country_id;
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
+    boolean successfulAddition = false;
 
     public void updateCustomer() throws SQLException {
         //connect to database
@@ -49,6 +51,56 @@ public class UpdateCustomerViewController {
         postalCode = postalCodeTextField.getText();
         phoneNumber = phoneTextField.getText();
         division = (String) divisionBox.getValue();
+
+        //check for input errors
+        if (name.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a name");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (address.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter an address");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (postalCode.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a postal code");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (phoneNumber.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a phone number");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check for country & division box selections
+        if (countryBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a country!");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (divisionBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a State or Province!");
+            errorMessage.showAndWait();
+            return;
+        }
 
         //run a query to update each customer attribute
         String nameQuery = "UPDATE customers SET Customer_Name = ? WHERE Customer_ID = ?";
@@ -93,6 +145,8 @@ public class UpdateCustomerViewController {
         updateDivisionIDStatement.executeUpdate();
 
         connection.close();
+
+        successfulAddition = true;
     }
     public void sendCustomerData(Customer customer) throws SQLException {
         customerIDTextField.setText(String.valueOf(customer.getCustomer_ID()));
@@ -205,6 +259,10 @@ public class UpdateCustomerViewController {
 
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         updateCustomer();
+
+        if (successfulAddition == false) {
+            return;
+        }
 
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

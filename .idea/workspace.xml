@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I completed the Customers by Country report. This can take a list of existing customers and filter them by country.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/languages/TextBundle_en.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/languages/TextBundle_fr.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/languages/login_FR_fr.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/languages/login_en_US.properties" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Failed to implement french language translation. I have left my new lines as comments to come back to later">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,11 +349,17 @@
       <option name="project" value="LOCAL" />
       <updated>1674974344041</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Failed to implement french language translation. I have left my new lines as comments to come back to later">
+      <created>1675024752087</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1675024752087</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database" />
     <MESSAGE value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
     <MESSAGE value="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox" />
     <MESSAGE value="Created the Insert Customer method to add a customer to the database. However, there is a bug in which my division id is not properly updating. Must fix that next." />
@@ -384,6 +384,7 @@
     <MESSAGE value="I completed the Appointment Report section. This report feature allows you to filter reports by a selected Month or Type" />
     <MESSAGE value="I completed the Report feature to filer appointments by a selected Contact" />
     <MESSAGE value="I completed the Customers by Country report. This can take a list of existing customers and filter them by country." />
-    <option name="LAST_COMMIT_MESSAGE" value="I completed the Customers by Country report. This can take a list of existing customers and filter them by country." />
+    <MESSAGE value="Failed to implement french language translation. I have left my new lines as comments to come back to later" />
+    <option name="LAST_COMMIT_MESSAGE" value="Failed to implement french language translation. I have left my new lines as comments to come back to later" />
   </component>
 </project>

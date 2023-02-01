@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -40,6 +41,7 @@ public class AddCustomerViewController implements Initializable {
     String lastUpdatedBy;
     int division_id;
     int country_id;
+    boolean successfulAddition = false;
 
     //Since the list of countries is small at Only 3, I created an ObservableArrayList for it to simplify things
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
@@ -66,6 +68,39 @@ public class AddCustomerViewController implements Initializable {
         postalCode = postalCodeTextField.getText();
         phoneNumber = phoneTextField.getText();
 
+        //check for input errors
+        if (name.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a name");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (address.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter an address");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (postalCode.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a postal code");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (phoneNumber.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a phone number");
+            errorMessage.showAndWait();
+            return;
+        }
+
         //create the other parameters needed to create a Customer
         createDate = LocalDateTime.now();
         Timestamp createDateTimestamp = Timestamp.valueOf(createDate);
@@ -73,11 +108,27 @@ public class AddCustomerViewController implements Initializable {
         lastUpdate = LocalDateTime.now();
         Timestamp lastUpdateTimestamp = Timestamp.valueOf(createDate);
 
-        lastUpdatedBy = "cisco";
+        lastUpdatedBy = "cisco"; //fix later
 
-        //I wont need this data to create a new Customer but I will use it in the table view.
+        //find the country and division
         country = (String) countryBox.getValue();
         division = (String) divisionBox.getValue();
+
+        if (countryBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a country!");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (divisionBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a State or Province!");
+            errorMessage.showAndWait();
+            return;
+        }
 
         //use the inputs above to create a new Customer object
         Customer newCustomer = new Customer(
@@ -110,8 +161,8 @@ public class AddCustomerViewController implements Initializable {
 
         //ResultSet resultSet2 = preparedStatement.executeQuery();
         int rowsAffected = preparedStatement.executeUpdate();
+        successfulAddition = true;
     }
-
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //set the country combo box items
@@ -164,6 +215,10 @@ public class AddCustomerViewController implements Initializable {
 
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         insertCustomer();
+
+        if (successfulAddition == false) {
+            return;
+        }
 
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
