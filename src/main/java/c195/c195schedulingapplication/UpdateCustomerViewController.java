@@ -38,7 +38,7 @@ public class UpdateCustomerViewController {
     int division_id;
     int country_id;
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
-    boolean successfulAddition = false;
+    boolean successfulUpdate = false;
 
     public void updateCustomer() throws SQLException {
         //connect to database
@@ -146,7 +146,7 @@ public class UpdateCustomerViewController {
 
         connection.close();
 
-        successfulAddition = true;
+        successfulUpdate = true;
     }
     public void sendCustomerData(Customer customer) throws SQLException {
         customerIDTextField.setText(String.valueOf(customer.getCustomer_ID()));
@@ -260,7 +260,7 @@ public class UpdateCustomerViewController {
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         updateCustomer();
 
-        if (successfulAddition == false) {
+        if (successfulUpdate == false) {
             return;
         }
 

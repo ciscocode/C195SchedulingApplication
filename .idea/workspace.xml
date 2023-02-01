@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Failed to implement french language translation. I have left my new lines as comments to come back to later">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="updated the add/update customer methods to check for user input error">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -356,11 +358,17 @@
       <option name="project" value="LOCAL" />
       <updated>1675024752087</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="updated the add/update customer methods to check for user input error">
+      <created>1675228127677</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1675228127677</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views." />
     <MESSAGE value="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox" />
     <MESSAGE value="Created the Insert Customer method to add a customer to the database. However, there is a bug in which my division id is not properly updating. Must fix that next." />
     <MESSAGE value="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly." />
@@ -385,6 +393,7 @@
     <MESSAGE value="I completed the Report feature to filer appointments by a selected Contact" />
     <MESSAGE value="I completed the Customers by Country report. This can take a list of existing customers and filter them by country." />
     <MESSAGE value="Failed to implement french language translation. I have left my new lines as comments to come back to later" />
-    <option name="LAST_COMMIT_MESSAGE" value="Failed to implement french language translation. I have left my new lines as comments to come back to later" />
+    <MESSAGE value="updated the add/update customer methods to check for user input error" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated the add/update customer methods to check for user input error" />
   </component>
 </project>

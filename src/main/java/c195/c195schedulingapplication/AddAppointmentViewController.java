@@ -49,6 +49,7 @@ public class AddAppointmentViewController implements Initializable {
     int Customer_ID;
     int User_ID;
     int Contact_ID;
+    boolean successfulAddition = false;
 
     public void insertAppt() throws SQLException {
         //Start by connecting to the database
@@ -81,6 +82,61 @@ public class AddAppointmentViewController implements Initializable {
         Location = locationTextField.getText();
         Type = typeTextField.getText();
 
+        //check for input errors
+        if (Title.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a title");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (Description.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a description");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (Location.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a location");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (Type.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a type");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check for unselected combo boxes
+        if (customerIDBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a customer id");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (userIDBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a user id");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (contactBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a contact");
+            errorMessage.showAndWait();
+            return;
+        }
+
         //combo boxes - customer id, user id,
         Customer_ID = Integer.valueOf((String) customerIDBox.getValue());
         User_ID = Integer.valueOf((String) userIDBox.getValue());
@@ -93,6 +149,53 @@ public class AddAppointmentViewController implements Initializable {
         ResultSet contactResultSet = contactStatement.executeQuery();
         while (contactResultSet.next()) {
             Contact_ID = contactResultSet.getInt("Contact_ID");
+        }
+
+        //check for unselected hour/minutes on spinners
+        if (startHourSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the hour value in the appointment start time");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (startMinuteSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the minute value in the appointment start time");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (endHourSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the hour value in the appointment end time");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (endMinuteSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the minute value in the appointment end time");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check for empty date pickers
+        if (startDatePicker.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify a start date");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (endDatePicker.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify an end date");
+            errorMessage.showAndWait();
+            return;
         }
 
         //get the start time
@@ -148,6 +251,7 @@ public class AddAppointmentViewController implements Initializable {
 
         insertStatement.executeUpdate();
 
+        successfulAddition = true;
         connection.close();
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -212,6 +316,10 @@ public class AddAppointmentViewController implements Initializable {
     }
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         insertAppt();
+
+        if (successfulAddition == false) {
+            return;
+        }
 
         Parent root = FXMLLoader.load(getClass().getResource("appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

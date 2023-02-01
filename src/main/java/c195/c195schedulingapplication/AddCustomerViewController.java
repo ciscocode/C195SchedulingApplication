@@ -114,6 +114,7 @@ public class AddCustomerViewController implements Initializable {
         country = (String) countryBox.getValue();
         division = (String) divisionBox.getValue();
 
+        //check for unselected country/division combo boxes
         if (countryBox.getSelectionModel().getSelectedItem() == null) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
             errorMessage.setTitle("Warning");

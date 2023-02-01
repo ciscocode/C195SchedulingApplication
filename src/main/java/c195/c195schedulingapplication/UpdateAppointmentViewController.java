@@ -47,6 +47,8 @@ public class UpdateAppointmentViewController {
     int Customer_ID;
     int User_ID;
     int Contact_ID;
+    boolean successfulUpdate = false;
+
 
     public void updateAppt() throws SQLException {
         //connect to database
@@ -59,10 +61,63 @@ public class UpdateAppointmentViewController {
         Location = locationTextField.getText();
         Type = typeTextField.getText();
 
+        //check for input errors
+        if (Title.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a title");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (Description.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a description");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (Location.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a location");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (Type.isBlank()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must enter a type");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check for unselected combo boxes
+        if (customerIDBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a customer id");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (userIDBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a user id");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (contactBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must select a contact");
+            errorMessage.showAndWait();
+            return;
+        }
+
         //combo boxes - customer id, user id,
-        //Customer_ID = Integer.valueOf((String) customerIDBox.getValue());
         Customer_ID = (int) customerIDBox.getValue();
-        //User_ID = Integer.valueOf((String) userIDBox.getValue());
         User_ID = (int) userIDBox.getValue();
 
         //run a query to get the contact ID using the contact name selected from the combo box
@@ -73,6 +128,53 @@ public class UpdateAppointmentViewController {
         ResultSet contactResultSet = contactStatement.executeQuery();
         while (contactResultSet.next()) {
             Contact_ID = contactResultSet.getInt("Contact_ID");
+        }
+
+        //check for unselected hour/minutes on spinners
+        if (startHourSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the hour value in the appointment start time");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (startMinuteSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the minute value in the appointment start time");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (endHourSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the hour value in the appointment end time");
+            errorMessage.showAndWait();
+            return;
+        }
+        if (endMinuteSpinner.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify the minute value in the appointment end time");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check for empty date pickers
+        if (startDatePicker.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify a start date");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (endDatePicker.getValue() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You must specify an end date");
+            errorMessage.showAndWait();
+            return;
         }
 
         //get the start time
@@ -151,6 +253,8 @@ public class UpdateAppointmentViewController {
         endTimeStatement.setTimestamp(1,endTimestamp);
         endTimeStatement.setInt(2,Appointment_ID);
         endTimeStatement.executeUpdate();
+
+        successfulUpdate = true;
 
     }
 
@@ -241,6 +345,10 @@ public class UpdateAppointmentViewController {
 
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         updateAppt();
+
+        if (successfulUpdate == false) {
+            return;
+        }
 
         Parent root = FXMLLoader.load(getClass().getResource("appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
