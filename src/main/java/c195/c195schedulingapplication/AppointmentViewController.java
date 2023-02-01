@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -158,7 +159,10 @@ public class AppointmentViewController implements Initializable {
         updateApptLoader.load();
         UpdateAppointmentViewController updateApptController = updateApptLoader.getController();
         if (appointmentTable.getSelectionModel().getSelectedItem() == null) {
-            //insert error message
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Error");
+            errorMessage.setContentText("Must select an appointment");
+            errorMessage.showAndWait();
             return;
         }
         updateApptController.sendApptData((Appointment) appointmentTable.getSelectionModel().getSelectedItem());

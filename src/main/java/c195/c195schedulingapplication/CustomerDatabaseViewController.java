@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
@@ -127,10 +128,15 @@ public class CustomerDatabaseViewController implements Initializable {
         updateCustomerLoader.setLocation(getClass().getResource("update-customer-view.fxml"));
         updateCustomerLoader.load();
         UpdateCustomerViewController updateController = updateCustomerLoader.getController();
-        /*if (customerTable.getSelectionModel().getSelectedItem() == null) {
-            INESERT ERROT
+
+        if (customerTable.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Error");
+            errorMessage.setContentText("Must select a customer");
+            errorMessage.showAndWait();
             return;
-        }*/
+        }
+
         updateController.sendCustomerData(customerTable.getSelectionModel().getSelectedItem());
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         Parent scene = updateCustomerLoader.getRoot();
