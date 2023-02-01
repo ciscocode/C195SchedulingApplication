@@ -9,16 +9,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import static helper.JDBC.connection;
 
@@ -176,20 +174,24 @@ public class AppointmentViewController implements Initializable {
     public void onDeleteAppt(ActionEvent actionEvent) throws IOException, SQLException {
         JDBC.openConnection();
 
-        //get the Appointment ID from the appointment the user selects on the table
-        Appointment selectedRow = (Appointment) appointmentTable.getSelectionModel().getSelectedItem();
-        int Appointment_ID = selectedRow.getAppointment_ID();
+        //confirm with the user
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this appointment?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            //get the Appointment ID from the appointment the user selects on the table
+            Appointment selectedRow = (Appointment) appointmentTable.getSelectionModel().getSelectedItem();
+            int Appointment_ID = selectedRow.getAppointment_ID();
 
-        //use this appointment ID to run a query to delete the appointment from the table
-        String sql = "DELETE FROM appointments WHERE Appointment_ID = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,Appointment_ID);
-        preparedStatement.executeUpdate();
+            //use this appointment ID to run a query to delete the appointment from the table
+            String sql = "DELETE FROM appointments WHERE Appointment_ID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,Appointment_ID);
+            preparedStatement.executeUpdate();
 
-        //then update the table view
-        data.remove(selectedRow);
-        appointmentTable.setItems(data);
-
+            //then update the table view
+            data.remove(selectedRow);
+            appointmentTable.setItems(data);
+        }
         JDBC.closeConnection();
     }
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {

@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="fixed bugs in the add/update appointment form which did not populate the correct list of customer ids">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="added logic to ensure that no customer with existing appointments was deleted">
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -397,11 +396,17 @@
       <option name="project" value="LOCAL" />
       <updated>1675234174807</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="added logic to ensure that no customer with existing appointments was deleted">
+      <created>1675235097657</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1675235097657</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes" />
     <MESSAGE value="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update." />
     <MESSAGE value="The appointment view now loads data from the MySQL database into the table view" />
     <MESSAGE value="Updated the appointment table to include a Title Column which was previously missing" />
@@ -426,6 +431,7 @@
     <MESSAGE value="completed some minor JDBC refactoring" />
     <MESSAGE value="Added an alert when a user attempts to update a customer or appointment without selecting one from the table" />
     <MESSAGE value="fixed bugs in the add/update appointment form which did not populate the correct list of customer ids" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bugs in the add/update appointment form which did not populate the correct list of customer ids" />
+    <MESSAGE value="added logic to ensure that no customer with existing appointments was deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="added logic to ensure that no customer with existing appointments was deleted" />
   </component>
 </project>

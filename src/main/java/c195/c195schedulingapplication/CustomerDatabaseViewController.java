@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -20,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import static helper.JDBC.connection;
 
@@ -87,39 +85,43 @@ public class CustomerDatabaseViewController implements Initializable {
     public void onDeleteCustomer(ActionEvent actionEvent) throws SQLException {
         JDBC.openConnection();
 
-        //get the Customer ID from the customer the user selects on the table
-        Customer selectedRow = customerTable.getSelectionModel().getSelectedItem();
-        customer_ID = selectedRow.getCustomer_ID();
-        System.out.print(customer_ID);
+        //confirm with the user
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this customer?");
+        Optional<ButtonType> result = confirm.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            //get the Customer ID from the customer the user selects on the table
+            Customer selectedRow = customerTable.getSelectionModel().getSelectedItem();
+            customer_ID = selectedRow.getCustomer_ID();
+            System.out.print(customer_ID);
 
-        //check to see if the customer still has existing appointments
-        boolean allAppointmentsDeleted = false;
-        String checkQuery = "SELECT * FROM appointments WHERE Customer_ID = ?";
-        PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
-        checkStatement.setInt(1,customer_ID);
-        ResultSet resultSet = checkStatement.executeQuery();
-        if (!resultSet.isBeforeFirst()) {
-            allAppointmentsDeleted = true;
+            //check to see if the customer still has existing appointments
+            boolean allAppointmentsDeleted = false;
+            String checkQuery = "SELECT * FROM appointments WHERE Customer_ID = ?";
+            PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
+            checkStatement.setInt(1,customer_ID);
+            ResultSet resultSet = checkStatement.executeQuery();
+            if (!resultSet.isBeforeFirst()) {
+                allAppointmentsDeleted = true;
+            }
+
+            if (allAppointmentsDeleted == true) {
+                //use this customer ID to run a query to delete the customer from the table
+                String sql = "DELETE FROM customers WHERE Customer_ID = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1,customer_ID);
+                preparedStatement.executeUpdate();
+
+                //then update the table view
+                data.remove(selectedRow);
+                customerTable.setItems(data);
+            } else {
+                Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+                errorMessage.setTitle("Warning");
+                errorMessage.setContentText("You can not delete a customer with existing appointments");
+                errorMessage.showAndWait();
+                return;
+            }
         }
-
-        if (allAppointmentsDeleted == true) {
-            //use this customer ID to run a query to delete the customer from the table
-            String sql = "DELETE FROM customers WHERE Customer_ID = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,customer_ID);
-            preparedStatement.executeUpdate();
-
-            //then update the table view
-            data.remove(selectedRow);
-            customerTable.setItems(data);
-        } else {
-            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
-            errorMessage.setTitle("Warning");
-            errorMessage.setContentText("You can not delete a customer with existing appointments");
-            errorMessage.showAndWait();
-            return;
-        }
-
         JDBC.closeConnection();
     }
 
