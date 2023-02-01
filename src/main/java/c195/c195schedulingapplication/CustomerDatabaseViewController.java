@@ -92,15 +92,33 @@ public class CustomerDatabaseViewController implements Initializable {
         customer_ID = selectedRow.getCustomer_ID();
         System.out.print(customer_ID);
 
-        //use this customer ID to run a query to delete the customer from the table
-        String sql = "DELETE FROM customers WHERE Customer_ID = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1,customer_ID);
-        preparedStatement.executeUpdate();
+        //check to see if the customer still has existing appointments
+        boolean allAppointmentsDeleted = false;
+        String checkQuery = "SELECT * FROM appointments WHERE Customer_ID = ?";
+        PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
+        checkStatement.setInt(1,customer_ID);
+        ResultSet resultSet = checkStatement.executeQuery();
+        if (!resultSet.isBeforeFirst()) {
+            allAppointmentsDeleted = true;
+        }
 
-        //then update the table view
-        data.remove(selectedRow);
-        customerTable.setItems(data);
+        if (allAppointmentsDeleted == true) {
+            //use this customer ID to run a query to delete the customer from the table
+            String sql = "DELETE FROM customers WHERE Customer_ID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,customer_ID);
+            preparedStatement.executeUpdate();
+
+            //then update the table view
+            data.remove(selectedRow);
+            customerTable.setItems(data);
+        } else {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You can not delete a customer with existing appointments");
+            errorMessage.showAndWait();
+            return;
+        }
 
         JDBC.closeConnection();
     }
