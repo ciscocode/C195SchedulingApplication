@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="added logic to ensure that no customer with existing appointments was deleted">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="added a alert confirmation when deleting a customer or appointment">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -403,11 +405,17 @@
       <option name="project" value="LOCAL" />
       <updated>1675235097657</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="added a alert confirmation when deleting a customer or appointment">
+      <created>1675235658121</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1675235658121</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update." />
     <MESSAGE value="The appointment view now loads data from the MySQL database into the table view" />
     <MESSAGE value="Updated the appointment table to include a Title Column which was previously missing" />
     <MESSAGE value="Updated the Contact Column to show the Contact name instead of Contact ID by running a query in the Appointment class" />
@@ -432,6 +440,7 @@
     <MESSAGE value="Added an alert when a user attempts to update a customer or appointment without selecting one from the table" />
     <MESSAGE value="fixed bugs in the add/update appointment form which did not populate the correct list of customer ids" />
     <MESSAGE value="added logic to ensure that no customer with existing appointments was deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="added logic to ensure that no customer with existing appointments was deleted" />
+    <MESSAGE value="added a alert confirmation when deleting a customer or appointment" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a alert confirmation when deleting a customer or appointment" />
   </component>
 </project>

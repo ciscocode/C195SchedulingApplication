@@ -188,6 +188,11 @@ public class AppointmentViewController implements Initializable {
             preparedStatement.setInt(1,Appointment_ID);
             preparedStatement.executeUpdate();
 
+            Alert successMessage = new Alert(Alert.AlertType.INFORMATION);
+            successMessage.setTitle("Deletion Successful");
+            successMessage.setContentText("Appointment " + selectedRow.getAppointment_ID()  + " has been successfully deleted");
+            successMessage.showAndWait();
+
             //then update the table view
             data.remove(selectedRow);
             appointmentTable.setItems(data);

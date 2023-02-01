@@ -111,6 +111,11 @@ public class CustomerDatabaseViewController implements Initializable {
                 preparedStatement.setInt(1,customer_ID);
                 preparedStatement.executeUpdate();
 
+                Alert successMessage = new Alert(Alert.AlertType.INFORMATION);
+                successMessage.setTitle("Deletion Successful");
+                successMessage.setContentText("Customer " + customer_ID + " has been successfully deleted");
+                successMessage.showAndWait();
+
                 //then update the table view
                 data.remove(selectedRow);
                 customerTable.setItems(data);
