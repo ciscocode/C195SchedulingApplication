@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
+import static helper.JDBC.connection;
+
 
 public class AddCustomerViewController implements Initializable {
 
@@ -49,7 +52,7 @@ public class AddCustomerViewController implements Initializable {
     public void insertCustomer() throws SQLException {
 
         //Start by connecting to the database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //get the last ID used from the database. This is so that I can increment the ID by one for the new customer
         Statement statement = connection.createStatement();
@@ -163,6 +166,7 @@ public class AddCustomerViewController implements Initializable {
         //ResultSet resultSet2 = preparedStatement.executeQuery();
         int rowsAffected = preparedStatement.executeUpdate();
         successfulAddition = true;
+        JDBC.closeConnection();
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -171,7 +175,7 @@ public class AddCustomerViewController implements Initializable {
     }
 
     public void onCountrySelection(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //get the value of the country & use this to get the country id.
         country = (String) countryBox.getValue();
@@ -195,10 +199,11 @@ public class AddCustomerViewController implements Initializable {
 
         //then add the list to the combo box
         divisionBox.setItems(divisionList);
+        JDBC.closeConnection();
     }
 
     public void onDivisionSelection(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //gather the division from the selected box
         division = (String) divisionBox.getValue();
@@ -212,6 +217,8 @@ public class AddCustomerViewController implements Initializable {
         while (resultSet.next()) {
             division_id = resultSet.getInt(1);
         }
+
+        JDBC.closeConnection();
     }
 
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {

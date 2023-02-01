@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,8 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import static helper.JDBC.connection;
+
 
 import static java.sql.DriverManager.getConnection;
 
@@ -52,7 +55,7 @@ public class UpdateAppointmentViewController {
 
     public void updateAppt() throws SQLException {
         //connect to database
-        Connection connection = getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //gather all the inputs from text fields - title, description, location, type
         Appointment_ID = Integer.parseInt(apptIDTextField.getText());
@@ -255,7 +258,7 @@ public class UpdateAppointmentViewController {
         endTimeStatement.executeUpdate();
 
         successfulUpdate = true;
-
+        JDBC.closeConnection();
     }
 
     public void sendApptData(Appointment appt) throws SQLException {
@@ -295,7 +298,7 @@ public class UpdateAppointmentViewController {
             ObservableList<String> contactList = FXCollections.observableArrayList();
 
             //connect to the database
-            Connection connection = getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+            JDBC.openConnection();
 
             //run a query for the Customer IDs
             Statement customerStatement = connection.createStatement();
@@ -335,12 +338,10 @@ public class UpdateAppointmentViewController {
             contactBox.setItems(contactList);
             contactBox.setValue(appt.getContactName());
 
+            JDBC.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-
-
     }
 
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {

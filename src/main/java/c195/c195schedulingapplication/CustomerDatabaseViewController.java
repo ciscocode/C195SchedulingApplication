@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +20,7 @@ import java.net.URL;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
-
+import static helper.JDBC.connection;
 
 public class CustomerDatabaseViewController implements Initializable {
     public TableView<Customer> customerTable;
@@ -37,8 +38,7 @@ public class CustomerDatabaseViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             //establish connection to database
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
-
+            JDBC.openConnection();
             //execute query
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");
@@ -77,13 +77,14 @@ public class CustomerDatabaseViewController implements Initializable {
             countryCol.setCellValueFactory(new PropertyValueFactory<>("Country"));
             phoneCol.setCellValueFactory(new PropertyValueFactory<>("Phone"));
 
+            JDBC.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
     public void onDeleteCustomer(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //get the Customer ID from the customer the user selects on the table
         Customer selectedRow = customerTable.getSelectionModel().getSelectedItem();
@@ -99,6 +100,8 @@ public class CustomerDatabaseViewController implements Initializable {
         //then update the table view
         data.remove(selectedRow);
         customerTable.setItems(data);
+
+        JDBC.closeConnection();
     }
 
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {

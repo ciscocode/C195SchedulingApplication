@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import static helper.JDBC.connection;
+
 
 import static java.sql.DriverManager.getConnection;
 
@@ -38,7 +41,6 @@ public class AppointmentsReportViewController implements Initializable {
 
     ObservableList<String> monthOptions = FXCollections.observableArrayList();
     ObservableList<String> typeOptions = FXCollections.observableArrayList();
-
     ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
 
     public void onReturnToReportMenu(ActionEvent actionEvent) throws IOException {
@@ -61,7 +63,7 @@ public class AppointmentsReportViewController implements Initializable {
     }
 
     public void loadTypeList() throws SQLException {
-        Connection connection = getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         String sql = "SELECT Type FROM appointments";
         Statement statement = connection.createStatement();
@@ -70,11 +72,12 @@ public class AppointmentsReportViewController implements Initializable {
         while (resultSet.next()) {
             typeOptions.add(resultSet.getString("Type"));
         }
-        connection.close();
+
+        JDBC.closeConnection();
     }
 
     public void loadMonthList() throws SQLException {
-        Connection connection = getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         String sql = "SELECT DISTINCT MONTHNAME(Start) FROM appointments;";
         Statement statement = connection.createStatement();
@@ -83,7 +86,7 @@ public class AppointmentsReportViewController implements Initializable {
         while (resultSet.next()) {
             monthOptions.add(resultSet.getString("MONTHNAME(Start)"));
         }
-        connection.close();
+        JDBC.closeConnection();
     }
 
     @Override
@@ -92,7 +95,7 @@ public class AppointmentsReportViewController implements Initializable {
             loadMonthList();
             loadTypeList();
 
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+            JDBC.openConnection();
 
             //execute query
             Statement statement = connection.createStatement();
@@ -136,11 +139,12 @@ public class AppointmentsReportViewController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        JDBC.closeConnection();
     }
 
 
     public void onSelectedOption(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         if (monthRadioButton.isSelected()) {
             String selectedOption = (String) selectionBox.getSelectionModel().getSelectedItem();
@@ -209,7 +213,7 @@ public class AppointmentsReportViewController implements Initializable {
             //fill in the table
             appointmentTable.setItems(filteredByType);
         }
-        connection.close();
+        JDBC.closeConnection();
     }
 
     public void onViewAll(ActionEvent actionEvent) {

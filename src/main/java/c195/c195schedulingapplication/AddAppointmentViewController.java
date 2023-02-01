@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
+
+import static helper.JDBC.connection;
 
 
 public class AddAppointmentViewController implements Initializable {
@@ -53,7 +56,7 @@ public class AddAppointmentViewController implements Initializable {
 
     public void insertAppt() throws SQLException {
         //Start by connecting to the database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //get the last Appointment ID used from the database. This is so that I can increment the ID by one for the new appointment
         Statement statement = connection.createStatement();
@@ -252,7 +255,7 @@ public class AddAppointmentViewController implements Initializable {
         insertStatement.executeUpdate();
 
         successfulAddition = true;
-        connection.close();
+        JDBC.closeConnection();
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //load the spinners with possible hour/minute options
@@ -274,7 +277,7 @@ public class AddAppointmentViewController implements Initializable {
             ObservableList<String> contactList = FXCollections.observableArrayList();
 
             //connect to the database
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+            JDBC.openConnection();
 
             //run a query for the Customer IDs
             Statement customerStatement = connection.createStatement();
@@ -313,6 +316,7 @@ public class AddAppointmentViewController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        JDBC.closeConnection();
     }
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         insertAppt();

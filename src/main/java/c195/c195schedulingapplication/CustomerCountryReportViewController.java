@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import static helper.JDBC.connection;
+
 public class CustomerCountryReportViewController implements Initializable {
     public TableView<Customer> customerTable;
     public TableColumn IDCol;
@@ -38,7 +41,7 @@ public class CustomerCountryReportViewController implements Initializable {
             countryBox.setItems(countryList);
 
             //establish connection to database
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+            JDBC.openConnection();
 
             //execute query
             Statement statement = connection.createStatement();
@@ -73,7 +76,7 @@ public class CustomerCountryReportViewController implements Initializable {
             countryCol.setCellValueFactory(new PropertyValueFactory<>("Country"));
             phoneCol.setCellValueFactory(new PropertyValueFactory<>("Phone"));
 
-            connection.close();
+            JDBC.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -89,11 +92,10 @@ public class CustomerCountryReportViewController implements Initializable {
     }
 
     public void onSelection(ActionEvent actionEvent) throws SQLException {
-
         ObservableList<Customer> filteredList = FXCollections.observableArrayList();
 
         //connect to database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //create a temporary table view consisting of a join query which adds the country id to customers table
         //this temporary view will be referenced when a user makes a selection from the country combo box
@@ -130,6 +132,7 @@ public class CustomerCountryReportViewController implements Initializable {
             filteredList.add(customer);
         }
         customerTable.setItems(filteredList);
+        JDBC.closeConnection();
     }
 
     public void onViewAll(ActionEvent actionEvent) throws SQLException {

@@ -1,7 +1,11 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
+
 import java.sql.*;
 import java.time.LocalDateTime;
+import static helper.JDBC.connection;
+
 
 public class Appointment {
     private int Appointment_ID;
@@ -163,7 +167,7 @@ public class Appointment {
 
     public String getContactName() throws SQLException {
         //establish connection to database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         String sql = "SELECT Contact_Name FROM contacts WHERE Contact_ID = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -178,7 +182,7 @@ public class Appointment {
         if (resultSet.next()) {
             contactName = resultSet.getString("Contact_Name");
         }
-        connection.close();
+        JDBC.closeConnection();
 
         return contactName;
     }

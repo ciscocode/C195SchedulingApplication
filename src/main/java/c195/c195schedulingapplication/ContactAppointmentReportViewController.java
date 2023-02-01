@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import static helper.JDBC.connection;
 
 import static java.sql.DriverManager.getConnection;
 
@@ -48,7 +50,7 @@ public class ContactAppointmentReportViewController implements Initializable {
 
 
     public void loadContactBox() throws SQLException {
-        Connection connection = getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //run a query to get the contact names
         Statement contactStatement = connection.createStatement();
@@ -61,7 +63,8 @@ public class ContactAppointmentReportViewController implements Initializable {
 
         //set the items into the combo box
         contactBox.setItems(contactList);
-        connection.close();
+
+        JDBC.closeConnection();
     }
 
     @Override
@@ -69,7 +72,7 @@ public class ContactAppointmentReportViewController implements Initializable {
         try {
             loadContactBox();
 
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+            JDBC.openConnection();
 
             //execute query
             Statement statement = connection.createStatement();
@@ -110,6 +113,8 @@ public class ContactAppointmentReportViewController implements Initializable {
             customerIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
             userIDCol.setCellValueFactory(new PropertyValueFactory<>("User_ID"));
             titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));
+
+            JDBC.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -117,7 +122,7 @@ public class ContactAppointmentReportViewController implements Initializable {
 
 
     public void onSelectedOption(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         int contactID = 0;
         String selectedOption = (String) contactBox.getSelectionModel().getSelectedItem();
@@ -160,7 +165,7 @@ public class ContactAppointmentReportViewController implements Initializable {
         }
         //fill in the table
         appointmentTable.setItems(filteredByContact);
-        connection.close();
+        JDBC.closeConnection();
     }
 
     public void onViewAll(ActionEvent actionEvent) {

@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import static helper.JDBC.connection;
 
 public class AppointmentViewController implements Initializable {
     public TableView appointmentTable;
@@ -42,7 +44,7 @@ public class AppointmentViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             //establish connection to database
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+            JDBC.openConnection();
 
             //execute query
             Statement statement = connection.createStatement();
@@ -135,9 +137,7 @@ public class AppointmentViewController implements Initializable {
                 );
                 dataByWeek.add(appointment);
             }
-
-            connection.close();
-
+            JDBC.closeConnection();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -170,7 +170,7 @@ public class AppointmentViewController implements Initializable {
     }
 
     public void onDeleteAppt(ActionEvent actionEvent) throws IOException, SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //get the Appointment ID from the appointment the user selects on the table
         Appointment selectedRow = (Appointment) appointmentTable.getSelectionModel().getSelectedItem();
@@ -185,6 +185,8 @@ public class AppointmentViewController implements Initializable {
         //then update the table view
         data.remove(selectedRow);
         appointmentTable.setItems(data);
+
+        JDBC.closeConnection();
     }
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("menu-view.fxml"));

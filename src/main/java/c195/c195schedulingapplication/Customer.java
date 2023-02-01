@@ -1,10 +1,13 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import static helper.JDBC.connection;
+
 
 public class Customer {
     private int Customer_ID;
@@ -122,7 +125,7 @@ public class Customer {
 
     public String getCountry() throws SQLException {
         //establish connection to database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //First, get the Country ID
         String sql1 = "SELECT Country_ID FROM first_level_divisions WHERE Division_ID = ?";
@@ -149,13 +152,13 @@ public class Customer {
         if (resultSet2.next()) {
             country = resultSet2.getString("Country");
         }
-
+        JDBC.closeConnection();
         return country;
     }
 
     public String getDivision() throws SQLException {
         //establish connection to database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         String sql = "SELECT Division FROM first_level_divisions WHERE Division_ID = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -171,6 +174,7 @@ public class Customer {
         if (resultSet.next()) {
             division = resultSet.getString("Division");
         }
+        JDBC.closeConnection();
         return division;
     }
 }

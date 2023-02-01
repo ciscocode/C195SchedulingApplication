@@ -1,5 +1,6 @@
 package c195.c195schedulingapplication;
 
+import helper.JDBC;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
+import static helper.JDBC.connection;
 
 public class UpdateCustomerViewController {
     public TextField customerIDTextField;
@@ -42,7 +44,7 @@ public class UpdateCustomerViewController {
 
     public void updateCustomer() throws SQLException {
         //connect to database
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //save the inputs from the text fields
         customerID = Integer.valueOf(customerIDTextField.getText());
@@ -144,24 +146,26 @@ public class UpdateCustomerViewController {
         updateDivisionIDStatement.setInt(2,customerID);
         updateDivisionIDStatement.executeUpdate();
 
-        connection.close();
-
         successfulUpdate = true;
+        JDBC.closeConnection();
     }
     public void sendCustomerData(Customer customer) throws SQLException {
+        //set the text fields
         customerIDTextField.setText(String.valueOf(customer.getCustomer_ID()));
         nameTextField.setText(String.valueOf(customer.getCustomer_Name()));
         addressTextField.setText(String.valueOf(customer.getAddress()));
         phoneTextField.setText(String.valueOf(customer.getPhone()));
         postalCodeTextField.setText(String.valueOf(customer.getPostal_Code()));
 
+        //set the country box
         countryBox.setItems(countryList);
 
         //find the division id of the customer
         division_id = customer.getDivision_ID();
 
+        JDBC.openConnection();
+
         //use the division id to find the country
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
         String sql1 = "SELECT Country_ID from first_level_divisions WHERE Division_ID = ?";
         PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
         preparedStatement1.setInt(1,division_id);
@@ -202,10 +206,12 @@ public class UpdateCustomerViewController {
 
         //then add the list to the combo box
         divisionBox.setItems(divisionList);
+
+        JDBC.closeConnection();
     }
 
     public void onCountrySelection(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //get the value of the country & use this to get the country id.
         country = (String) countryBox.getValue();
@@ -229,10 +235,12 @@ public class UpdateCustomerViewController {
 
         //then add the list to the combo box
         divisionBox.setItems(divisionList);
+
+        JDBC.closeConnection();
     }
 
     public void onDivisionSelection(ActionEvent actionEvent) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/client_schedule", "cisco", "Bunnysql23$");
+        JDBC.openConnection();
 
         //gather the division from the selected box
         division = (String) divisionBox.getValue();
@@ -246,6 +254,8 @@ public class UpdateCustomerViewController {
         while (resultSet.next()) {
             division_id = resultSet.getInt(1);
         }
+
+        JDBC.closeConnection();
     }
 
     public void onCancel(ActionEvent actionEvent) throws IOException {
