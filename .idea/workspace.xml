@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the login controller class to check for valid username/password">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Added an alert when a user attempts to update a customer or appointment without selecting one from the table">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddCustomerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentsReportViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentsReportViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ContactAppointmentReportViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/ContactAppointmentReportViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerCountryReportViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerCountryReportViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateCustomerViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,12 +377,24 @@
       <option name="project" value="LOCAL" />
       <updated>1675232485870</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="completed some minor JDBC refactoring">
+      <created>1675233494035</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1675233494035</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added an alert when a user attempts to update a customer or appointment without selecting one from the table">
+      <created>1675233813112</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1675233813112</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly." />
-    <MESSAGE value="Implemented the onDeleteCustomer method. A user can now select a customer from the table and delete them from the SQL database. The tableview will then update." />
     <MESSAGE value="Implemented the Update Customer Method. It currently only takes selected customer data from the the customer table and sends it to the update customer form." />
     <MESSAGE value="Updated the UpdateCustomer method to update the customers Division ID if the user changes the country and/or state/province from the combo boxes" />
     <MESSAGE value="Updated a bug in which the division combo box was not automatically loaded up with options when a user selects a customer to update." />
@@ -414,6 +418,8 @@
     <MESSAGE value="updated the add/update customer methods to check for user input error" />
     <MESSAGE value="updated the add/update appointment classes to check for user input error" />
     <MESSAGE value="Updated the login controller class to check for valid username/password" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the login controller class to check for valid username/password" />
+    <MESSAGE value="completed some minor JDBC refactoring" />
+    <MESSAGE value="Added an alert when a user attempts to update a customer or appointment without selecting one from the table" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added an alert when a user attempts to update a customer or appointment without selecting one from the table" />
   </component>
 </project>

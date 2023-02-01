@@ -302,7 +302,7 @@ public class UpdateAppointmentViewController {
 
             //run a query for the Customer IDs
             Statement customerStatement = connection.createStatement();
-            ResultSet customerResultSet = customerStatement.executeQuery("SELECT DISTINCT Customer_ID FROM appointments");
+            ResultSet customerResultSet = customerStatement.executeQuery("SELECT DISTINCT Customer_ID FROM customers");
 
             //add the customer ids into the observable array list
             while(customerResultSet.next()) {
@@ -314,7 +314,7 @@ public class UpdateAppointmentViewController {
 
             //run a query for the User IDs
             Statement userStatement = connection.createStatement();
-            ResultSet userResultSet = userStatement.executeQuery("SELECT DISTINCT User_ID FROM appointments");
+            ResultSet userResultSet = userStatement.executeQuery("SELECT DISTINCT User_ID FROM users");
 
             //add the user ids into the observable array list
             while(userResultSet.next()) {
