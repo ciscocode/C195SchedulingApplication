@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -194,6 +195,49 @@ public class UpdateAppointmentViewController {
         EndTime = LocalDateTime.of(endDate, LocalTime.of(endHour,endMinute));
         Timestamp endTimestamp = Timestamp.valueOf(EndTime);
 
+        //check to see if the end date of the appointment is valid
+        if (endDate.isBefore(startDate)) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("The end date can not be before the start date");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (startDate.isBefore(LocalDate.now())) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You can't set an appointment in the past. Please select a valid date.");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (endDate.isBefore(LocalDate.now())) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You can't set an appointment in the past. Please select a valid date.");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check to see if the start date is on a weekend
+        if (startDate.getDayOfWeek() == DayOfWeek.SATURDAY || startDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("An appointment can not be scheduled on the weekend.");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check to see if the end date is on a weekend
+        if (endDate.getDayOfWeek() == DayOfWeek.SATURDAY || endDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("An appointment can not be set on the weekend.");
+            errorMessage.showAndWait();
+            return;
+        }
+
         //run a query to update title
         String titleQuery = "UPDATE appointments SET Title = ? WHERE Appointment_ID = ?";
         PreparedStatement titleStatement = connection.prepareStatement(titleQuery);
@@ -290,6 +334,27 @@ public class UpdateAppointmentViewController {
         startDatePicker.setValue(appt.getStartTime().toLocalDate());
         endDatePicker.setValue(appt.getEndTime().toLocalDate());
 
+        LocalDate today = LocalDate.now();
+        //set the valid dates for the start date
+        startDatePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                    setDisable(true);
+                }
+            }
+        });
+
+        //set the valid dates for the end date
+        endDatePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                    setDisable(true);
+                }
+            }
+        });
+
         //load the customer ID, user ID, and Contact combo boxes
         try {
             //create the observable array lists you'll use for the Combo Boxes
@@ -368,5 +433,14 @@ public class UpdateAppointmentViewController {
         stage.show();
     }
 
-
+    public void onStartDateSelection(ActionEvent actionEvent) {
+        endDatePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(startDatePicker.getValue()) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                    setDisable(true);
+                }
+            }
+        });
+    }
 }

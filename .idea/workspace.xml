@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="added a alert confirmation when deleting a customer or appointment">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created custom alert messages to notify user when a customer/appt has been successfully deleted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/CustomerDatabaseViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/add-appointment-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/update-appointment-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/c195/c195schedulingapplication/update-appointment-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -412,11 +414,17 @@
       <option name="project" value="LOCAL" />
       <updated>1675235658121</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Created custom alert messages to notify user when a customer/appt has been successfully deleted">
+      <created>1675236496362</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1675236496362</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="The appointment view now loads data from the MySQL database into the table view" />
     <MESSAGE value="Updated the appointment table to include a Title Column which was previously missing" />
     <MESSAGE value="Updated the Contact Column to show the Contact name instead of Contact ID by running a query in the Appointment class" />
     <MESSAGE value="Created the initialize method in the add apointment class. This will intialize the combo boxes and spinners in the Add Appointment form" />
@@ -441,6 +449,7 @@
     <MESSAGE value="fixed bugs in the add/update appointment form which did not populate the correct list of customer ids" />
     <MESSAGE value="added logic to ensure that no customer with existing appointments was deleted" />
     <MESSAGE value="added a alert confirmation when deleting a customer or appointment" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a alert confirmation when deleting a customer or appointment" />
+    <MESSAGE value="Created custom alert messages to notify user when a customer/appt has been successfully deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created custom alert messages to notify user when a customer/appt has been successfully deleted" />
   </component>
 </project>

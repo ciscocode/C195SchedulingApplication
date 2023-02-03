@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -215,6 +216,48 @@ public class AddAppointmentViewController implements Initializable {
         EndTime = LocalDateTime.of(endDate, LocalTime.of(endHour,endMinute));
         Timestamp endTimestamp = Timestamp.valueOf(EndTime);
 
+        //check to see if the end date of the appointment is valid
+        if (endDate.isBefore(startDate)) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("The end date can not be before the start date");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (startDate.isBefore(LocalDate.now())) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You can't set an appointment in the past. Please select a valid date.");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (endDate.isBefore(LocalDate.now())) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("You can't set an appointment in the past. Please select a valid date.");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check to see if the start date is on a weekend
+        if (startDate.getDayOfWeek() == DayOfWeek.SATURDAY || startDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("An appointment can not be scheduled on the weekend.");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        //check to see if the end date is on a weekend
+        if (endDate.getDayOfWeek() == DayOfWeek.SATURDAY || endDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("An appointment can not be set on the weekend.");
+            errorMessage.showAndWait();
+            return;
+        }
         //use all the inputs to create a new appointment
         Appointment newAppt = new Appointment(
                 Appointment_ID,
@@ -258,6 +301,27 @@ public class AddAppointmentViewController implements Initializable {
         JDBC.closeConnection();
     }
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LocalDate today = LocalDate.now();
+       //set the valid dates for the start date
+        startDatePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                    setDisable(true);
+                }
+            }
+        });
+
+        //set the valid dates for the end date
+        endDatePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                    setDisable(true);
+                }
+            }
+        });
+
         //load the spinners with possible hour/minute options
         SpinnerValueFactory<Integer> startHourValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 12);
         SpinnerValueFactory<Integer> endHourValueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 12);
@@ -339,5 +403,16 @@ public class AddAppointmentViewController implements Initializable {
         stage.setTitle("Appointments");
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void onStartDateSelected(ActionEvent actionEvent) {
+        endDatePicker.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                if (date.isBefore(startDatePicker.getValue()) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                    setDisable(true);
+                }
+            }
+        });
     }
 }

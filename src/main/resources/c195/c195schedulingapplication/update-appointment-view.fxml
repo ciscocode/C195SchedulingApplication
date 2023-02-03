@@ -22,7 +22,7 @@
         <Label layoutX="114.0" layoutY="305.0" text="Contact" />
         <Label layoutX="97.0" layoutY="354.0" text="Start Date" />
         <Label layoutX="97.0" layoutY="399.0" text="Start Time" />
-        <DatePicker fx:id="startDatePicker" layoutX="178.0" layoutY="350.0" prefHeight="24.0" prefWidth="171.0" />
+        <DatePicker fx:id="startDatePicker" layoutX="178.0" layoutY="350.0" onAction="#onStartDateSelection" prefHeight="24.0" prefWidth="171.0" />
         <DatePicker fx:id="endDatePicker" layoutX="181.0" layoutY="438.0" prefHeight="24.0" prefWidth="171.0" />
         <Label layoutX="104.0" layoutY="442.0" text="End Date" />
         <Label layoutX="101.0" layoutY="481.0" text="End Time" />
