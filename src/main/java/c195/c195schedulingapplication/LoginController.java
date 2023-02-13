@@ -35,56 +35,43 @@ public class LoginController implements Initializable {
     public Label locationLabel;
     public TextField passwordTextField;
     public TextField usernameTextField;
-    ObservableList<String> languageList = FXCollections.observableArrayList("English", "French");
+    public Label c195label;
     @FXML
-    public ComboBox languageBox;
-    //ResourceBundle rb = ResourceBundle.getBundle("login", Locale.getDefault());
     String username;
     String password;
-
     Boolean successfulLogin = false;
+    ResourceBundle rb;
+    String warning;
+    String error;
+    String usernameWarning;
+    String passwordWarning;
+    String invalidUsername;
+    String invalidPassword;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        //set the language combo box
-        languageBox.setValue("English");
-        languageBox.setItems(languageList);
+    public void initialize(URL url, ResourceBundle resourceBundle) {
 
         //set the location label/
         TimeZone timezone = TimeZone.getDefault();
         String zoneId = timezone.getID();
         locationText.setText(zoneId);
 
-        /*
-        rb = ResourceBundle.getBundle("languages/login", Locale.getDefault());
-        //set the locale        rb = ResourceBundle.getBundle("languages/login", Locale.getDefault());
+        rb = ResourceBundle.getBundle("TextBundle2", Locale.getDefault());
 
-        Locale locale = Locale.getDefault();
-        Locale.setDefault(locale);
-
-        //language
-        Locale france = new Locale("fr", "FR");
-        Locale english = new Locale("en", "US");
-
-        Scanner keyboard = new Scanner(System.in);
-
-         */
-        //String languageCode = keyboard.nextLine();
-
-        /*if (languageCode.equals("fr")) {
-            Locale.setDefault(france);
-        } else {
-            Locale.setDefault(english);
-        }*/
-
-        /*
+        if (Locale.getDefault().getLanguage().equals("en") || Locale.getDefault().getLanguage().equals("fr")) {
+            System.out.println(rb.getString("username"));
+        }
+        c195label.setText(rb.getString("C195"));
         usernameLabel.setText(rb.getString("username"));
         passwordLabel.setText(rb.getString("password"));
         loginButton.setText(rb.getString("login"));
-        languageLabel.setText(rb.getString("language"));
-
-         */
-
+        locationLabel.setText(rb.getString("user"));
+        warning = rb.getString("warning");
+        error = rb.getString("error");
+        usernameWarning = rb.getString("usernameWarning");
+        passwordWarning = rb.getString("passwordWarning");
+        invalidPassword = rb.getString("passwordError");
+        invalidUsername = rb.getString("usernameError");
     }
 
     public void validateLogin() throws SQLException {
@@ -97,15 +84,15 @@ public class LoginController implements Initializable {
         //check to see if the text fields are left blank
         if (username.isBlank()) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
-            errorMessage.setTitle("Warning");
-            errorMessage.setContentText("You must enter a username");
+            errorMessage.setTitle(warning);
+            errorMessage.setContentText(usernameWarning);
             errorMessage.showAndWait();
             return;
         }
         if (password.isBlank()) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
-            errorMessage.setTitle("Warning");
-            errorMessage.setContentText("You must enter a password");
+            errorMessage.setTitle(warning);
+            errorMessage.setContentText(passwordWarning);
             errorMessage.showAndWait();
             return;
         }
@@ -120,8 +107,8 @@ public class LoginController implements Initializable {
         if (!resultSet.isBeforeFirst())  {
             validUsername = false;
             Alert errorMessage = new Alert(Alert.AlertType.ERROR);
-            errorMessage.setTitle("Error");
-            errorMessage.setContentText("The username entered does not exist.");
+            errorMessage.setTitle(error);
+            errorMessage.setContentText(invalidUsername);
             errorMessage.showAndWait();
             return;
         }
@@ -135,21 +122,13 @@ public class LoginController implements Initializable {
             ResultSet resultSet2 = preparedStatement2.executeQuery();
             if (!resultSet2.isBeforeFirst())  {
                 Alert errorMessage = new Alert(Alert.AlertType.ERROR);
-                errorMessage.setTitle("Error");
-                errorMessage.setContentText("The password is invalid");
+                errorMessage.setTitle(error);
+                errorMessage.setContentText(invalidPassword);
                 errorMessage.showAndWait();
                 return;
             }
         }
         successfulLogin = true;
-        //user id
-        //username
-        //password
-        //create date
-        //created by
-        //last update
-        //last updated by
-
         JDBC.closeConnection();
     }
 
@@ -165,32 +144,5 @@ public class LoginController implements Initializable {
         stage.setTitle("Main Menu");
         stage.setScene(scene);
         stage.show();
-    }
-
-    /*public void fakelogin() {
-        FXMLLoader updateApptLoader = new FXMLLoader();
-        updateApptLoader.setLocation(getClass().getResource("update-appointment-view.fxml"));
-        updateApptLoader.load();
-        UpdateAppointmentViewController updateApptController = updateApptLoader.getController();
-        if (appointmentTable.getSelectionModel().getSelectedItem() == null) {
-            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
-            errorMessage.setTitle("Error");
-            errorMessage.setContentText("Must select an appointment");
-            errorMessage.showAndWait();
-            return;
-        }
-        updateApptController.sendApptData((Appointment) appointmentTable.getSelectionModel().getSelectedItem());
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        Parent scene = updateApptLoader.getRoot();
-        stage.setTitle("Update Appointment");
-        stage.setScene(new Scene(scene));
-        stage.show();
-    }*/
-
-    public void onLanguageSelection(ActionEvent actionEvent) {
-        //gather the selected country_ID from the combo box
-        String selectedLanguage = (String) languageBox.getValue();
-        //if (selectedLanguage == "France")
-
     }
 }

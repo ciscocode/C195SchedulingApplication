@@ -6,22 +6,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="c195.c195schedulingapplication.LoginController">
    <children>
-      <Label fx:id="locationLabel" layoutX="308.0" layoutY="354.0" text="User Location" />
-      <Label fx:id="usernameLabel" layoutX="127.0" layoutY="134.0" text="Username" />
+      <Label fx:id="locationLabel" layoutX="264.0" layoutY="331.0" text="User Location" />
+      <Label fx:id="usernameLabel" layoutX="128.0" layoutY="134.0" text="Username" />
       <Label fx:id="passwordLabel" layoutX="130.0" layoutY="174.0" text="Password" />
-      <Label fx:id="languageLabel" layoutX="308.0" layoutY="317.0" text="Language" />
-      <TextField fx:id="usernameTextField" layoutX="215.0" layoutY="130.0" />
-      <ComboBox fx:id="languageBox" layoutX="404.0" layoutY="313.0" onAction="#onLanguageSelection" prefWidth="150.0" />
+      <TextField fx:id="usernameTextField" layoutX="248.0" layoutY="130.0" />
       <Button fx:id="loginButton" layoutX="134.0" layoutY="245.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="24.0" prefWidth="150.0" text="Login" />
-      <Label fx:id="locationText" layoutX="427.0" layoutY="354.0" text="location" wrapText="true">
+      <Label fx:id="locationText" layoutX="426.0" layoutY="331.0" text="location" wrapText="true">
          <font>
             <Font name="System Italic" size="13.0" />
          </font></Label>
-      <Label layoutX="120.0" layoutY="48.0" text="C195 Performance Assessment">
+      <Label fx:id="c195label" layoutX="120.0" layoutY="48.0" text="C195 Performance Assessment">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passwordTextField" layoutX="215.0" layoutY="170.0" />
+      <PasswordField fx:id="passwordTextField" layoutX="248.0" layoutY="170.0" />
    </children>
 </AnchorPane>
