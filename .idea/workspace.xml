@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Major Updates: I updated the Add Appointment controller to only accept appointments that were within business hours of 8am - 10pm EST. I also added a feature to notify the user upon logging in if there was an appointment within 15 minutes">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the Update Appointment controller to send the appointment time in the local time zone of the users device.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00001" summary="Initialized my new C195 Application project. In this initial commit I have established a connection to a client-side database.">
-      <created>1672390139952</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1672390139952</updated>
     </task>
     <task id="LOCAL-00002" summary="I have added fxml views of the following: Login screen, Main Menu Screen, Customer Database Screen, and Add Customer screen">
       <created>1672734118333</created>
@@ -433,11 +426,17 @@
       <option name="project" value="LOCAL" />
       <updated>1676264414832</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Updated the Update Appointment controller to send the appointment time in the local time zone of the users device.">
+      <created>1676266636952</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1676266636952</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created the initialize method in the add apointment class. This will intialize the combo boxes and spinners in the Add Appointment form" />
     <MESSAGE value="Fully implemented the Add Appointment feature" />
     <MESSAGE value="Began Implementing the Update Appointment method. I can now send data from an appointment selected on the table view over to the update appt form." />
     <MESSAGE value="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed." />
@@ -462,6 +461,7 @@
     <MESSAGE value="Created custom alert messages to notify user when a customer/appt has been successfully deleted" />
     <MESSAGE value="Added date validation and error alerts to the add/updated controllers." />
     <MESSAGE value="Major Updates: I updated the Add Appointment controller to only accept appointments that were within business hours of 8am - 10pm EST. I also added a feature to notify the user upon logging in if there was an appointment within 15 minutes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major Updates: I updated the Add Appointment controller to only accept appointments that were within business hours of 8am - 10pm EST. I also added a feature to notify the user upon logging in if there was an appointment within 15 minutes" />
+    <MESSAGE value="Updated the Update Appointment controller to send the appointment time in the local time zone of the users device." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the Update Appointment controller to send the appointment time in the local time zone of the users device." />
   </component>
 </project>

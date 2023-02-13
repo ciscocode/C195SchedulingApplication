@@ -108,8 +108,8 @@ public class ContactAppointmentReportViewController implements Initializable {
             locationCol.setCellValueFactory(new PropertyValueFactory<>("Location"));
             contactCol.setCellValueFactory(new PropertyValueFactory<>("ContactName"));
             typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
-            startTimeCol.setCellValueFactory(new PropertyValueFactory<>("StartTime"));
-            endTimeCol.setCellValueFactory(new PropertyValueFactory<>("EndTime"));
+            startTimeCol.setCellValueFactory(new PropertyValueFactory<>("LocalStartTimeIn12HourFormat"));
+            endTimeCol.setCellValueFactory(new PropertyValueFactory<>("LocalEndTimeIn12HourFormat"));
             customerIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
             userIDCol.setCellValueFactory(new PropertyValueFactory<>("User_ID"));
             titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));

@@ -5,6 +5,7 @@ import helper.JDBC;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 import static helper.JDBC.connection;
 
@@ -173,6 +174,30 @@ public class Appointment {
         ZoneId utc = ZoneId.of("UTC");
         LocalDateTime startDateTimeLocal = StartTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
         return startDateTimeLocal;
+    }
+    public String getLocalStartTimeIn12HourFormat() {
+        //create 12-hour date/time formatter to later display time in a more readable format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+
+        //get time zone of users device
+        ZoneId deviceTimeZone = ZoneId.systemDefault();
+        ZoneId utc = ZoneId.of("UTC");
+        LocalDateTime startDateTimeLocal = StartTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
+
+        String formattedTime = startDateTimeLocal.format(formatter);
+        return formattedTime;
+    }
+    public String getLocalEndTimeIn12HourFormat() {
+        //create 12-hour date/time formatter to later display time in a more readable format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+
+        //get time zone of users device
+        ZoneId deviceTimeZone = ZoneId.systemDefault();
+        ZoneId utc = ZoneId.of("UTC");
+        LocalDateTime endDateTimeLocal = EndTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
+
+        String formattedTime = endDateTimeLocal.format(formatter);
+        return formattedTime;
     }
 
     public LocalDateTime getLocalEndTime() {
