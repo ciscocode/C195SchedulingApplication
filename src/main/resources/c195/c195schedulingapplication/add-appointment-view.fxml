@@ -39,5 +39,7 @@
       <Spinner fx:id="startMinuteSpinner" editable="true" layoutX="291.0" layoutY="395.0" prefHeight="24.0" prefWidth="91.0" />
       <Spinner fx:id="endMinuteSpinner" editable="true" layoutX="291.0" layoutY="477.0" prefHeight="24.0" prefWidth="91.0" />
       <Spinner fx:id="endHourSpinner" editable="true" layoutX="187.0" layoutY="477.0" prefHeight="24.0" prefWidth="91.0" />
+      <ComboBox fx:id="startAMPMBox" layoutX="399.0" layoutY="395.0" prefHeight="24.0" prefWidth="75.0" />
+      <ComboBox fx:id="endAMPMBox" layoutX="399.0" layoutY="477.0" prefHeight="24.0" prefWidth="75.0" />
     </children>
 </AnchorPane>

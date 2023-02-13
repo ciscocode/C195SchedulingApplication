@@ -37,6 +37,8 @@ public class UpdateAppointmentViewController {
     public Spinner startMinuteSpinner;
     public Spinner endMinuteSpinner;
     public Spinner endHourSpinner;
+    public ComboBox startAMPMBox;
+    public ComboBox endAMPMBox;
     int Appointment_ID;
     String Title;
     String Description;
@@ -116,6 +118,22 @@ public class UpdateAppointmentViewController {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
             errorMessage.setTitle("Warning");
             errorMessage.setContentText("You must select a contact");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (startAMPMBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Select AM or PM for the start time");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (endAMPMBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Select AM or PM for the end time");
             errorMessage.showAndWait();
             return;
         }
@@ -329,6 +347,11 @@ public class UpdateAppointmentViewController {
         endHourSpinner.getValueFactory().setValue(appt.getEndTime().getHour());
         startMinuteSpinner.getValueFactory().setValue(appt.getStartTime().getMinute());
         endMinuteSpinner.getValueFactory().setValue(appt.getEndTime().getMinute());
+
+        //load the AM/PM Combo boxes
+        ObservableList<String> ampm = FXCollections.observableArrayList("AM", "PM");
+        startAMPMBox.setItems(ampm);
+        endAMPMBox.setItems(ampm);
 
         //set the values of the Date Pickers for the Start & End date
         startDatePicker.setValue(appt.getStartTime().toLocalDate());

@@ -142,6 +142,14 @@ public class LoginController implements Initializable {
             }
         }
         successfulLogin = true;
+        //user id
+        //username
+        //password
+        //create date
+        //created by
+        //last update
+        //last updated by
+
         JDBC.closeConnection();
     }
 
@@ -158,6 +166,26 @@ public class LoginController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    /*public void fakelogin() {
+        FXMLLoader updateApptLoader = new FXMLLoader();
+        updateApptLoader.setLocation(getClass().getResource("update-appointment-view.fxml"));
+        updateApptLoader.load();
+        UpdateAppointmentViewController updateApptController = updateApptLoader.getController();
+        if (appointmentTable.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
+            errorMessage.setTitle("Error");
+            errorMessage.setContentText("Must select an appointment");
+            errorMessage.showAndWait();
+            return;
+        }
+        updateApptController.sendApptData((Appointment) appointmentTable.getSelectionModel().getSelectedItem());
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Parent scene = updateApptLoader.getRoot();
+        stage.setTitle("Update Appointment");
+        stage.setScene(new Scene(scene));
+        stage.show();
+    }*/
 
     public void onLanguageSelection(ActionEvent actionEvent) {
         //gather the selected country_ID from the combo box

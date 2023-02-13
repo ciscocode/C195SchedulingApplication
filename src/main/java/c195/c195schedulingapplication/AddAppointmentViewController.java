@@ -10,16 +10,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
 
 import static helper.JDBC.connection;
 
@@ -39,6 +39,8 @@ public class AddAppointmentViewController implements Initializable {
     public Spinner startMinuteSpinner;
     public Spinner endMinuteSpinner;
     public Spinner endHourSpinner;
+    public ComboBox startAMPMBox;
+    public ComboBox endAMPMBox;
     int Appointment_ID;
     String Title;
     String Description;
@@ -141,6 +143,22 @@ public class AddAppointmentViewController implements Initializable {
             return;
         }
 
+        if (startAMPMBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Select AM or PM for the start time");
+            errorMessage.showAndWait();
+            return;
+        }
+
+        if (endAMPMBox.getSelectionModel().getSelectedItem() == null) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Select AM or PM for the end time");
+            errorMessage.showAndWait();
+            return;
+        }
+
         //combo boxes - customer id, user id,
         Customer_ID = Integer.valueOf((String) customerIDBox.getValue());
         User_ID = Integer.valueOf((String) userIDBox.getValue());
@@ -206,15 +224,79 @@ public class AddAppointmentViewController implements Initializable {
         LocalDate startDate = startDatePicker.getValue();
         Integer startHour = (Integer) startHourSpinner.getValue();
         Integer startMinute = (Integer) startMinuteSpinner.getValue();
-        StartTime = LocalDateTime.of(startDate, LocalTime.of(startHour,startMinute));
+
+        //set opening business hours based on the selected start date (8am est which is 13:00 UTC time)
+        LocalDateTime openingStartDateTime = LocalDateTime.of(startDate, LocalTime.of(13, 0));
+        ZonedDateTime openingStartZonedDateTime = openingStartDateTime.atZone(ZoneId.of("UTC"));
+
+        //set closing business hours based on the selected start date (10pm est which is 3:00am UTC time the following day)
+        LocalDateTime closingStartDateTime = LocalDateTime.of(startDate.plusDays(1), LocalTime.of(3, 0));
+        ZonedDateTime closingStartZonedDateTime = closingStartDateTime.atZone(ZoneId.of("UTC"));
+
+        //check if the hour is PM or AM
+        String startAMPMString = (String) startAMPMBox.getSelectionModel().getSelectedItem();
+        if (startAMPMString.equals("PM") && startHour != 12) {
+            startHour += 12;
+        } else if (startAMPMString.equals("AM") && startHour == 12) {
+            startHour = 0;
+        }
+
+        //specify the time zone of the start time input
+        ZoneId startTimeZone = ZoneId.systemDefault();
+        LocalDateTime localStartDateTime = LocalDateTime.of(startDate, LocalTime.of(startHour, startMinute));
+        ZonedDateTime zonedStartDateTime = ZonedDateTime.of(localStartDateTime, startTimeZone);
+
+        //convert the start time to UTC time
+        ZonedDateTime utcStartDateTime = zonedStartDateTime.withZoneSameInstant(ZoneId.of("UTC"));
+        StartTime = utcStartDateTime.toLocalDateTime();
         Timestamp startTimestamp = Timestamp.valueOf(StartTime);
+
+        if (utcStartDateTime.isBefore(openingStartZonedDateTime) || utcStartDateTime.isAfter(closingStartZonedDateTime) || zonedStartDateTime.isEqual(closingStartZonedDateTime)) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Your start time is outside business hours");
+            errorMessage.showAndWait();
+            return;
+        }
 
         //get the end time
         LocalDate endDate = endDatePicker.getValue();
         Integer endHour = (Integer) endHourSpinner.getValue();
         Integer endMinute = (Integer) endMinuteSpinner.getValue();
-        EndTime = LocalDateTime.of(endDate, LocalTime.of(endHour,endMinute));
+
+        //set opening business hours based on the selected end date (8am est which is 13:00 UTC time)
+        LocalDateTime openingEndDateTime = LocalDateTime.of(endDate, LocalTime.of(13, 0));
+        ZonedDateTime openingEndZonedDateTime = openingEndDateTime.atZone(ZoneId.of("UTC"));
+
+        //set closing business hours based on the selected end date (10pm est which is 3:00am UTC time the following day)
+        LocalDateTime closingEndDateTime = LocalDateTime.of(endDate.plusDays(1), LocalTime.of(3, 0));
+        ZonedDateTime closingEndZonedDateTime = closingEndDateTime.atZone(ZoneId.of("UTC"));
+
+        //check if the hour is PM or AM
+        String endAMPMString = (String) endAMPMBox.getSelectionModel().getSelectedItem();
+        if (endAMPMString.equals("PM") && endHour != 12) {
+            endHour += 12;
+        } else if (endAMPMString.equals("AM") && endHour == 12) {
+            endHour = 0;
+        }
+
+        //specify the time zone of the end time input
+        ZoneId endTimeZone = ZoneId.systemDefault();
+        LocalDateTime localEndDateTime = LocalDateTime.of(endDate, LocalTime.of(endHour, endMinute));
+        ZonedDateTime zonedEndDateTime = ZonedDateTime.of(localEndDateTime, endTimeZone);
+
+        //convert the start time to UTC time
+        ZonedDateTime utcEndDateTime = zonedEndDateTime.withZoneSameInstant(ZoneId.of("UTC"));
+        EndTime = utcEndDateTime.toLocalDateTime();
         Timestamp endTimestamp = Timestamp.valueOf(EndTime);
+
+        if (utcEndDateTime.isBefore(openingEndZonedDateTime) || utcEndDateTime.isAfter(closingEndZonedDateTime) || zonedEndDateTime.isEqual(closingEndZonedDateTime) || zonedEndDateTime.isEqual(openingEndZonedDateTime)) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Your end time is outside business hours");
+            errorMessage.showAndWait();
+            return;
+        }
 
         //check to see if the end date of the appointment is valid
         if (endDate.isBefore(startDate)) {
@@ -258,6 +340,7 @@ public class AddAppointmentViewController implements Initializable {
             errorMessage.showAndWait();
             return;
         }
+
         //use all the inputs to create a new appointment
         Appointment newAppt = new Appointment(
                 Appointment_ID,
@@ -303,7 +386,7 @@ public class AddAppointmentViewController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LocalDate today = LocalDate.now();
        //set the valid dates for the start date
-        startDatePicker.setDayCellFactory(picker -> new DateCell() {
+       startDatePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -332,6 +415,11 @@ public class AddAppointmentViewController implements Initializable {
         endHourSpinner.setValueFactory(endHourValueFactory);
         startMinuteSpinner.setValueFactory(startMinuteValueFactory);
         endMinuteSpinner.setValueFactory(endMinuteValueFactory);
+
+        //load the AM/PM Combo boxes
+        ObservableList<String> ampm = FXCollections.observableArrayList("AM", "PM");
+        startAMPMBox.setItems(ampm);
+        endAMPMBox.setItems(ampm);
 
         //load the customer ID, user ID, and Contact combo boxes
         try {
