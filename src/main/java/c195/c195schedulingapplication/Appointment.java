@@ -4,6 +4,8 @@ import helper.JDBC;
 
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 import static helper.JDBC.connection;
 
 
@@ -163,6 +165,21 @@ public class Appointment {
 
     public void setContact_ID(int contact_ID) {
         this.Contact_ID = contact_ID;
+    }
+
+    public LocalDateTime getLocalStartTime() {
+        //get time zone of users device
+        ZoneId deviceTimeZone = ZoneId.systemDefault();
+        ZoneId utc = ZoneId.of("UTC");
+        LocalDateTime startDateTimeLocal = StartTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
+        return startDateTimeLocal;
+    }
+
+    public LocalDateTime getLocalEndTime() {
+        ZoneId deviceTimeZone = ZoneId.systemDefault();
+        ZoneId utc = ZoneId.of("UTC");
+        LocalDateTime endDateTimeLocal = EndTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
+        return endDateTimeLocal;
     }
 
     public String getContactName() throws SQLException {

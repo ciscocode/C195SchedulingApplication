@@ -342,16 +342,36 @@ public class UpdateAppointmentViewController {
         startMinuteSpinner.setValueFactory(startMinuteValueFactory);
         endMinuteSpinner.setValueFactory(endMinuteValueFactory);
 
-        //set the values of the spinners
-        startHourSpinner.getValueFactory().setValue(appt.getStartTime().getHour());
-        endHourSpinner.getValueFactory().setValue(appt.getEndTime().getHour());
-        startMinuteSpinner.getValueFactory().setValue(appt.getStartTime().getMinute());
-        endMinuteSpinner.getValueFactory().setValue(appt.getEndTime().getMinute());
-
         //load the AM/PM Combo boxes
         ObservableList<String> ampm = FXCollections.observableArrayList("AM", "PM");
         startAMPMBox.setItems(ampm);
         endAMPMBox.setItems(ampm);
+
+        int startHour = appt.getLocalStartTime().getHour();
+        if (startHour >= 12) {
+            startHour -= 12;
+            startAMPMBox.setValue("PM");
+        } else {
+            startAMPMBox.setValue("AM");
+        }
+
+        int endHour = appt.getLocalEndTime().getHour();
+        if (endHour >= 12) {
+            endHour -= 12;
+            endAMPMBox.setValue("PM");
+        } else {
+            endAMPMBox.setValue("AM");
+        }
+
+        //set the values of the spinners
+        //startHourSpinner.getValueFactory().setValue(appt.getStartTime().getHour());
+        startHourSpinner.getValueFactory().setValue(startHour);
+        //endHourSpinner.getValueFactory().setValue(appt.getEndTime().getHour());
+        endHourSpinner.getValueFactory().setValue(endHour);
+        startMinuteSpinner.getValueFactory().setValue(appt.getStartTime().getMinute());
+        endMinuteSpinner.getValueFactory().setValue(appt.getEndTime().getMinute());
+
+        System.out.println("Start Time... " + appt.getLocalStartTime());
 
         //set the values of the Date Pickers for the Start & End date
         startDatePicker.setValue(appt.getStartTime().toLocalDate());
