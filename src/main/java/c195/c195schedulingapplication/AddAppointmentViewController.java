@@ -298,6 +298,23 @@ public class AddAppointmentViewController implements Initializable {
             return;
         }
 
+        //check to see if there are any overlapping appointments by running a query
+        PreparedStatement overlapStatement = connection.prepareStatement("SELECT * FROM appointments WHERE Start BETWEEN ? AND ? OR End BETWEEN ? AND ? OR (Start <= ? AND End >= ?)");
+        overlapStatement.setTimestamp(1, startTimestamp);
+        overlapStatement.setTimestamp(2, endTimestamp);
+        overlapStatement.setTimestamp(3, startTimestamp);
+        overlapStatement.setTimestamp(4, endTimestamp);
+        overlapStatement.setTimestamp(5, startTimestamp);
+        overlapStatement.setTimestamp(6, endTimestamp);
+        ResultSet overlapResultSet = overlapStatement.executeQuery();
+        if (overlapResultSet.next()) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("The appointment overlaps over an existing appointment. Please select a different time.");
+            errorMessage.showAndWait();
+            return;
+        }
+
         //check to see if the end date of the appointment is valid
         if (endDate.isBefore(startDate)) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);

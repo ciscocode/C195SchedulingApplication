@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the delete alert to include the type of appointment deleted">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="The Update Appointment controller now checks for start/date times set within business hours">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added labels to each view">
-      <created>1672819756815</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1672819756815</updated>
     </task>
     <task id="LOCAL-00006" summary="Updated look of the main menu">
       <created>1672820001010</created>
@@ -433,11 +426,17 @@
       <option name="project" value="LOCAL" />
       <updated>1676437078901</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="The Update Appointment controller now checks for start/date times set within business hours">
+      <created>1676439131598</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1676439131598</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Successfully implemented the update appointment method." />
     <MESSAGE value="Fixed a bug which was causing issues when updating the Customer ID or User ID in an appointment" />
     <MESSAGE value="Successfuly created Delete Appointment method" />
     <MESSAGE value="I added a feature to filter the table view by months or weeks" />
@@ -462,6 +461,7 @@
     <MESSAGE value="Updated Appointments tables to display times in Local 12 hour format" />
     <MESSAGE value="Updated my Locale Code. The program can now successfully update the language on the login page to French if a user's device language is set to French" />
     <MESSAGE value="Updated the delete alert to include the type of appointment deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the delete alert to include the type of appointment deleted" />
+    <MESSAGE value="The Update Appointment controller now checks for start/date times set within business hours" />
+    <option name="LAST_COMMIT_MESSAGE" value="The Update Appointment controller now checks for start/date times set within business hours" />
   </component>
 </project>
