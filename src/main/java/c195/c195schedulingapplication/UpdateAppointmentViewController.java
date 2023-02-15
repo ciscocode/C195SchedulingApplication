@@ -13,10 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
+
 import static helper.JDBC.connection;
 
 
@@ -203,15 +201,79 @@ public class UpdateAppointmentViewController {
         LocalDate startDate = startDatePicker.getValue();
         Integer startHour = (Integer) startHourSpinner.getValue();
         Integer startMinute = (Integer) startMinuteSpinner.getValue();
-        StartTime = LocalDateTime.of(startDate, LocalTime.of(startHour,startMinute));
+
+        //set opening business hours based on the selected start date (8am est which is 13:00 UTC time)
+        LocalDateTime openingStartDateTime = LocalDateTime.of(startDate, LocalTime.of(13, 0));
+        ZonedDateTime openingStartZonedDateTime = openingStartDateTime.atZone(ZoneId.of("UTC"));
+
+        //set closing business hours based on the selected start date (10pm est which is 3:00am UTC time the following day)
+        LocalDateTime closingStartDateTime = LocalDateTime.of(startDate.plusDays(1), LocalTime.of(3, 0));
+        ZonedDateTime closingStartZonedDateTime = closingStartDateTime.atZone(ZoneId.of("UTC"));
+
+        //check if the hour is PM or AM
+        String startAMPMString = (String) startAMPMBox.getSelectionModel().getSelectedItem();
+        if (startAMPMString.equals("PM") && startHour != 12) {
+            startHour += 12;
+        } else if (startAMPMString.equals("AM") && startHour == 12) {
+            startHour = 0;
+        }
+
+        //specify the time zone of the start time input
+        ZoneId startTimeZone = ZoneId.systemDefault();
+        LocalDateTime localStartDateTime = LocalDateTime.of(startDate, LocalTime.of(startHour, startMinute));
+        ZonedDateTime zonedStartDateTime = ZonedDateTime.of(localStartDateTime, startTimeZone);
+
+        //convert the start time to UTC time
+        ZonedDateTime utcStartDateTime = zonedStartDateTime.withZoneSameInstant(ZoneId.of("UTC"));
+        StartTime = utcStartDateTime.toLocalDateTime();
         Timestamp startTimestamp = Timestamp.valueOf(StartTime);
+
+        if (utcStartDateTime.isBefore(openingStartZonedDateTime) || utcStartDateTime.isAfter(closingStartZonedDateTime) || zonedStartDateTime.isEqual(closingStartZonedDateTime)) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Your start time is outside business hours");
+            errorMessage.showAndWait();
+            return;
+        }
 
         //get the end time
         LocalDate endDate = endDatePicker.getValue();
         Integer endHour = (Integer) endHourSpinner.getValue();
         Integer endMinute = (Integer) endMinuteSpinner.getValue();
-        EndTime = LocalDateTime.of(endDate, LocalTime.of(endHour,endMinute));
+
+        //set opening business hours based on the selected end date (8am est which is 13:00 UTC time)
+        LocalDateTime openingEndDateTime = LocalDateTime.of(endDate, LocalTime.of(13, 0));
+        ZonedDateTime openingEndZonedDateTime = openingEndDateTime.atZone(ZoneId.of("UTC"));
+
+        //set closing business hours based on the selected end date (10pm est which is 3:00am UTC time the following day)
+        LocalDateTime closingEndDateTime = LocalDateTime.of(endDate.plusDays(1), LocalTime.of(3, 0));
+        ZonedDateTime closingEndZonedDateTime = closingEndDateTime.atZone(ZoneId.of("UTC"));
+
+        //check if the hour is PM or AM
+        String endAMPMString = (String) endAMPMBox.getSelectionModel().getSelectedItem();
+        if (endAMPMString.equals("PM") && endHour != 12) {
+            endHour += 12;
+        } else if (endAMPMString.equals("AM") && endHour == 12) {
+            endHour = 0;
+        }
+
+        //specify the time zone of the end time input
+        ZoneId endTimeZone = ZoneId.systemDefault();
+        LocalDateTime localEndDateTime = LocalDateTime.of(endDate, LocalTime.of(endHour, endMinute));
+        ZonedDateTime zonedEndDateTime = ZonedDateTime.of(localEndDateTime, endTimeZone);
+
+        //convert the start time to UTC time
+        ZonedDateTime utcEndDateTime = zonedEndDateTime.withZoneSameInstant(ZoneId.of("UTC"));
+        EndTime = utcEndDateTime.toLocalDateTime();
         Timestamp endTimestamp = Timestamp.valueOf(EndTime);
+
+        if (utcEndDateTime.isBefore(openingEndZonedDateTime) || utcEndDateTime.isAfter(closingEndZonedDateTime) || zonedEndDateTime.isEqual(closingEndZonedDateTime) || zonedEndDateTime.isEqual(openingEndZonedDateTime)) {
+            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
+            errorMessage.setTitle("Warning");
+            errorMessage.setContentText("Your end time is outside business hours");
+            errorMessage.showAndWait();
+            return;
+        }
 
         //check to see if the end date of the appointment is valid
         if (endDate.isBefore(startDate)) {
@@ -364,14 +426,10 @@ public class UpdateAppointmentViewController {
         }
 
         //set the values of the spinners
-        //startHourSpinner.getValueFactory().setValue(appt.getStartTime().getHour());
         startHourSpinner.getValueFactory().setValue(startHour);
-        //endHourSpinner.getValueFactory().setValue(appt.getEndTime().getHour());
         endHourSpinner.getValueFactory().setValue(endHour);
         startMinuteSpinner.getValueFactory().setValue(appt.getStartTime().getMinute());
         endMinuteSpinner.getValueFactory().setValue(appt.getEndTime().getMinute());
-
-        System.out.println("Start Time... " + appt.getLocalStartTime());
 
         //set the values of the Date Pickers for the Start & End date
         startDatePicker.setValue(appt.getStartTime().toLocalDate());

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated my Locale Code. The program can now successfully update the language on the login page to French if a user's device language is set to French">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the delete alert to include the type of appointment deleted">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Created the add apointment view">
-      <created>1672819232391</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1672819232391</updated>
     </task>
     <task id="LOCAL-00005" summary="Added labels to each view">
       <created>1672819756815</created>
@@ -433,11 +426,17 @@
       <option name="project" value="LOCAL" />
       <updated>1676277096381</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Updated the delete alert to include the type of appointment deleted">
+      <created>1676437078901</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1676437078901</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated the add/update methods. There was a bug in which duplicates of User ID or Customer ID would populate in the combo box. That is now fixed." />
     <MESSAGE value="Successfully implemented the update appointment method." />
     <MESSAGE value="Fixed a bug which was causing issues when updating the Customer ID or User ID in an appointment" />
     <MESSAGE value="Successfuly created Delete Appointment method" />
@@ -462,6 +461,7 @@
     <MESSAGE value="Updated the Update Appointment controller to send the appointment time in the local time zone of the users device." />
     <MESSAGE value="Updated Appointments tables to display times in Local 12 hour format" />
     <MESSAGE value="Updated my Locale Code. The program can now successfully update the language on the login page to French if a user's device language is set to French" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated my Locale Code. The program can now successfully update the language on the login page to French if a user's device language is set to French" />
+    <MESSAGE value="Updated the delete alert to include the type of appointment deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated the delete alert to include the type of appointment deleted" />
   </component>
 </project>
