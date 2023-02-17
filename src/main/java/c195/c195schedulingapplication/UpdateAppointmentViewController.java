@@ -427,17 +427,27 @@ public class UpdateAppointmentViewController {
         endAMPMBox.setItems(ampm);
 
         int startHour = appt.getLocalStartTime().getHour();
-        if (startHour >= 12) {
+        if (startHour >= 13) {
             startHour -= 12;
             startAMPMBox.setValue("PM");
+        } else if (startHour == 12) {
+            startAMPMBox.setValue("PM");
+        } else if (startHour == 0) {
+            startHour = 12;
+            startAMPMBox.setValue("AM");
         } else {
             startAMPMBox.setValue("AM");
         }
 
         int endHour = appt.getLocalEndTime().getHour();
-        if (endHour >= 12) {
+        if (endHour >= 13) {
             endHour -= 12;
             endAMPMBox.setValue("PM");
+        } else if (endHour == 12) {
+            endAMPMBox.setValue("PM");
+        } else if (endHour == 0) {
+            endHour = 12;
+            endAMPMBox.setValue("AM");
         } else {
             endAMPMBox.setValue("AM");
         }

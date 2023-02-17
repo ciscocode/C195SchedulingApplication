@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="The Update Appointment controller now checks for start/date times set within business hours">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I added logic to check for overlapping appointments when adding/updating appointments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Updated look of the main menu">
-      <created>1672820001010</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1672820001010</updated>
     </task>
     <task id="LOCAL-00007" summary="Refactored names of fxml &amp; controller files for the login screen and main menu">
       <created>1672820225980</created>
@@ -433,11 +426,17 @@
       <option name="project" value="LOCAL" />
       <updated>1676439131598</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="I added logic to check for overlapping appointments when adding/updating appointments">
+      <created>1676444823860</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1676444823860</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed a bug which was causing issues when updating the Customer ID or User ID in an appointment" />
     <MESSAGE value="Successfuly created Delete Appointment method" />
     <MESSAGE value="I added a feature to filter the table view by months or weeks" />
     <MESSAGE value="The Login Menu now displays the users location" />
@@ -462,6 +461,7 @@
     <MESSAGE value="Updated my Locale Code. The program can now successfully update the language on the login page to French if a user's device language is set to French" />
     <MESSAGE value="Updated the delete alert to include the type of appointment deleted" />
     <MESSAGE value="The Update Appointment controller now checks for start/date times set within business hours" />
-    <option name="LAST_COMMIT_MESSAGE" value="The Update Appointment controller now checks for start/date times set within business hours" />
+    <MESSAGE value="I added logic to check for overlapping appointments when adding/updating appointments" />
+    <option name="LAST_COMMIT_MESSAGE" value="I added logic to check for overlapping appointments when adding/updating appointments" />
   </component>
 </project>
