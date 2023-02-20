@@ -22,6 +22,7 @@ import static helper.JDBC.connection;
 
 import static java.sql.DriverManager.getConnection;
 
+/**This class generates a report of appointments. It can count appointments by Type or Month.*/
 public class AppointmentsReportViewController implements Initializable {
     public RadioButton typeRadioButton;
     public RadioButton monthRadioButton;
@@ -39,14 +40,19 @@ public class AppointmentsReportViewController implements Initializable {
     public TableColumn userIDCol;
     public TableColumn titleCol;
     public Label countLabel;
+    public RadioButton viewAllButton;
     int count = 0;
     int totalCount = 0;
-
 
     ObservableList<String> monthOptions = FXCollections.observableArrayList();
     ObservableList<String> typeOptions = FXCollections.observableArrayList();
     ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
 
+    /**
+     * This method returns the user to the reports menu
+     * @param actionEvent the method is called when the user clicks the return button
+     * @throws IOException
+     */
     public void onReturnToReportMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -56,16 +62,30 @@ public class AppointmentsReportViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method loads the selection box with a list of available types
+     * @param actionEvent this method is called when the user selects the Type radio button
+     * @throws SQLException
+     */
     public void onFilterByType(ActionEvent actionEvent) throws SQLException {
         selectionLabel.setText("Select Type");
         selectionBox.setItems(typeOptions);
     }
 
+    /**
+     * This method loads the selection box with a list of available months
+     * @param actionEvent this method is called when the user selects the Month radio button
+     * @throws SQLException
+     */
     public void onFilterByMonth(ActionEvent actionEvent) throws SQLException {
         selectionLabel.setText("Select Month");
         selectionBox.setItems(monthOptions);
     }
 
+    /**
+     * THis method loads an observable array list of appointments sorted by type
+     * @throws SQLException
+     */
     public void loadTypeList() throws SQLException {
         JDBC.openConnection();
         String sql = "SELECT DISTINCT Type FROM appointments";
@@ -78,6 +98,10 @@ public class AppointmentsReportViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method loads an observable array list of appointments by month
+     * @throws SQLException
+     */
     public void loadMonthList() throws SQLException {
         JDBC.openConnection();
         String sql = "SELECT DISTINCT MONTHNAME(Start) FROM appointments;";
@@ -90,6 +114,12 @@ public class AppointmentsReportViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This initialize method starts by loading the avaialble lists of month & type
+     * It also creates a table view of all available appointments and counts them
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -138,8 +168,8 @@ public class AppointmentsReportViewController implements Initializable {
             locationCol.setCellValueFactory(new PropertyValueFactory<>("Location"));
             contactCol.setCellValueFactory(new PropertyValueFactory<>("ContactName"));
             typeCol.setCellValueFactory(new PropertyValueFactory<>("Type"));
-            startTimeCol.setCellValueFactory(new PropertyValueFactory<>("StartTime"));
-            endTimeCol.setCellValueFactory(new PropertyValueFactory<>("EndTime"));
+            startTimeCol.setCellValueFactory(new PropertyValueFactory<>("LocalStartTimeIn12HourFormat"));
+            endTimeCol.setCellValueFactory(new PropertyValueFactory<>("LocalEndTimeIn12HourFormat"));
             customerIDCol.setCellValueFactory(new PropertyValueFactory<>("Customer_ID"));
             userIDCol.setCellValueFactory(new PropertyValueFactory<>("User_ID"));
             titleCol.setCellValueFactory(new PropertyValueFactory<>("Title"));
@@ -150,6 +180,11 @@ public class AppointmentsReportViewController implements Initializable {
     }
 
 
+    /**
+     * This method displays all appointments of a selected Type or Month, and displayes their respective total count
+     * @param actionEvent this method is called when a user makes a selection from the combo box
+     * @throws SQLException
+     */
     public void onSelectedOption(ActionEvent actionEvent) throws SQLException {
         //reset count to 0 everytime you load a new list
         count = 0;
@@ -229,6 +264,10 @@ public class AppointmentsReportViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method loads the table view with all appointments
+     * @param actionEvent this method is called when the user clicks the view all radio button
+     */
     public void onViewAll(ActionEvent actionEvent) {
         appointmentTable.setItems(appointmentList);
         countLabel.setText(String.valueOf(totalCount));

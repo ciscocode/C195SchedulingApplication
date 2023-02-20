@@ -9,9 +9,10 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/** This class launches the application.*/
 public class Application extends javafx.application.Application {
-    private boolean initialized = false;
 
+    /** This method starts the program and loads a resource bundle based on the Locale of the user. */
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("login-view.fxml"));
@@ -22,6 +23,7 @@ public class Application extends javafx.application.Application {
         stage.show();
     }
 
+    /** This is the main method. This launches our program*/
     public static void main(String[] args) {
         JDBC.openConnection();
         launch();

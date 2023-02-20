@@ -38,7 +38,7 @@
             <Font name="System Italic" size="13.0" />
          </font>
       </Label>
-      <RadioButton fx:id="typeRadioButton1" layoutX="429.0" layoutY="69.0" mnemonicParsing="false" onAction="#onViewAll" text="View All" toggleGroup="$viewToggle" />
+      <RadioButton fx:id="viewAllButton" layoutX="429.0" layoutY="69.0" mnemonicParsing="false" onAction="#onViewAll" text="View All" toggleGroup="$viewToggle" />
       <Label layoutX="1008.0" layoutY="95.0" text="Count:" />
       <Label fx:id="countLabel" layoutX="1058.0" layoutY="95.0" text="num" />
     </children>

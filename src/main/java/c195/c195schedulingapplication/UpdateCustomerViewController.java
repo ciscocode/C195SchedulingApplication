@@ -18,6 +18,7 @@ import java.sql.*;
 import java.time.LocalDateTime;
 import static helper.JDBC.connection;
 
+/**This class creates the functionality to update a customers data in the database.*/
 public class UpdateCustomerViewController {
     public TextField customerIDTextField;
     public TextField nameTextField;
@@ -42,6 +43,10 @@ public class UpdateCustomerViewController {
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
     boolean successfulUpdate = false;
 
+    /**
+     * This method runs a query to update the customers info based on user input
+     * @throws SQLException
+     */
     public void updateCustomer() throws SQLException {
         //connect to database
         JDBC.openConnection();
@@ -149,6 +154,12 @@ public class UpdateCustomerViewController {
         successfulUpdate = true;
         JDBC.closeConnection();
     }
+
+    /**
+     * This method sends the selected customer data from the table onto the Update Customer form and populates the textfields and combo boxes with the customers data
+     * @param customer the selected customer
+     * @throws SQLException
+     */
     public void sendCustomerData(Customer customer) throws SQLException {
         //set the text fields
         customerIDTextField.setText(String.valueOf(customer.getCustomer_ID()));
@@ -210,6 +221,11 @@ public class UpdateCustomerViewController {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method updated the available divisions after a user has selected a country
+     * @param actionEvent this method is called when a user selects a country
+     * @throws SQLException
+     */
     public void onCountrySelection(ActionEvent actionEvent) throws SQLException {
         JDBC.openConnection();
 
@@ -239,6 +255,11 @@ public class UpdateCustomerViewController {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method finds the division id after a user has selected a division from the division combo box
+     * @param actionEvent this method is called when the user selects a division
+     * @throws SQLException
+     */
     public void onDivisionSelection(ActionEvent actionEvent) throws SQLException {
         JDBC.openConnection();
 
@@ -258,6 +279,11 @@ public class UpdateCustomerViewController {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method cancels the updating of the customer
+     * @param actionEvent this method is called when the user selects the cancel button
+     * @throws IOException
+     */
     public void onCancel(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -267,6 +293,12 @@ public class UpdateCustomerViewController {
         stage.show();
     }
 
+    /**
+     * This method saves the customer. If a save is successful it sends the user back to the main customer view
+     * @param actionEvent this method is called when a user clicks the save button
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         updateCustomer();
 

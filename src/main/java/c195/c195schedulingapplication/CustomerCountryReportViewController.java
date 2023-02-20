@@ -21,6 +21,7 @@ import java.sql.*;
 import java.util.ResourceBundle;
 import static helper.JDBC.connection;
 
+/**This class creates a report which displays customers by country.*/
 public class CustomerCountryReportViewController implements Initializable {
     public TableView<Customer> customerTable;
     public TableColumn IDCol;
@@ -35,6 +36,11 @@ public class CustomerCountryReportViewController implements Initializable {
     ObservableList<Customer> customerList = FXCollections.observableArrayList();
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK","Canada");
 
+    /**
+     * This intializes the table view with all the customers
+     * @param url
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             //load country box
@@ -82,6 +88,11 @@ public class CustomerCountryReportViewController implements Initializable {
         }
     }
 
+    /**
+     * This returns the user to the reports menu
+     * @param actionEvent this method is called when the user clicks the return to menu button
+     * @throws IOException
+     */
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -91,6 +102,11 @@ public class CustomerCountryReportViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method filters the table view by the selected country
+     * @param actionEvent this method is called when a user selects a country
+     * @throws SQLException
+     */
     public void onSelection(ActionEvent actionEvent) throws SQLException {
         ObservableList<Customer> filteredList = FXCollections.observableArrayList();
 
@@ -135,6 +151,11 @@ public class CustomerCountryReportViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method displays all customers on the table view
+     * @param actionEvent this method is called when the user clicks the view all button
+     * @throws SQLException
+     */
     public void onViewAll(ActionEvent actionEvent) throws SQLException {
         customerTable.setItems(customerList);
     }

@@ -20,6 +20,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import static helper.JDBC.connection;
 
+/**This class runs the appointment view controller and loads the table with the appropriate data.*/
 public class AppointmentViewController implements Initializable {
     public TableView appointmentTable;
     public TableColumn apptIDCol;
@@ -39,7 +40,11 @@ public class AppointmentViewController implements Initializable {
     ObservableList<Appointment> dataByMonth = FXCollections.observableArrayList();
     ObservableList<Appointment> dataByWeek = FXCollections.observableArrayList();
 
-
+    /**
+     * This method intializes the class by running a query from the database and loading the appointments on the table view
+     * @param url
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             //establish connection to database
@@ -143,6 +148,11 @@ public class AppointmentViewController implements Initializable {
 
     }
 
+    /**
+     * This method sends the user to the add appointment view
+     * @param actionEvent this method is called when the user clicks the Add Appointment button
+     * @throws IOException
+     */
     public void onAddAppt(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("add-appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -151,6 +161,13 @@ public class AppointmentViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * This method sends the user to the Update Appointment view
+     * @param actionEvent this method is called when the user clicks on the Update Appointment button
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onUpdateAppt(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader updateApptLoader = new FXMLLoader();
         updateApptLoader.setLocation(getClass().getResource("update-appointment-view.fxml"));
@@ -171,6 +188,12 @@ public class AppointmentViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method deletes a selected appointment from the table view
+     * @param actionEvent this method is called when a user selects an appt and clicks the Delete Appointment button
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onDeleteAppt(ActionEvent actionEvent) throws IOException, SQLException {
         JDBC.openConnection();
 
@@ -199,6 +222,12 @@ public class AppointmentViewController implements Initializable {
         }
         JDBC.closeConnection();
     }
+
+    /**
+     * This method sends the user back to the main menu
+     * @param actionEvent This method is called when the user clicks the Main Menu button
+     * @throws IOException
+     */
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -208,14 +237,28 @@ public class AppointmentViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method displayes all appointments on the table view
+     * @param actionEvent this method is called when the user clicks View All
+     */
     public void onViewAll(ActionEvent actionEvent) {
         appointmentTable.setItems(data);
     }
 
+    /**
+     * This method filters the appointments in the table view by the current month
+     * Note: A month according to UTC time
+     * @param actionEvent this method is called when a user clicks the sort by month button
+     */
     public void onSortByMonth(ActionEvent actionEvent) {
         appointmentTable.setItems(dataByMonth);
     }
 
+    /**
+     * This method filters the appointments in the table view by the current week
+     * Note: A week according to UTC time
+     * @param actionEvent this method is called when a user clicks the sort by week button
+     */
     public void onSorthByWeek(ActionEvent actionEvent) {
         appointmentTable.setItems(dataByWeek);
     }

@@ -21,6 +21,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import static helper.JDBC.connection;
 
+/**This class creates the customer database table view.*/
 public class CustomerDatabaseViewController implements Initializable {
     public TableView<Customer> customerTable;
     public TableColumn IDCol;
@@ -33,6 +34,11 @@ public class CustomerDatabaseViewController implements Initializable {
     int customer_ID;
     ObservableList<Customer> data = FXCollections.observableArrayList();
 
+    /**
+     * This method intializes the table view by running a query which gathers all customer data
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -78,6 +84,11 @@ public class CustomerDatabaseViewController implements Initializable {
         }
     }
 
+    /**
+     * This method deletes a selected customer from the database
+     * @param actionEvent this method is called when a user selects a customer and clicks the Delete Customer button
+     * @throws SQLException
+     */
     public void onDeleteCustomer(ActionEvent actionEvent) throws SQLException {
         JDBC.openConnection();
 
@@ -126,6 +137,11 @@ public class CustomerDatabaseViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method returns the user to the main menu
+     * @param actionEvent this method is called when the user clicks the Return to Menu button
+     * @throws IOException
+     */
     public void onReturnToMainMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -135,6 +151,11 @@ public class CustomerDatabaseViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method sends the user to the Add Customer view
+     * @param actionEvent this method is called when the user clicks the Add Customer button
+     * @throws IOException
+     */
     public void onAddCustomer(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("add-customer-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -144,6 +165,12 @@ public class CustomerDatabaseViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method updates a selected customer from the table view
+     * @param actionEvent this method is called when a user selects a customer and clicks the Update Customer button
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onUpdateCustomer(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader updateCustomerLoader = new FXMLLoader();
         updateCustomerLoader.setLocation(getClass().getResource("update-customer-view.fxml"));

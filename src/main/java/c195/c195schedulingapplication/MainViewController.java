@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
 import static c195.c195schedulingapplication.LoginController.initialized;
 import static helper.JDBC.connection;
 
+/**This class creates the main menu of the application.*/
 public class MainViewController implements Initializable {
 
     @Override
@@ -90,6 +91,11 @@ public class MainViewController implements Initializable {
         initialized = true;
     }
 
+    /**
+     * This method sends the user to the Customers section of the app
+     * @param actionEvent this method is called when the user clicks Customers
+     * @throws IOException
+     */
     public void onCustomers(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("customer-database-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -99,6 +105,11 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method sends the user to the Appointments section of the app
+     * @param actionEvent this method is called when the user clicks the Appointments button
+     * @throws IOException
+     */
     public void onAppointments(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -108,6 +119,11 @@ public class MainViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method sends the user to the Reports section of the app
+     * @param actionEvent this method is called when the user clicks the Reports button
+     * @throws IOException
+     */
     public void onReports(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

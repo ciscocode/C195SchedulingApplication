@@ -30,6 +30,7 @@ import javafx.scene.control.Button;
 
 import static helper.JDBC.connection;
 
+/**This class includes the functionality necessary for a user to log into the application.*/
 public class LoginController implements Initializable {
     @FXML
     public Label locationText;
@@ -54,7 +55,11 @@ public class LoginController implements Initializable {
     String invalidPassword;
     public static boolean initialized = false;
 
-
+    /**
+     * This method is intialized and sets the users locatio, and language of the login screen based on the users Locale
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -81,6 +86,12 @@ public class LoginController implements Initializable {
         invalidUsername = rb.getString("usernameError");
     }
 
+    /**
+     * This method validates the user log in by checking for empty textfields or invalid username/passwords
+     * This method also keeps a log of successful/unsuccessful log in attempts
+     * @throws SQLException
+     * @throws IOException
+     */
     public void validateLogin() throws SQLException, IOException {
         //get the attempted password/username from the text field
         password = passwordTextField.getText();
@@ -148,6 +159,12 @@ public class LoginController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method calls the validate login method. If a login is successful the user is sent to the main menu of the application
+     * @param actionEvent this method is called when the user clicks the Login button
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onLogin(ActionEvent actionEvent) throws IOException, SQLException {
         validateLogin();
         if (successfulLogin == false) {

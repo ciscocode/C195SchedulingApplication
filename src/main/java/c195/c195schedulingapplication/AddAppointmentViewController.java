@@ -23,7 +23,7 @@ import java.util.TimeZone;
 
 import static helper.JDBC.connection;
 
-
+/**This class has the functionality the user needs to add an appointment to our MySQL database.*/
 public class AddAppointmentViewController implements Initializable {
     public TextField apptIDTextField;
     public TextField titleTextField;
@@ -57,6 +57,7 @@ public class AddAppointmentViewController implements Initializable {
     int Contact_ID;
     boolean successfulAddition = false;
 
+    /** This class creates the appointment and inserts it into the MySQL database while also checking for user input errors. */
     public void insertAppt() throws SQLException {
         //Start by connecting to the database
         JDBC.openConnection();
@@ -79,8 +80,8 @@ public class AddAppointmentViewController implements Initializable {
         Timestamp lastUpdateTimestamp = Timestamp.valueOf(Last_Update);
 
         //set the user names. CHANGE THESE LATER
-        Created_By = "cisco";
-        Last_Updated_By = "cisco";
+        Created_By = JDBC.userName;
+        Last_Updated_By = JDBC.userName;
 
         //gather the title, description, location, and type from the text fields
         Title = titleTextField.getText();
@@ -400,11 +401,13 @@ public class AddAppointmentViewController implements Initializable {
         successfulAddition = true;
         JDBC.closeConnection();
     }
+    /** This initialize the class loads the spinners and date pickers used to set the appointment time. */
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LocalDate today = LocalDate.now();
        //set the valid dates for the start date
        startDatePicker.setDayCellFactory(picker -> new DateCell() {
-            public void updateItem(LocalDate date, boolean empty) {
+           /** This lambda expression updates the start date picker with acceptable dates based on the current day, and business hours. */
+           public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
                     setDisable(true);
@@ -414,6 +417,7 @@ public class AddAppointmentViewController implements Initializable {
 
         //set the valid dates for the end date
         endDatePicker.setDayCellFactory(picker -> new DateCell() {
+            /** This lambda expression updates the end date picker with acceptable dates based on the start date and business hours. */
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
                 if (date.isBefore(today) || date.getDayOfWeek() == DayOfWeek.SATURDAY || date.getDayOfWeek() == DayOfWeek.SUNDAY) {
@@ -487,6 +491,9 @@ public class AddAppointmentViewController implements Initializable {
         }
         JDBC.closeConnection();
     }
+    /**This method calls the insertAppt() method when the user clicks the save button. If an addition was successful it then sends the user to the appointments view.
+     * @param actionEvent Method is called when the user clicks the save button
+     */
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         insertAppt();
 
@@ -501,6 +508,10 @@ public class AddAppointmentViewController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**This method cancels the process of adding an appointment, and sends the user back to the appointments view.
+     * @param actionEvent Method is called when the user clicks the cancel button
+     */
     public void onCancel(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -510,6 +521,10 @@ public class AddAppointmentViewController implements Initializable {
         stage.show();
     }
 
+
+    /** This method uses a lambda expression. This helps create the available dates on the end date picker based on the selected start date from the user
+     * @param actionEvent This method is called when a user selects a start date
+     */
     public void onStartDateSelected(ActionEvent actionEvent) {
         endDatePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {

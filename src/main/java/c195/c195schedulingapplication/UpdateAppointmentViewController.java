@@ -20,6 +20,7 @@ import static helper.JDBC.connection;
 
 import static java.sql.DriverManager.getConnection;
 
+/**This class creates the functionality to update an existing appointment in the database.*/
 public class UpdateAppointmentViewController {
     public TextField apptIDTextField;
     public TextField titleTextField;
@@ -55,7 +56,10 @@ public class UpdateAppointmentViewController {
     int Contact_ID;
     boolean successfulUpdate = false;
 
-
+    /**
+     * This method runs a query to update an appointment using the users input data
+     * @throws SQLException
+     */
     public void updateAppt() throws SQLException {
         //connect to database
         JDBC.openConnection();
@@ -416,6 +420,11 @@ public class UpdateAppointmentViewController {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method sends the data of the selected appointment to the update appoiuntment form.
+     * @param appt This is the selected appointment
+     * @throws SQLException
+     */
     public void sendApptData(Appointment appt) throws SQLException {
         //fill in the text fields
         apptIDTextField.setText(String.valueOf(appt.getAppointment_ID()));
@@ -477,9 +486,11 @@ public class UpdateAppointmentViewController {
         endDatePicker.setValue(appt.getEndTime().toLocalDate());
 
         LocalDate today = LocalDate.now();
-        //set the valid dates for the start date
-        //This is a lambda expression. The lambda expression is used to set the Day Cell Factory of the calendar in the date picker.
-        //The expression takes in a date picker object and returns a date cell which abides by the acceptable dates a user can pick to set an appointment
+        /**
+         *set the valid dates for the start date
+         *This is a lambda expression. The lambda expression is used to set the Day Cell Factory of the calendar in the date picker.
+         *The expression takes in a date picker object and returns a date cell which abides by the acceptable dates a user can pick to set an appointment
+         */
         startDatePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
@@ -489,7 +500,11 @@ public class UpdateAppointmentViewController {
             }
         });
 
-        //set the valid dates for the end date
+        /**
+         *set the valid dates for the end date
+         *This is a lambda expression. The lambda expression is used to set the Day Cell Factory of the calendar in the date picker.
+         *The expression takes in a date picker object and returns a date cell which abides by the acceptable dates a user can pick to set an appointment
+         */
         endDatePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);
@@ -557,6 +572,12 @@ public class UpdateAppointmentViewController {
         }
     }
 
+    /**
+     * This method saves the updated appointment. If a save is successful it sends the user back to the main appointments view
+     * @param actionEvent this method is called when the user clicks the Save button
+     * @throws IOException
+     * @throws SQLException
+     */
     public void onSave(ActionEvent actionEvent) throws IOException, SQLException {
         updateAppt();
 
@@ -572,6 +593,11 @@ public class UpdateAppointmentViewController {
         stage.show();
     }
 
+    /**
+     * This method cancels updating an appointment
+     * @param actionEvent this method is called when a user clicks the cancel button
+     * @throws IOException
+     */
     public void onCancel(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("appointment-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -581,6 +607,10 @@ public class UpdateAppointmentViewController {
         stage.show();
     }
 
+    /**
+     * This method has a lambda expression which sets the available start dates based on the selected start date and business hours
+     * @param actionEvent this method is called when a user selects a start date from the start date picker
+     */
     public void onStartDateSelection(ActionEvent actionEvent) {
         endDatePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {

@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+/**This creates the User class including the variables, getters, setters, and constructor.*/
 public class User {
     private int User_ID;
     private String User_Name;

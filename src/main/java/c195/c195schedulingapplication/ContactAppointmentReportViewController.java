@@ -21,6 +21,7 @@ import static helper.JDBC.connection;
 
 import static java.sql.DriverManager.getConnection;
 
+/**This class creates the report view which lets users see appointments based on a selected contact.*/
 public class ContactAppointmentReportViewController implements Initializable {
     public ComboBox contactBox;
     public Label selectionLabel;
@@ -39,6 +40,11 @@ public class ContactAppointmentReportViewController implements Initializable {
     ObservableList<String> contactList = FXCollections.observableArrayList();
     ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
 
+    /**
+     * THis method allows the user to return to the reports menu
+     * @param actionEvent this method is called when the users click the return button
+     * @throws IOException
+     */
     public void onReturnToReportMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -48,6 +54,10 @@ public class ContactAppointmentReportViewController implements Initializable {
         stage.show();
     }
 
+    /**
+     * This method runs a query to load the combo box with all available contact names
+     * @throws SQLException
+     */
     public void loadContactBox() throws SQLException {
         JDBC.openConnection();
 
@@ -66,6 +76,11 @@ public class ContactAppointmentReportViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method intializes the class by loading the combo box and runnning a query to load all appointments into the table view
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -119,7 +134,11 @@ public class ContactAppointmentReportViewController implements Initializable {
         }
     }
 
-
+    /**
+     * This method runs a query to filter the table view by the selected contact name
+     * @param actionEvent this method is called when a user selects a contact name from the combo box
+     * @throws SQLException
+     */
     public void onSelectedOption(ActionEvent actionEvent) throws SQLException {
         JDBC.openConnection();
 
@@ -167,6 +186,10 @@ public class ContactAppointmentReportViewController implements Initializable {
         JDBC.closeConnection();
     }
 
+    /**
+     * This method loads all of the appointments into the table view
+     * @param actionEvent this method is called when the user clicks the View All button
+     */
     public void onViewAll(ActionEvent actionEvent) {
         appointmentTable.setItems(appointmentList);
     }
