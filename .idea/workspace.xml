@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="I added logic to check for overlapping appointments when adding/updating appointments">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="fixed a bug which set incorrect hours in the update appointment form on the edge case of midnight">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
     </list>
@@ -89,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Refactored names of fxml &amp; controller files for the login screen and main menu">
-      <created>1672820225980</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1672820225980</updated>
     </task>
     <task id="LOCAL-00008" summary="Created OnLogn action event when clicking Login. Note: Must add logic to check for username/password later">
       <created>1672981111178</created>
@@ -433,11 +426,17 @@
       <option name="project" value="LOCAL" />
       <updated>1676444823860</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="fixed a bug which set incorrect hours in the update appointment form on the edge case of midnight">
+      <created>1676617401047</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1676617401047</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Successfuly created Delete Appointment method" />
     <MESSAGE value="I added a feature to filter the table view by months or weeks" />
     <MESSAGE value="The Login Menu now displays the users location" />
     <MESSAGE value="created reports menu with 4 different options" />
@@ -462,6 +461,7 @@
     <MESSAGE value="Updated the delete alert to include the type of appointment deleted" />
     <MESSAGE value="The Update Appointment controller now checks for start/date times set within business hours" />
     <MESSAGE value="I added logic to check for overlapping appointments when adding/updating appointments" />
-    <option name="LAST_COMMIT_MESSAGE" value="I added logic to check for overlapping appointments when adding/updating appointments" />
+    <MESSAGE value="fixed a bug which set incorrect hours in the update appointment form on the edge case of midnight" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed a bug which set incorrect hours in the update appointment form on the edge case of midnight" />
   </component>
 </project>

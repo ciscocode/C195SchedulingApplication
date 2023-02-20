@@ -43,7 +43,9 @@ public class UpdateAppointmentViewController {
     String Location;
     String Type;
     LocalDateTime StartTime;
+    LocalDateTime originalStartTime;
     LocalDateTime EndTime;
+    LocalDateTime originalEndTime;
     LocalDateTime Create_Date;
     String Created_By;
     LocalDateTime Last_Update;
@@ -275,14 +277,26 @@ public class UpdateAppointmentViewController {
             return;
         }
 
-        //check to see if there are any overlapping appointments by running a query
-        PreparedStatement overlapStatement = connection.prepareStatement("SELECT * FROM appointments WHERE Start BETWEEN ? AND ? OR End BETWEEN ? AND ? OR (Start <= ? AND End >= ?)");
+        Timestamp originalStartTimestamp = Timestamp.valueOf(originalStartTime);
+        Timestamp originalEndTimestamp = Timestamp.valueOf(originalEndTime);
+
+        System.out.println("og start time " + originalStartTimestamp);
+        System.out.println("start time " + startTimestamp);
+        System.out.println("og end time" + originalEndTime);
+
+        //check to see if there are any overlapping appointments by running a query.
+        //the query also checks to see if the start time or end time has not changed from the original
+        //this is so overlap check wont include the appointments own time
+        PreparedStatement overlapStatement = connection.prepareStatement("SELECT * FROM appointments WHERE (Start BETWEEN ? AND ? OR End BETWEEN ? AND ? OR (Start <= ? AND End >= ?)) AND (Start > ? OR End < ?)");
         overlapStatement.setTimestamp(1, startTimestamp);
         overlapStatement.setTimestamp(2, endTimestamp);
         overlapStatement.setTimestamp(3, startTimestamp);
         overlapStatement.setTimestamp(4, endTimestamp);
         overlapStatement.setTimestamp(5, startTimestamp);
         overlapStatement.setTimestamp(6, endTimestamp);
+        overlapStatement.setTimestamp(7, originalStartTimestamp);
+        overlapStatement.setTimestamp(8, originalEndTimestamp);
+
         ResultSet overlapResultSet = overlapStatement.executeQuery();
         if (overlapResultSet.next()) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
@@ -482,6 +496,10 @@ public class UpdateAppointmentViewController {
                 }
             }
         });
+
+        //store the original start and end time of the appointment. I'll use this to later check if the appointment time has been changed or not
+        originalStartTime = appt.getStartTime();
+        originalEndTime = appt.getEndTime();
 
         //load the customer ID, user ID, and Contact combo boxes
         try {
