@@ -11,7 +11,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="51.0" layoutY="137.0" mnemonicParsing="false" onAction="#onAppointmentReports" prefHeight="36.0" prefWidth="259.0" text="Appointment Reports" />
+      <Button layoutX="51.0" layoutY="137.0" mnemonicParsing="false" onAction="#onAppointmentReports" prefHeight="36.0" prefWidth="259.0" text="Appointment Count Reports" />
       <Button layoutX="51.0" layoutY="199.0" mnemonicParsing="false" onAction="#onContactSchedule" prefHeight="36.0" prefWidth="259.0" text="Schedule for Each Contact" />
       <Button layoutX="51.0" layoutY="261.0" mnemonicParsing="false" onAction="#onCustomerByCountry" prefHeight="36.0" prefWidth="259.0" text="Customers by Country" />
       <Button layoutX="103.0" layoutY="380.0" mnemonicParsing="false" onAction="#onMenu" text="Return to Main Menu" />

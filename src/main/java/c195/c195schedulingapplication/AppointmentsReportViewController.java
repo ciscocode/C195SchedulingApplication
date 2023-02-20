@@ -38,6 +38,10 @@ public class AppointmentsReportViewController implements Initializable {
     public TableColumn customerIDCol;
     public TableColumn userIDCol;
     public TableColumn titleCol;
+    public Label countLabel;
+    int count = 0;
+    int totalCount = 0;
+
 
     ObservableList<String> monthOptions = FXCollections.observableArrayList();
     ObservableList<String> typeOptions = FXCollections.observableArrayList();
@@ -64,21 +68,18 @@ public class AppointmentsReportViewController implements Initializable {
 
     public void loadTypeList() throws SQLException {
         JDBC.openConnection();
-
-        String sql = "SELECT Type FROM appointments";
+        String sql = "SELECT DISTINCT Type FROM appointments";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
 
         while (resultSet.next()) {
             typeOptions.add(resultSet.getString("Type"));
         }
-
         JDBC.closeConnection();
     }
 
     public void loadMonthList() throws SQLException {
         JDBC.openConnection();
-
         String sql = "SELECT DISTINCT MONTHNAME(Start) FROM appointments;";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
@@ -94,6 +95,8 @@ public class AppointmentsReportViewController implements Initializable {
         try {
             loadMonthList();
             loadTypeList();
+
+            count = 0;
 
             JDBC.openConnection();
 
@@ -120,7 +123,11 @@ public class AppointmentsReportViewController implements Initializable {
                         resultSet.getInt("Contact_ID")
                 );
                 appointmentList.add(appointment);
+                count++;
             }
+            //save this as total count so that you can refrence the value again in the View All action event below
+            totalCount = count;
+            countLabel.setText(String.valueOf(count));
 
             //set items into the table view
             appointmentTable.setItems(appointmentList);
@@ -144,6 +151,8 @@ public class AppointmentsReportViewController implements Initializable {
 
 
     public void onSelectedOption(ActionEvent actionEvent) throws SQLException {
+        //reset count to 0 everytime you load a new list
+        count = 0;
         JDBC.openConnection();
 
         if (monthRadioButton.isSelected()) {
@@ -175,9 +184,11 @@ public class AppointmentsReportViewController implements Initializable {
                         monthResultSet.getInt("Contact_ID")
                 );
                 filteredByMonth.add(appointment);
+                count++;
             }
             //fill in the table
             appointmentTable.setItems(filteredByMonth);
+            countLabel.setText(String.valueOf(count));
         }
 
         if (typeRadioButton.isSelected()) {
@@ -209,14 +220,17 @@ public class AppointmentsReportViewController implements Initializable {
                         monthResultSet.getInt("Contact_ID")
                 );
                 filteredByType.add(appointment);
+                count++;
             }
             //fill in the table
             appointmentTable.setItems(filteredByType);
+            countLabel.setText(String.valueOf(count));
         }
         JDBC.closeConnection();
     }
 
     public void onViewAll(ActionEvent actionEvent) {
         appointmentTable.setItems(appointmentList);
+        countLabel.setText(String.valueOf(totalCount));
     }
 }

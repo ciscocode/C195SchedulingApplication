@@ -21,13 +21,13 @@
                 <TableColumn fx:id="titleCol" prefWidth="127.0" text="Title" />
             </columns>
         </TableView>
-        <RadioButton fx:id="monthRadioButton" layoutX="116.0" layoutY="69.0" mnemonicParsing="false" onAction="#onFilterByMonth" text="Filter by Month">
+        <RadioButton fx:id="monthRadioButton" layoutX="116.0" layoutY="69.0" mnemonicParsing="false" onAction="#onFilterByMonth" text="Count by Month">
          <toggleGroup>
                 <ToggleGroup fx:id="viewToggle" />
          </toggleGroup></RadioButton>
-        <RadioButton fx:id="typeRadioButton" layoutX="272.0" layoutY="69.0" mnemonicParsing="false" onAction="#onFilterByType" text="Filter by Type" toggleGroup="$viewToggle" />
+        <RadioButton fx:id="typeRadioButton" layoutX="272.0" layoutY="69.0" mnemonicParsing="false" onAction="#onFilterByType" text="Count by Type" toggleGroup="$viewToggle" />
         <Button layoutX="1084.0" layoutY="739.0" mnemonicParsing="false" onAction="#onReturnToReportMenu" text="Return to Reports Menu" />
-        <Label layoutX="591.0" layoutY="37.0" text="Appointment Reports">
+        <Label layoutX="558.0" layoutY="32.0" text="Appointment Count Reports">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
@@ -39,5 +39,7 @@
          </font>
       </Label>
       <RadioButton fx:id="typeRadioButton1" layoutX="429.0" layoutY="69.0" mnemonicParsing="false" onAction="#onViewAll" text="View All" toggleGroup="$viewToggle" />
+      <Label layoutX="1008.0" layoutY="95.0" text="Count:" />
+      <Label fx:id="countLabel" layoutX="1058.0" layoutY="95.0" text="num" />
     </children>
 </AnchorPane>
