@@ -26,6 +26,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.TimeZone;
+import javafx.scene.control.Button;
 
 import static helper.JDBC.connection;
 
@@ -51,6 +52,8 @@ public class LoginController implements Initializable {
     String passwordWarning;
     String invalidUsername;
     String invalidPassword;
+    public static boolean initialized = false;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

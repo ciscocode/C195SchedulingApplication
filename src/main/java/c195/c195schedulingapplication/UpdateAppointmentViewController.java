@@ -478,6 +478,8 @@ public class UpdateAppointmentViewController {
 
         LocalDate today = LocalDate.now();
         //set the valid dates for the start date
+        //This is a lambda expression. The lambda expression is used to set the Day Cell Factory of the calendar in the date picker.
+        //The expression takes in a date picker object and returns a date cell which abides by the acceptable dates a user can pick to set an appointment
         startDatePicker.setDayCellFactory(picker -> new DateCell() {
             public void updateItem(LocalDate date, boolean empty) {
                 super.updateItem(date, empty);

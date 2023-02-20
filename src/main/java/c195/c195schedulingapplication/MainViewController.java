@@ -19,12 +19,17 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import static c195.c195schedulingapplication.LoginController.initialized;
 import static helper.JDBC.connection;
 
 public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (initialized == true) {
+            return;
+        }
+
         JDBC.openConnection();
         try {
             boolean apptSoon = false;
@@ -82,6 +87,7 @@ public class MainViewController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+        initialized = true;
     }
 
     public void onCustomers(ActionEvent actionEvent) throws IOException {

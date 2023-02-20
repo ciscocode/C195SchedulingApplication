@@ -42,13 +42,9 @@ public class CustomerDatabaseViewController implements Initializable {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM customers");
 
-            //create observableList to store data
 
             //Iterate through the result set and add each row to the ObservableList
             while (resultSet.next()) {
-//                LocalDateTime createdDate = (LocalDateTime) resultSet.getObject("Create_Date");
-//                LocalDateTime lastUpdate = (LocalDateTime) resultSet.getObject("Last_Update");
-
                 Customer customer = new Customer(
                         resultSet.getInt("Customer_ID"),
                         resultSet.getString("Customer_Name"),

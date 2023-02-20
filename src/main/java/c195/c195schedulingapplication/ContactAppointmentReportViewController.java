@@ -48,7 +48,6 @@ public class ContactAppointmentReportViewController implements Initializable {
         stage.show();
     }
 
-
     public void loadContactBox() throws SQLException {
         JDBC.openConnection();
 
