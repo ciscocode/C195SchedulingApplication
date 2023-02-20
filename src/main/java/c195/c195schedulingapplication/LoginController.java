@@ -13,11 +13,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -74,10 +78,13 @@ public class LoginController implements Initializable {
         invalidUsername = rb.getString("usernameError");
     }
 
-    public void validateLogin() throws SQLException {
+    public void validateLogin() throws SQLException, IOException {
         //get the attempted password/username from the text field
         password = passwordTextField.getText();
         username = usernameTextField.getText();
+
+        FileWriter fileWriter = new FileWriter("login_activity.txt", true);
+        PrintWriter loginFile = new PrintWriter(fileWriter);
 
         boolean validUsername = true;
 
@@ -110,6 +117,8 @@ public class LoginController implements Initializable {
             errorMessage.setTitle(error);
             errorMessage.setContentText(invalidUsername);
             errorMessage.showAndWait();
+            loginFile.print(" Timestamp: " + Timestamp.valueOf(LocalDateTime.now()) + " : " + "Unsuccessful login. The user " + username + " does not exist" + "\n");
+            loginFile.close();
             return;
         }
 
@@ -125,10 +134,14 @@ public class LoginController implements Initializable {
                 errorMessage.setTitle(error);
                 errorMessage.setContentText(invalidPassword);
                 errorMessage.showAndWait();
+                loginFile.print(" Timestamp: " + Timestamp.valueOf(LocalDateTime.now()) + " : " +  "Unsuccessful login. The user " + username + " entered an invalid password password" + "\n");
+                loginFile.close();
                 return;
             }
         }
         successfulLogin = true;
+        loginFile.print(" Timestamp: " + Timestamp.valueOf(LocalDateTime.now()) + " : " + " Successful login by " + username  + "\n");
+        loginFile.close();
         JDBC.closeConnection();
     }
 
