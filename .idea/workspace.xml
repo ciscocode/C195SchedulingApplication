@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Created a README and JavaDocs for the program" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,13 +89,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Created a getDivision method in the Customer class which would find the Division (which is the State/Province) using the Division ID in the SQL database">
-      <created>1673241302507</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1673241302507</updated>
     </task>
     <task id="LOCAL-00014" summary="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views.">
       <created>1673243401478</created>
@@ -433,11 +426,17 @@
       <option name="project" value="LOCAL" />
       <updated>1676878142513</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="update">
+      <created>1676879067991</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1676879067991</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="I completed the Customers by Country report. This can take a list of existing customers and filter them by country." />
     <MESSAGE value="Failed to implement french language translation. I have left my new lines as comments to come back to later" />
     <MESSAGE value="updated the add/update customer methods to check for user input error" />
     <MESSAGE value="updated the add/update appointment classes to check for user input error" />
@@ -462,6 +461,7 @@
     <MESSAGE value="I added a login_activity report that populates user activity when loging in" />
     <MESSAGE value="Updated my code so that the 15 minute alert only appears the first time a user logs in" />
     <MESSAGE value="Created a README and JavaDocs for the program" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a README and JavaDocs for the program" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
