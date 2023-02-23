@@ -99,40 +99,28 @@ public class CustomerDatabaseViewController implements Initializable {
             //get the Customer ID from the customer the user selects on the table
             Customer selectedRow = customerTable.getSelectionModel().getSelectedItem();
             customer_ID = selectedRow.getCustomer_ID();
-            System.out.print(customer_ID);
 
-            //check to see if the customer still has existing appointments
-            boolean allAppointmentsDeleted = false;
-            String checkQuery = "SELECT * FROM appointments WHERE Customer_ID = ?";
-            PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
-            checkStatement.setInt(1,customer_ID);
-            ResultSet resultSet = checkStatement.executeQuery();
-            if (!resultSet.isBeforeFirst()) {
-                allAppointmentsDeleted = true;
-            }
+            //delete appts associated with the customer id
+            String deleteApptQuery = "DELETE FROM appointments WHERE Customer_ID = ?";
+            PreparedStatement deleteApptStatement = connection.prepareStatement(deleteApptQuery);
+            deleteApptStatement.setInt(1,customer_ID);
+            deleteApptStatement.executeUpdate();
 
-            if (allAppointmentsDeleted == true) {
-                //use this customer ID to run a query to delete the customer from the table
-                String sql = "DELETE FROM customers WHERE Customer_ID = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(sql);
-                preparedStatement.setInt(1,customer_ID);
-                preparedStatement.executeUpdate();
+            //then run a query to delete the customer from the customer database
+            String sql = "DELETE FROM customers WHERE Customer_ID = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,customer_ID);
+            preparedStatement.executeUpdate();
 
-                Alert successMessage = new Alert(Alert.AlertType.INFORMATION);
-                successMessage.setTitle("Deletion Successful");
-                successMessage.setContentText("Customer " + customer_ID + " has been successfully deleted");
-                successMessage.showAndWait();
+            //alert the user of a successful deletion
+            Alert successMessage = new Alert(Alert.AlertType.INFORMATION);
+            successMessage.setTitle("Deletion Successful");
+            successMessage.setContentText("Customer " + customer_ID + " has been successfully deleted");
+            successMessage.showAndWait();
 
-                //then update the table view
-                data.remove(selectedRow);
-                customerTable.setItems(data);
-            } else {
-                Alert errorMessage = new Alert(Alert.AlertType.ERROR);
-                errorMessage.setTitle("Warning");
-                errorMessage.setContentText("You can not delete a customer with existing appointments");
-                errorMessage.showAndWait();
-                return;
-            }
+            //then update the table view
+            data.remove(selectedRow);
+            customerTable.setItems(data);
         }
         JDBC.closeConnection();
     }
