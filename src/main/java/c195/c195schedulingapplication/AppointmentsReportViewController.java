@@ -49,9 +49,9 @@ public class AppointmentsReportViewController implements Initializable {
     ObservableList<Appointment> appointmentList = FXCollections.observableArrayList();
 
     /**
-     * This method returns the user to the reports menu
-     * @param actionEvent the method is called when the user clicks the return button
-     * @throws IOException
+     This method returns the user to the reports menu
+     @param actionEvent the method is called when the user clicks the return button
+     @throws IOException
      */
     public void onReturnToReportMenu(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reports-menu-view.fxml"));
@@ -115,7 +115,7 @@ public class AppointmentsReportViewController implements Initializable {
     }
 
     /**
-     * This initialize method starts by loading the avaialble lists of month & type
+     * This initialize method starts by loading the avaialble lists of month and type
      * It also creates a table view of all available appointments and counts them
      * @param url
      * @param resourceBundle

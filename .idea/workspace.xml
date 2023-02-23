@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="update" />
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="update">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/helper/JDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/helper/JDBC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentsReportViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AppointmentsReportViewController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,20 +57,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication",
-    "last_opened_file_path": "/home/cisco/IdeaProjects/C482InventoryProject",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.build"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/cisco/IdeaProjects/C195SchedulingApplication/src/main/java/c195/c195schedulingapplication&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/cisco/IdeaProjects/C195SchedulingApplication&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/languages" />
@@ -89,13 +93,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Created the Update Customer view. Also created the actionEvents so that I can navigate in and out of the Add Customer and Update Customer views.">
-      <created>1673243401478</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1673243401478</updated>
     </task>
     <task id="LOCAL-00015" summary="I implemented a method to pull division data to display the appropriate list of State/Provinces on the ComboBox after selecting a Country in the country ComboBox">
       <created>1673249017719</created>
@@ -433,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1676879067991</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="update">
+      <created>1676880552260</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1676880552260</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
