@@ -7,11 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Updated the Delete Customer method to also delete all appointments associated with the customer">
+    <list default="true" id="21aeb4ca-aebd-4bbc-accd-8928239b82cf" name="Changes" comment="Fixed a bug in the Add/Update appointment methods to fix UTC conversion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/AddAppointmentViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/c195/c195schedulingapplication/UpdateAppointmentViewController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,13 +95,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1672387786205</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Created a new action event OnDivisionSelection, so that I can properly update the division id when selecting a division. This fixed my previous bug where the division_id was not updating properly.">
-      <created>1673416637740</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1673416637740</updated>
     </task>
     <task id="LOCAL-00018" summary="Implemented the onDeleteCustomer method. A user can now select a customer from the table and delete them from the SQL database. The tableview will then update.">
       <created>1673420989333</created>
@@ -442,11 +432,17 @@
       <option name="project" value="LOCAL" />
       <updated>1677131759057</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Fixed a bug in the Add/Update appointment methods to fix UTC conversion">
+      <created>1677223502574</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1677223502574</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated the add/update appointment classes to check for user input error" />
     <MESSAGE value="Updated the login controller class to check for valid username/password" />
     <MESSAGE value="completed some minor JDBC refactoring" />
     <MESSAGE value="Added an alert when a user attempts to update a customer or appointment without selecting one from the table" />
@@ -471,6 +467,7 @@
     <MESSAGE value="update" />
     <MESSAGE value="updated Javadocs" />
     <MESSAGE value="Updated the Delete Customer method to also delete all appointments associated with the customer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated the Delete Customer method to also delete all appointments associated with the customer" />
+    <MESSAGE value="Fixed a bug in the Add/Update appointment methods to fix UTC conversion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed a bug in the Add/Update appointment methods to fix UTC conversion" />
   </component>
 </project>
