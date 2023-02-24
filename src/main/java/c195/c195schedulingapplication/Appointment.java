@@ -275,8 +275,7 @@ public class Appointment {
 
         //get time zone of users device
         ZoneId deviceTimeZone = ZoneId.systemDefault();
-        ZoneId utc = ZoneId.of("UTC");
-        LocalDateTime startDateTimeLocal = StartTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
+        LocalDateTime startDateTimeLocal = StartTime.atZone(deviceTimeZone).toLocalDateTime();
 
         String formattedTime = startDateTimeLocal.format(formatter);
         return formattedTime;
@@ -292,8 +291,7 @@ public class Appointment {
 
         //get time zone of users device
         ZoneId deviceTimeZone = ZoneId.systemDefault();
-        ZoneId utc = ZoneId.of("UTC");
-        LocalDateTime endDateTimeLocal = EndTime.atZone(utc).withZoneSameInstant(deviceTimeZone).toLocalDateTime();
+        LocalDateTime endDateTimeLocal = EndTime.atZone(deviceTimeZone).toLocalDateTime();
 
         String formattedTime = endDateTimeLocal.format(formatter);
         return formattedTime;

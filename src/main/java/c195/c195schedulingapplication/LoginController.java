@@ -102,19 +102,21 @@ public class LoginController implements Initializable {
 
         boolean validUsername = true;
 
-        //check to see if the text fields are left blank
-        if (username.isBlank()) {
+        /**This is a lambda expression to consolidate my error alert when a user leaves the Password or Username text fields blank**/
+        Runnable showAlert = () -> {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
             errorMessage.setTitle(warning);
-            errorMessage.setContentText(usernameWarning);
+            if (username.isBlank()) {
+                errorMessage.setContentText(usernameWarning);
+            } else if (password.isBlank()) {
+                errorMessage.setContentText(passwordWarning);
+            }
             errorMessage.showAndWait();
             return;
-        }
-        if (password.isBlank()) {
-            Alert errorMessage = new Alert(Alert.AlertType.WARNING);
-            errorMessage.setTitle(warning);
-            errorMessage.setContentText(passwordWarning);
-            errorMessage.showAndWait();
+        };
+
+        if (username.isBlank() || password.isBlank()) {
+            showAlert.run();
             return;
         }
 

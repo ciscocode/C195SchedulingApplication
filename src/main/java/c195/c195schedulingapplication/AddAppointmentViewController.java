@@ -247,10 +247,12 @@ public class AddAppointmentViewController implements Initializable {
         LocalDateTime localStartDateTime = LocalDateTime.of(startDate, LocalTime.of(startHour, startMinute));
         ZonedDateTime zonedStartDateTime = ZonedDateTime.of(localStartDateTime, startTimeZone);
 
+        //create the start timestamp
+        StartTime = zonedStartDateTime.toLocalDateTime();
+        Timestamp startTimestamp = Timestamp.valueOf(StartTime);
+
         //convert the start time to UTC time
         ZonedDateTime utcStartDateTime = zonedStartDateTime.withZoneSameInstant(ZoneId.of("UTC"));
-        StartTime = utcStartDateTime.toLocalDateTime();
-        Timestamp startTimestamp = Timestamp.valueOf(StartTime);
 
         if (utcStartDateTime.isBefore(openingStartZonedDateTime) || utcStartDateTime.isAfter(closingStartZonedDateTime) || zonedStartDateTime.isEqual(closingStartZonedDateTime)) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
@@ -286,10 +288,12 @@ public class AddAppointmentViewController implements Initializable {
         LocalDateTime localEndDateTime = LocalDateTime.of(endDate, LocalTime.of(endHour, endMinute));
         ZonedDateTime zonedEndDateTime = ZonedDateTime.of(localEndDateTime, endTimeZone);
 
+        //create the end timestamp
+        EndTime = zonedEndDateTime.toLocalDateTime();
+        Timestamp endTimestamp = Timestamp.valueOf(EndTime);
+
         //convert the start time to UTC time
         ZonedDateTime utcEndDateTime = zonedEndDateTime.withZoneSameInstant(ZoneId.of("UTC"));
-        EndTime = utcEndDateTime.toLocalDateTime();
-        Timestamp endTimestamp = Timestamp.valueOf(EndTime);
 
         if (utcEndDateTime.isBefore(openingEndZonedDateTime) || utcEndDateTime.isAfter(closingEndZonedDateTime) || zonedEndDateTime.isEqual(closingEndZonedDateTime) || zonedEndDateTime.isEqual(openingEndZonedDateTime)) {
             Alert errorMessage = new Alert(Alert.AlertType.WARNING);
