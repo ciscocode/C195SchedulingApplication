@@ -20,6 +20,7 @@ Clone this GitHub repository to your local machine:
 
 ```bash
 git clone https://github.com/ciscocode/C195SchedulingApplication.git
+```
 
 ### 2. Database Setup
 
